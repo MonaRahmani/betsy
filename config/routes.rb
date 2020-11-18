@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   # delete '/products/:id', to: 'products#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/auth/github", as: "github_login"
-
+  get "/auth/:provider/callback", to: "users#create"
 end
