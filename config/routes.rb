@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   root to: 'homepages#index'
   resources :users
   resources :products
-  post "/logout", to: "users#logout", as: "logout"
   resources :categories, only: [:new, :create]
 
   # get '/products', to: 'products#index', as: 'products'
@@ -23,4 +22,7 @@ Rails.application.routes.draw do
   # patch '/products/:id', to: 'products#update'
   # delete '/products/:id', to: 'products#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get "/auth/github", as: "github_login"
+  get "/auth/:provider/callback", to: "users#create"
+  delete "/logout", to: "users#destroy", as: "logout"
 end
