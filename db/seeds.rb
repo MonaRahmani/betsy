@@ -16,7 +16,7 @@ CSV.foreach(ORDER_FILE, :headers => true) do |row|
   order.credit_card_num = row['credit_card_num']
   order.cvv_num = row['cvv_num']
   order.status = row['status']
-  order.cc_exp_month= row['cc_exp_month'].to_i
+  order.cc_exp_month = row['cc_exp_month'].to_i
   order.cc_exp_year = row['cc_exp_year'].to_i
 
   successful = order.save
