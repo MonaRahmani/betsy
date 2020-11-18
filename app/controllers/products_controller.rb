@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   def index
     @products = Product.all
+    @users = User.find_by(id: params[:user_id])
+    @products = @users.products
   end
 
   def show
