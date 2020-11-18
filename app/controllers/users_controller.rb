@@ -32,13 +32,13 @@ class UsersController < ApplicationController
     end
     # If we get here, we have a valid user instance
     session[:user_id] = user.id
-    return redirect_to root_path
+    redirect_to root_path
+    return
   end
 
   def destroy
     session[:user_id] = nil
     flash[:success] = "Successfully logged out!"
-
     redirect_to root_path
   end
 end

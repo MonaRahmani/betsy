@@ -10,11 +10,22 @@
   </head>
 
   <body>
-  <% if session[:user_id] %>
-    <%= link_to "Log out", logout_path, method: "delete" %>
-  <% else %>
-    <%= link_to "Login with Github", github_login_path %>
-  <% end %>
+  <nav>
+    <ul>
+      <li>
+        <h1><%= link_to "DREAMSy", root_path, class: "dreamsy" %></h1>
+      </li>
+      <% if session[:user_id] %>
+        <li>
+          <%= link_to "Log out", logout_path, method: :delete, class: "nav-button" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Login", github_login_path, class: "nav-button" %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
 
   <%= yield %>
   </body>
