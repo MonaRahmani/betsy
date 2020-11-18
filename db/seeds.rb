@@ -1,7 +1,5 @@
 require 'csv'
 
-commented out below is seeds.rb from media ranker, can be used as a template.
-
 PRODUCT_FILE = Rails.root.join('db', 'products_seeds.csv')
 puts "Loading raw product data from #{PRODUCT_FILE}"
 
@@ -36,7 +34,7 @@ user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.username = row['username']
-  user.email = row['title']
+  user.email = row['email']
   successful = user.save
   if !successful
     user_failures << user
