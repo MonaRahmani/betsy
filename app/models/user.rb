@@ -7,7 +7,7 @@ class User < ApplicationRecord
     user = User.new
     user.uid = auth_hash[:uid]
     user.provider = "github"
-    user.username = auth_hash["info"]["name"]
+    user.username = auth_hash["info"]["nickname"]
     user.email = auth_hash["info"]["email"]
 
     # Note that the user has not been saved.

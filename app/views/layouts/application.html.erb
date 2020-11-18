@@ -15,7 +15,7 @@
       <li>
         <h1><%= link_to "DREAMSy", root_path, class: "dreamsy" %></h1>
       </li>
-      <% if session[:user_id] %>
+      <% if @logged_in_user%>
         <li>
           <%= link_to "Log out", logout_path, method: :delete, class: "nav-button" %>
         </li>
@@ -26,6 +26,21 @@
       <% end %>
     </ul>
   </nav>
+
+  <% if flash[:error] %>
+    <div class="alert alert-warning alert-container">
+      <%= flash[:error] %>
+      <% if flash[:reason] %>
+        <ul>
+          <li><%= flash[:reason] %></li>
+        </ul>
+      <% end %>
+    </div>
+  <% elsif flash[:success] %>
+    <div class="alert alert-success alert-container">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
 
   <%= yield %>
   </body>
