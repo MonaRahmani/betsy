@@ -1,2 +1,26 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<%= form_with model: @product, class: 'edit-product' do |f| %>
+<h1>Update <%= @product.name %></h1>
+
+  <% if @product.errors.any? %>
+    <ul>
+      <%= @product.errors.each do |column, message| %>
+        <li>
+          <%= column %> <%= message %>
+        </li>
+        <% end %>
+    </ul>
+  <% end %>
+
+  <div class="edit-product-form">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+    <br>
+    <%= f.label :stock %>
+    <%= f.text_field :stock %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <%= f.submit "Update", class:"btn btn-primary" %>
+<% end %>
+
