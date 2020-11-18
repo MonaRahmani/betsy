@@ -1,21 +1,30 @@
 class CategoriesController < ApplicationController
-  before_action :require_login, only:  [:new]
+  before_action :require_login, only: [:create]
+  before_action :find_category, only: [:create]
 
   def new
-    @category = category.new
+    @category = Category.new
   end
 
   def create
-    @category = category.create(category_params)
-    if @category.id?
+    @category = Category.new(category_params)
+
+    if @category.save
       flash[:success] = "Successfully added #{@category.category_name} category"
-      redirect_to user_path(session[:user_id])
+      redirect_to root_path
     else
-      flash[:result_text] = "Could not create category"
+      flash[:error] = "Could not create category"
+      render :new, status: :bad_request
     end
+
+    private
 
     def category_params
       params.require(:category).permit(:category_name)
+    end
+
+    def find_category
+      @category = Category.find_by(id: params[:id])
     end
 
   end

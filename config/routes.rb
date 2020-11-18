@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :products
   post "/logout", to: "users#logout", as: "logout"
+  resources :categories, only: [:new, :create]
 
   # get '/products', to: 'products#index', as: 'products'
   # get '/products/new', to: 'products#new', as: 'new_product'
