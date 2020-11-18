@@ -21,6 +21,14 @@ describe UsersController do
   #   end
   # end
 
+  # describe "logout" do
+  #   it "logs user out when they click logout"
+  #   post logout_path
+  #   expect(flash[:result_text]).must_equal "successfully logged out"
+  #   must_respond_with :redirect
+  #   must_redirect_to root_path
+  # end
+
   # it "must get create" do
   #   get users_create_url
   #   must_respond_with :success
