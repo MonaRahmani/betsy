@@ -1,29 +1,31 @@
 require 'csv'
 
-# commented out below is seeds.rb from media ranker, can be used as a template.
-#
-# WORK_FILE = Rails.root.join('db', 'works_seeds.csv')
-# puts "Loading raw work data from #{WORK_FILE}"
-#
-# work_failures = []
-# CSV.foreach(WORK_FILE, :headers => true) do |row|
-#   work = Work.new
-#   work.category = row['category']
-#   work.title = row['title']
-#   work.creator = row['creator']
-#   work.publication_year = row['publication_year'].to_i
-#   work.description = row['description']
-#   successful = work.save
-#   if !successful
-#     work_failures << work
-#     puts "Failed to save work: #{work.inspect}"
-#   else
-#     puts "Created work: #{work.inspect}"
-#   end
-# end
+commented out below is seeds.rb from media ranker, can be used as a template.
 
-puts "Added #{Work.count} work records"
-puts "#{work_failures.length} works failed to save"
+PRODUCT_FILE = Rails.root.join('db', 'products_seeds.csv')
+puts "Loading raw product data from #{PRODUCT_FILE}"
+
+product_failures = []
+CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
+  product = Product.new
+  product.name = row['name']
+  product.description = row['description']
+  product.price = row['price'].to_f
+  product.photo_url = row['photo_url']
+  product.stock = row['stock'].to_i
+  product.merchant_id = row['merchant_id'].to_i
+  product.retired = row['retired']
+  successful = product.save
+  if !successful
+    product_failures << product
+    puts "Failed to save product: #{product.inspect}"
+  else
+    puts "Created product: #{product.inspect}"
+  end
+end
+
+puts "Added #{Product.count} product records"
+puts "#{product_failures.length} products failed to save"
 
 
 
