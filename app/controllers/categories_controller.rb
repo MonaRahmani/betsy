@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :require_login, only:  [:new]
 
   def new
     @category = category.new
