@@ -1,2 +1,13 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<!--Product details-->
+<h1><%= @product.name %></h1>
+<%= number_to_currency(@product.price) %>
+<br>
+In Stock: <%= @product.stock %>
+<!--might have to change this later. Should just say in stock or not?-->
+<br>
+Quantity:
+<%#= @product.retired %>
+<br>
+Description: <%= @product.description %>
+<br>
+<%= link_to "Back", products_path %>
