@@ -1,2 +1,14 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h1>Update <%= @product.name %></h1>
+<%= render partial: 'form', locals: { action_name: 'Update Product'} %>
+
+  <% if @product.errors.any? %>
+    <ul>
+      <%= @product.errors.each do |column, message| %>
+        <li>
+          <%= column %> <%= message %>
+        </li>
+        <% end %>
+    </ul>
+  <% end %>
+
+
