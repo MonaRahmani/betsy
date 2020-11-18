@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  get 'orders/index'
+  get 'orders/show'
+  get 'orders/edit'
+  get 'orders/new'
+  # get 'products/index'
+  # get 'products/show'
+  # get 'products/new'
+  # get 'products/edit'
+
   root to: 'homepages#index'
   resources :users
   resources :products
