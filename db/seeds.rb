@@ -1,5 +1,35 @@
 require 'csv'
 # commented out below is seeds.rb from media ranker, can be used as a template.
+# 
+ORDER_FILE = Rails.root.join('db', 'orders_seeds.csv')
+puts "Loading raw order data from #{ORDER_FILE}"
+
+order_failures = []
+CSV.foreach(ORDER_FILE, :headers => true) do |row|
+  order = Order.new
+  order.email = row['email']
+  order.street_address = row['street_address']
+  order.city = row['city']
+  order.state = row['state']
+  order.zip_code = row['zip_code']
+  order.credit_card_name = row['credit_card_name']
+  order.credit_card_num = row['credit_card_num']
+  order.cvv_num = row['cvv_num']
+  order.status = row['status']
+  order.cc_exp_month= row['cc_exp_month'].to_i
+  order.cc_exp_year = row['cc_exp_year'].to_i
+
+  successful = order.save
+  if !successful
+    order_failures << order
+    puts "Failed to save order: #{order.inspect}"
+  else
+    puts "Created order: #{order.inspect}"
+  end
+end
+
+puts "Added #{Order.count} order records"
+puts "#{order_failures.length} orders failed to save"
 
 PRODUCT_FILE = Rails.root.join('db', 'products_seeds.csv')
 puts "Loading raw product data from #{PRODUCT_FILE}"
