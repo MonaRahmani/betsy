@@ -7,7 +7,6 @@ require "csv"
 # recreate the db with: rails db:reset
 # note: doesn't currently check for if names are unique against each other
 
-
 CSV.open("db/products_seeds.csv", "w", :write_headers => true,
          :headers => ["name", "description", "price", "photo_url", "stock", "retired"]) do |csv|
   20.times do
@@ -21,13 +20,13 @@ CSV.open("db/products_seeds.csv", "w", :write_headers => true,
     csv << [name, description, price, photo_url, stock, retired]
   end
 end
-#
-# CSV.open("db/users_seeds.csv", "w", :write_headers => true,
-#          :headers => ["username", "email"]) do |csv|
-#   25.times do
-#     username = Faker::Name.name
-#     email = username.split(" ").join.downcase + "@dream-team.com"
-#
-#     csv << [username, email]
-#   end
-# end
+
+CSV.open("db/users_seeds.csv", "w", :write_headers => true,
+         :headers => ["username", "email"]) do |csv|
+  25.times do
+    username = Faker::Name.name
+    email = username.split(" ").join.downcase + "@dream-team.com"
+
+    csv << [username, email]
+  end
+end
