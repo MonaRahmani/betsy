@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   root to: 'homepages#index'
   resources :users
   resources :products
+  post "/logout", to: "users#logout", as: "logout"
+
   # get '/products', to: 'products#index', as: 'products'
   # get '/products/new', to: 'products#new', as: 'new_product'
   # post '/products', to: 'products#create'

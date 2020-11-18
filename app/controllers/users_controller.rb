@@ -18,4 +18,12 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  def logout
+    session[:user_id] = nil
+    flash[:success] = "Succesfully logged out"
+    redirect_to root_path
+    return
+  end
+
 end
