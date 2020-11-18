@@ -1,0 +1,11 @@
+user1:
+  provider: github
+  uid: 111
+  email: testemail1@gmail.com
+  username: fairy1
+
+user2:
+  provider: github
+  uid: 222
+  email: testemail2@gmail.com
+  username: fairy2
