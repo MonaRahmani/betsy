@@ -1,0 +1,19 @@
+<%= form_with model: @product, class: 'edit-product' do |f| %>
+  <div class="edit-product-form">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+    <br>
+    <%= f.label :stock %>
+    <%= f.text_field :stock %>
+    <br>
+    <%= f.label :photo_url, "Photo URL" %>
+    <%= f.text_field :photo_url %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+<%= f.submit action_name, class:"btn btn-primary" %>
+<% end %>

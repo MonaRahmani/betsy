@@ -1,5 +1,5 @@
-<%= form_with model: @product, class: 'edit-product' do |f| %>
 <h1>Update <%= @product.name %></h1>
+<%= render partial: 'form', locals: { action_name: 'Update Product'} %>
 
   <% if @product.errors.any? %>
     <ul>
@@ -11,16 +11,4 @@
     </ul>
   <% end %>
 
-  <div class="edit-product-form">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-    <br>
-    <%= f.label :stock %>
-    <%= f.text_field :stock %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <%= f.submit "Update", class:"btn btn-primary" %>
-<% end %>
 
