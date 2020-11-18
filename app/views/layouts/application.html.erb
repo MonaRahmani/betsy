@@ -10,7 +10,11 @@
   </head>
 
   <body>
-  <%= link_to "Login with GitHub", github_login_path %>
+  <% if session[:user_id] %>
+    <%= link_to "Log out", logout_path, method: "delete" %>
+  <% else %>
+    <%= link_to "Login with Github", github_login_path %>
+  <% end %>
 
   <%= yield %>
   </body>
