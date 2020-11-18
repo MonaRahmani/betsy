@@ -1,2 +1,11 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>Products</h1>
+<ul>
+  <% if @products.length > 0 %>
+    <% @products.each do |product| %>
+      <li><%= link_to product.name, product_path(product.id)  %></li>
+      <li><%= number_to_currency(product.price) %></li>
+    <% end %>
+  <% else %>
+    No products.
+  <% end %>
+</ul>
