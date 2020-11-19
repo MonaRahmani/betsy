@@ -8,6 +8,15 @@ describe UsersController do
     end
   end
 
+  it "must get create" do
+    get users_path
+    must_respond_with :success
+  end
+  #
+  # it "must get destroy" do
+  #   delete users_path
+  #   must_respond_with :success
+  # end
 
   # describe "show" do
   #   it "responds with success when showing an existing user" do
@@ -22,20 +31,16 @@ describe UsersController do
   # end
   describe "create" do
     it "logs in an existing user and redirects to the root route" do
-      # Count the users, to make sure we're not (for example) creating
-      # a new user every time we get a login request
+      # Count the users, make sure we are not creating a new user every time we get a login request
       start_count = User.count
 
       # Get a user from the fixtures
       user = users(:user1)
 
-      # Tell OmniAuth to use this user's info when it sees
-      # an auth callback from github
+      # Tell OmniAuth to use this user's info when it sees an auth callback from github
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
       # Send a login request for that user
-      # Note that we're using the named path for the callback, as defined
-      # in the `as:` clause in `config/routes.rb`
       get auth_callback_path(:github)
 
       must_redirect_to root_path
@@ -47,10 +52,28 @@ describe UsersController do
       User.count.must_equal start_count
     end
 
-    it "creates an account for a new user and redirects to the root route" do
+    it "creates a new user" do
+      start_count = User.count
+      user = User.create(provider: "github", uid: 99999, username: "test_user", email: "test@user.com")
+
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+      get auth_callback_path(:github)
+
+      must_redirect_to root_path
+
+      # Should have created a new user
+      User.count.must_equal start_count + 1
+
+      # The new user's ID should be set in the session
+      session[:user_id].must_equal User.last.id
     end
 
-    it "redirects to the login route if given invalid user data" do
+    it "redirects to the root path if given invalid user data" do
+
+      invalid_user = User.create(provider: "github", uid: 99999, username: nil, email: "test@user.com")
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(invalid_user))
+      get auth_callback_path(:github)
+      must_redirect_to root_path
     end
   end
 
@@ -63,14 +86,6 @@ describe UsersController do
   #   must_redirect_to root_path
   # end
   #
-  # it "must get create" do
-  #   get users_create_path
-  #   must_respond_with :success
-  # end
-  #
-  # it "must get destroy" do
-  #   get users_destroy_path
-  #   must_respond_with :success
-  # end
+
 
 end
