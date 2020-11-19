@@ -12,17 +12,10 @@
       <th>Active</th>
     </tr>
     </thead>
-<!--      <tr>-->
-<!--        <td><%#= link_to @product.id, product_path(@product) %></td>-->
-<!--        <td><%#= @product.stock %></td>-->
-<!--        <td><%#= @product.price %></td>-->
-        <%# if @product.retired %>
-<!--          <td><%#= @product.retired %></td>-->
-        <%# end %>
-<!--      </tr>-->
+    <tbody>
     <% @user.products.each do |product| %>
       <tr>
-        <td><%= link_to product.user.name, product(product.id) %></td>
+        <td><%= link_to product.name, product(product.id) %></td>
         <td><%= product.stock %></td>
         <td><%= product.price %></td>
         <% if product.retired %>
