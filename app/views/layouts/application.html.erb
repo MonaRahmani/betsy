@@ -24,6 +24,9 @@
           <%= link_to "Login", github_login_path, class: "nav-button" %>
         </li>
       <% end %>
+
+      <%= link_to "Log out", logout_path, method: :delete, class: "nav-button" %>
+
     </ul>
   </nav>
 

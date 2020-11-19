@@ -12,14 +12,14 @@
       <th>Active</th>
     </tr>
     </thead>
-      <tr>
-        <td><%= link_to product.name, product_path(product) %></td>
-        <td><%= product.stock %></td>
-        <td><%= product.price %></td>
-        <% if product.retired %>
-          <td><%= product.retired %></td>
-        <% end %>
-      </tr>
+<!--      <tr>-->
+<!--        <td><%#= link_to @product.id, product_path(@product) %></td>-->
+<!--        <td><%#= @product.stock %></td>-->
+<!--        <td><%#= @product.price %></td>-->
+        <%# if @product.retired %>
+<!--          <td><%#= @product.retired %></td>-->
+        <%# end %>
+<!--      </tr>-->
     <% @user.products.each do |product| %>
       <tr>
         <td><%= link_to product.user.name, product(product.id) %></td>
@@ -33,4 +33,4 @@
     </tbody>
   </table>
 </section>
-<button><%= link_to "Edit product", edit_product_path(product.id), method: get %></button>
+<!--<button><%#= link_to "Edit product", edit_product_path(@product.id), method: get %></button>-->
