@@ -1,5 +1,7 @@
 <!--Product details-->
 <h1><%= @product.name %></h1>
+Sold by: <%= @product.user %>
+<br>
 <%= number_to_currency(@product.price) %>
 <br>
 In Stock: <%= @product.stock %>
