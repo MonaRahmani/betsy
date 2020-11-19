@@ -1,0 +1,8 @@
+sample:
+  name: Test User
+  description: Impossible to see the future is
+  price: 250.00
+  stock: 2
+  photo_url: https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg
+  retired: false
+  user_id: 100
