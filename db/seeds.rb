@@ -52,6 +52,27 @@ end
 puts "Added #{Order.count} order records"
 puts "#{order_failures.length} orders failed to save"
 
+
+CATEGORY_FILE = Rails.root.join('db', 'categories_seeds.csv')
+puts "Loading raw category data from #{CATEGORY_FILE}"
+
+category_failures = []
+CSV.foreach(CATEGORY_FILE, :headers => true) do |row|
+  category = Category.new
+  category.category_name = row['category_name']
+  successful = category.save
+  if !successful
+    category_failures << category
+    puts "Failed to save category: #{category.inspect}"
+  else
+    puts "Created category: #{category.inspect}"
+  end
+end
+
+puts "Added #{Category.count} category records"
+puts "#{category_failures.length} categories failed to save"
+
+
 PRODUCT_FILE = Rails.root.join('db', 'products_seeds.csv')
 puts "Loading raw product data from #{PRODUCT_FILE}"
 
@@ -65,7 +86,9 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   product.stock = row['stock'].to_i
   product.user_id = User.find_by(username: row['username']).id
   product.retired = row['retired']
+  product.categories << Category.find_by(category_name: row['categories'])
   successful = product.save
+
   if !successful
     product_failures << product
     puts "Failed to save product: #{product.inspect}"
