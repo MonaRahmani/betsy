@@ -12,11 +12,6 @@ describe UsersController do
     get users_path
     must_respond_with :success
   end
-  #
-  # it "must get destroy" do
-  #   delete users_path
-  #   must_respond_with :success
-  # end
 
   # describe "show" do
   #   it "responds with success when showing an existing user" do
@@ -78,14 +73,16 @@ describe UsersController do
   end
 
 
-  # describe "logout" do
-  #   it "logs user out when they click logout"
-  #   post logout_path
-  #   expect(flash[:result_text]).must_equal "successfully logged out"
-  #   must_respond_with :redirect
-  #   must_redirect_to root_path
-  # end
-  #
+    describe "destroy action" do
+      it "can logout a user" do
+        user = users(:user1)
+        perform_login(user)
 
+        delete logout_path
 
+        must_redirect_to root_path
+        refute(session[:user_id])
+      end
+
+  end
 end
