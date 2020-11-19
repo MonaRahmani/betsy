@@ -16,3 +16,23 @@
 @import "bootstrap";
 
 @import "**/*";
+
+h1 .dreamsy {
+  font-family: "Amatic SC", sans-serif;
+  background: linear-gradient(to bottom, #ffffff, #68676A, #4F4F51, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4rem;
+  color: black;
+}
+
+.dreamsy:hover {
+  background: linear-gradient(to bottom, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: black;
+}
+
+nav ul {
+  list-style-type: none;
+}
