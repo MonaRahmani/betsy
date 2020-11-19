@@ -1,6 +1,27 @@
 require 'csv'
 # commented out below is seeds.rb from media ranker, can be used as a template.
-# 
+#
+USER_FILE = Rails.root.join('db', 'users_seeds.csv')
+puts "Loading raw user data from #{USER_FILE}"
+
+user_failures = []
+CSV.foreach(USER_FILE, :headers => true) do |row|
+  user = User.new
+  user.username = row['username']
+  user.email = row['email']
+  successful = user.save
+  if !successful
+    user_failures << user
+    puts "Failed to save user: #{user.inspect}"
+  else
+    puts "Created user: #{user.inspect}"
+  end
+end
+
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save"
+
+
 ORDER_FILE = Rails.root.join('db', 'orders_seeds.csv')
 puts "Loading raw order data from #{ORDER_FILE}"
 
@@ -42,7 +63,7 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   product.price = row['price'].to_f
   product.photo_url = row['photo_url']
   product.stock = row['stock'].to_i
-  product.merchant_id = row['merchant_id'].to_i
+  product.user_id = User.find_by(username: row['username']).id
   product.retired = row['retired']
   successful = product.save
   if !successful
@@ -58,25 +79,7 @@ puts "#{product_failures.length} products failed to save"
 
 
 
-USER_FILE = Rails.root.join('db', 'users_seeds.csv')
-puts "Loading raw user data from #{USER_FILE}"
 
-user_failures = []
-CSV.foreach(USER_FILE, :headers => true) do |row|
-  user = User.new
-  user.username = row['username']
-  user.email = row['email']
-  successful = user.save
-  if !successful
-    user_failures << user
-    puts "Failed to save user: #{user.inspect}"
-  else
-    puts "Created user: #{user.inspect}"
-  end
-end
-
-puts "Added #{User.count} user records"
-puts "#{user_failures.length} users failed to save"
 
 
 # Since we set the primary key (the ID) manually on each of the
