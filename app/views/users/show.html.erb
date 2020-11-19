@@ -1,5 +1,8 @@
 <h2>User Summary: <%= link_to @user.username, user_path(@user) %></h2>
 <p>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></p>
+<h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
+<h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
+<p>Order Summary</p>
 
 <section class="user-votes__container">
   <h3 class="user-votes__header">Products</h3>
@@ -12,25 +15,18 @@
       <th>Active</th>
     </tr>
     </thead>
-      <tr>
-        <td><%= link_to product.name, product_path(product) %></td>
-        <td><%= product.stock %></td>
-        <td><%= product.price %></td>
-        <% if product.retired %>
-          <td><%= product.retired %></td>
-        <% end %>
-      </tr>
+
     <% @user.products.each do |product| %>
       <tr>
-        <td><%= link_to product.user.name, product(product.id) %></td>
+        <td><%= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>
         <td><%= product.stock %></td>
         <td><%= product.price %></td>
         <% if product.retired %>
           <td><%= product.retired %></td>
         <% end %>
+        <%= link_to "Edit product", edit_product_path(product.id), method: get %>
       </tr>
     <% end %>
     </tbody>
   </table>
 </section>
-<button><%= link_to "Edit product", edit_product_path(product.id), method: get %></button>
