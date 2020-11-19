@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/edit'
-  get 'orders/new'
+
+  resources :orders
 
   root to: 'homepages#index'
   resources :users do
