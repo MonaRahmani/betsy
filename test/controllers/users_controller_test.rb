@@ -13,17 +13,18 @@ describe UsersController do
     must_respond_with :success
   end
 
-  # describe "show" do
-  #   it "responds with success when showing an existing user" do
-  #     get user_path(user.first.id)
-  #     must_respond_with :success
-  #   end
-  #
-  #   it "responds with head: not_fount when user_id isn't fount" do
-  #     get user_path(-1)
-  #     must_respond_with :not_found
-  #   end
-  # end
+  describe "show" do
+    it "responds with success when showing an existing user" do
+      valid_user = users(:user1)
+      get user_path(valid_user)
+      must_respond_with :success
+    end
+
+    it "responds with head: not_found when user_id isn't fount" do
+      get user_path(-1)
+      must_respond_with :not_found
+    end
+  end
   describe "create" do
     it "logs in an existing user and redirects to the root route" do
       # Count the users, make sure we are not creating a new user every time we get a login request
