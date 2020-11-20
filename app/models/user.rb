@@ -23,7 +23,7 @@ class User < ApplicationRecord
     # iterate through user products to find particular order item price
     self.products.each do |product|
       product.order_items.each do |item|
-
+        sum += item.order_item_subtotal
       end
     end
   end
