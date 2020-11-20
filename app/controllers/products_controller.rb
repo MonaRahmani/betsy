@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product.id)
       return
     else
-      flash.now[:error] = "Oh no! Your product already exists."
+      flash.now[:error] = "Oh no! Unable to save."
       render :new
       return
     end
@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
 
   def edit
     if @product.nil?
+      flash.now[:error] = "Product doesn't exist, please select another... (nil)"
       redirect_to products_path
       return
     end
@@ -43,11 +44,17 @@ class ProductsController < ApplicationController
 
   def update
     if @product.nil?
+      flash.now[:error] = "Product doesn't exist, please select another... (nil)"
       redirect_to products_path
-     return
-    else
-      @product.update(products_param)
-      redirect_to products_path
+      return
+    elsif
+      @product.update(product_params)
+      flash.now[:error] = "Update complete!"
+      redirect_to product_path(@product)
+    else # save failed
+      flash.now[:error] = "A problem occurred: Could not update #{@product.name}"
+      render :edit
+      return
     end
   end
 
@@ -64,8 +71,8 @@ class ProductsController < ApplicationController
 
   private
 
-  def products_param
-    return params.require(:product).permit(:id, :name, :description, :price, :photo_url, :stock, :retired)
+  def product_params
+    return params.require(:product).permit(:name, :description, :price, :photo_url, :stock, :retired, :categories)
   end
 
   def find_product

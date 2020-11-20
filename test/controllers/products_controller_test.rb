@@ -15,7 +15,7 @@ describe ProductsController do
 
   describe "show" do
     it "must get show" do
-      get product_path(@product.id)
+      get product_path(@product)
 
       must_respond_with :success
     end
@@ -38,14 +38,14 @@ describe ProductsController do
   describe "create" do
     it "can create a new product" do
       product_hash = {
-          product: {
-              name: "New Product",
-              description: "Great new product",
-              price: 10.50,
-              photo_url: "www.newimage.com",
-              stock: 5,
-              retired: false
-          },
+        product: {
+          name: "New Product",
+          description: "Great new product",
+          price: 10.50,
+          photo_url: "www.newimage.com",
+          stock: 5,
+          retired: false
+        },
       }
 
       expect {
@@ -67,7 +67,7 @@ describe ProductsController do
 
   describe "edit" do
     it "must get edit" do
-      get edit_product_path(@product.id)
+      get edit_product_path(@product)
 
       must_respond_with :success
     end
@@ -81,16 +81,16 @@ describe ProductsController do
 
   describe "update" do
     it "can update an existing product" do
-          product_hash = {
-              product: {
-                  name: "New Product",
-                  description: "Great new product",
-                  price: 10.50,
-                  photo_url: "www.newimage.com",
-                  stock: 5,
-                  retired: false
-              },
-          }
+      product_hash = {
+        product: {
+          name: "New Product",
+          description: "Great new product",
+          price: 10.50,
+          photo_url: "www.newimage.com",
+          stock: 5,
+          retired: false
+        },
+      }
       product_id = Product.first.id
 
       expect {
@@ -107,15 +107,17 @@ describe ProductsController do
 
   describe "destroy" do
     it "can destroy a product" do
-      id = Product.first.id
-
+      product = products(:product1)
+      id = product.id
+      p products.count
+      delete product_path(id)
       expect {
         delete product_path(id)
       }.must_change "Product.count", -5
 
-      deleted_product = Product.find_by(id: id)
-      expect(deleted_product).must_be_nil
-
+      # deleted_product = Product.find_by(id: id)
+      # expect(deleted_product).must_be_nil
+      p products.count
       must_respond_with :redirect
       must_redirect_to products_path
     end
