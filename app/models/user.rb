@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: true
 
+  scope :filter_by_status, -> {where(status: "paid")}
 
   # build a user from github hash info
   def self.build_from_github(auth_hash)
@@ -20,17 +21,28 @@ class User < ApplicationRecord
   # Total Revenue
   def total_rev
     sum = 0
+    if self.trips.empty?
+      return 0
     # iterate through user products to find particular order item price
-    self.products.each do |product|
+    else
+        self.products.each do |product|
+          product.order_items.each do |item|
+            sum += item.order_item_subtotal
+          end
+        end
+    end
+    return sum
+  end
+
+  # Total Revenue by status: paid vs completed
+  def total_rev_status
+    sum = 0
+    self.products.filter_by_status.each do |product|
       product.order_items.each do |item|
         sum += item.order_item_subtotal
       end
     end
-  end
-
-  # Total Revenue by status
-  def total_rev_status
-
+    return sum
   end
 
   # Total number of orders by status
