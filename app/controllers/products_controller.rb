@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(products_param)
+    @product = Product.new(product_params)
 
     if @product.save
       flash[:success] = "#{@product.name} was successfully added!"
@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    return params.require(:product).permit(:name, :description, :price, :photo_url, :stock, :retired, :categories)
+    return params.require(:product).permit(:name, :description, :price, :photo_url, :stock, :retired) #TODO add category
   end
 
   def find_product
