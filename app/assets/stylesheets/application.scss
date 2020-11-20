@@ -18,7 +18,8 @@
 @import "**/*";
 
 .header-container {
-  margin: 15px;
+  background-color: white;
+  border-color: white;
 }
 
 .navbar-brand {
@@ -63,4 +64,16 @@ body .background-image {
   background-image: url("background image/background.png");
   background-size: auto;
   backgroud-repeat: no-repeat;
+}
+
+body {
+  background-color: #EFE6E6;
+}
+.footer-bottom {
+  font-family: "Raleway", Sans-Serif;
+  background-color: #EFE6E6;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
 }
