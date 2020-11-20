@@ -18,7 +18,10 @@
 @import "**/*";
 
 .header-container {
-  border-bottom: black;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  border-bottom-color: #757576;
+  margin: 15px;
 }
 
 .navbar-brand {
