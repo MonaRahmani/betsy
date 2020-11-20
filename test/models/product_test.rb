@@ -6,12 +6,7 @@ describe Product do
       product = products(:product1)
       # p product.valid?
       # p product.errors.messages
-      product.categories = Category.where(category_name: "Emotion")
-
-      p product
       expect(product.valid?).must_equal true
-
-
     end
 
     it "must have a name" do
@@ -56,13 +51,13 @@ describe Product do
 
     it "price needs to be numeric" do
       product = products(:product1)
-      product.stock = "Y1892"
+      product.price = "Y1892"
       expect(product.valid?).must_equal false
     end
 
     it "price needs to be positive" do
       product = products(:product1)
-      product.stock = -1
+      product.price = -1
       expect(product.valid?).must_equal false
     end
 
@@ -74,17 +69,16 @@ describe Product do
 
     it "needs categories" do
       product = products(:product1)
-      product.categories = nil
+      product.categories = []
       expect(product.valid?).must_equal false
     end
   end
 
   describe "relationships" do
     it "belongs to a user" do
-      merchant = User.create!(id: 100, username: "Yoda", email: "yoda@starwars.com", uid: 332, provider: "github")
-      product_sample = Product.create!(name: "Tester", description: "Blah", price: 150.00, stock: 2, photo_url: "https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg", retired: false, user_id: 100)
+      product = products(:product1)
 
-      expect(product_sample.user).must_be_instance_of User
+      expect(product.user).must_be_instance_of User
     end
   end
 end

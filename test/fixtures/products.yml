@@ -6,7 +6,7 @@ product1:
   stock: 1
   retired: false
   user: user1
-  categor: Category.find_by(category_name: "Emotion")
+  categories: category1
 
 product2:
   name: product 2 name
@@ -15,8 +15,8 @@ product2:
   photo_url: product2.url
   stock: 2
   retired: false
-#  categories:
   user: user2
+  categories: category1
 
 product3:
   name: product 3 name
@@ -25,8 +25,8 @@ product3:
   photo_url: product3.url
   stock: 3
   retired: false
-#  categories:
   user: user2
+  categories: category1
 
 sample:
   name: Test User

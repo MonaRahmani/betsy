@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   validates :description, presence: { message: "Please enter a description." }
   validates :price, numericality: { message: "Price must be numeric."}
   validates :stock, numericality: { only_integer: true, message: "Stock must be numeric."}
-  # validates :categories, presence: { message: "Please enter at least one category." }
+  validates :categories, presence: { message: "Please enter at least one category." }
 
 
 end
