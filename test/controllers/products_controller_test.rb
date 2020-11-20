@@ -47,12 +47,16 @@ describe ProductsController do
         product: {
           name: "New Product",
           description: "Great new product",
-          price: 10.50,
+          price: 10,
           photo_url: "www.newimage.com",
           stock: 5,
-          retired: false
+          retired: false,
+          categories: [ {id: categories(:category1).id} ],
+          user_id: users(:user1).id
         },
       }
+
+
 
       expect {
         post products_path, params: product_hash
@@ -105,10 +109,10 @@ describe ProductsController do
 
       expect {
         patch product_path(product_id), params: product_hash
-      }.wont_change "products.count"
+      }.wont_change "Product.count"
       # must_redirect_to product_path(product_id)
       must_respond_with :success
-      updated_product = products(:product1)
+      updated_product = Product.find_by(id: product_id)
       expect(updated_product.name).must_equal product_hash[:product][:name]
 
     end

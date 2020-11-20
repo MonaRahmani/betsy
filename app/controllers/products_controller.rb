@@ -29,8 +29,10 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
       return
     else
+      # p @product.errors.messages
       flash[:error] = "Oh no! Unable to save."
-      flash[:error_list] = @product.errors.first[1]
+      flash[:reasons] = @product.errors.messages
+                         # .first[1]
       render :new
       return
     end
