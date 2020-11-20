@@ -22,13 +22,15 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user_id = session[:user_id]
 
     if @product.save
       flash[:success] = "#{@product.name} was successfully added!"
       redirect_to product_path(@product)
       return
     else
-      flash.now[:error] = "Oh no! Unable to save."
+      flash[:error] = "Oh no! Unable to save."
+      flash[:error_list] = @product.errors.first[1]
       render :new
       return
     end
@@ -36,7 +38,7 @@ class ProductsController < ApplicationController
 
   def edit
     if @product.nil?
-      flash.now[:error] = "Product doesn't exist, please select another... (nil)"
+      flash.now[:error] = "Product doesn't exist, please select another..."
       redirect_to products_path
       return
     end
@@ -44,14 +46,14 @@ class ProductsController < ApplicationController
 
   def update
     if @product.nil?
-      flash.now[:error] = "Product doesn't exist, please select another... (nil)"
+      flash[:error] = "Product doesn't exist, please select another..."
       redirect_to products_path
       return
     elsif @product.update(product_params)
-      flash.now[:success] = "Update complete!"
-      redirect_to product_path(@product)
+      flash[:success] = "Update successful"
+      render :show
     else # save failed
-      flash.now[:error] = "A problem occurred: Could not update #{@product.name}"
+      flash[:error] = "A problem occurred: Could not update #{@product.name}"
       render :edit
       return
     end
@@ -59,6 +61,7 @@ class ProductsController < ApplicationController
 
   def destroy
     if @product.nil?
+      flash[:error] = "Product doesn't exist, please select another..."
       redirect_to products_path
       return
     else
@@ -71,7 +74,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    return params.require(:product).permit(:name, :description, :price, :photo_url, :stock, :retired) #TODO add category
+    return params.require(:product).permit(:name, :description, :price, :photo_url, :stock, :retired, :categories)
   end
 
   def find_product

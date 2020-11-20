@@ -47,6 +47,13 @@
     </div>
   <% end %>
 
+  <section class="alert__container">
+    <% flash.each do |name, message| %>
+      <div class="<%=name%>"><%= message %></div>
+    <% end %>
+  </section>
+
+
   <%= yield %>
   </body>
 </html>

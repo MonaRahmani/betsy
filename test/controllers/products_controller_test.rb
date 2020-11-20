@@ -1,9 +1,9 @@
 require "test_helper"
 
 describe ProductsController do
-  before do
-    @product = Product.create(name: "Test Product", description: "Smelly test product", price: 5.00, photo_url: "http://photo.com", stock: 2, retired: false)
-  end
+  # before do
+  #   @product = Product.create(name: "Test Product", description: "Smelly test product", price: 5.00, photo_url: "http://photo.com", stock: 2, retired: false)
+  # end
   # maybe get a products.yml file going to DRY up code
   describe "index" do
     it "must get index" do
@@ -15,15 +15,21 @@ describe ProductsController do
 
   describe "show" do
     it "must get show" do
-      get product_path(@product)
+
+      product_id = products(:product1).id
+
+      get products_path(product_id) #why products plural?
 
       must_respond_with :success
     end
 
     it "can redirect if there's an invalid product id" do
+
       get product_path(-1)
 
-      must_redirect_to products_path
+      must_respond_with :redirect
+
+      # must_redirect_to products_path
     end
   end
 
@@ -67,7 +73,9 @@ describe ProductsController do
 
   describe "edit" do
     it "must get edit" do
-      get edit_product_path(@product)
+      product = products(:product1)
+
+      get edit_product_path(product)
 
       must_respond_with :success
     end
@@ -88,20 +96,21 @@ describe ProductsController do
           price: 10.50,
           photo_url: "www.newimage.com",
           stock: 5,
-          retired: false
+          retired: true
         },
       }
-      product_id = Product.first.id
+      product_id = products(:product1).id
+
+      patch product_path(product_id), params: product_hash
 
       expect {
         patch product_path(product_id), params: product_hash
-      }.wont_change "Product.count"
-
-      must_redirect_to products_path
-
-      updated_product = Product.find_by(id: product_id)
-      expect(updated_product.id).must_equal product_id
+      }.wont_change "products.count"
+      # must_redirect_to product_path(product_id)
+      must_respond_with :success
+      updated_product = products(:product1)
       expect(updated_product.name).must_equal product_hash[:product][:name]
+
     end
   end
 
@@ -109,15 +118,14 @@ describe ProductsController do
     it "can destroy a product" do
       product = products(:product1)
       id = product.id
-      p products.count
-      delete product_path(id)
+
       expect {
         delete product_path(id)
-      }.must_change "Product.count", -5
+      }.must_change "Product.count", -1
 
-      # deleted_product = Product.find_by(id: id)
-      # expect(deleted_product).must_be_nil
-      p products.count
+      deleted_product = Product.find_by(id: id)
+      expect(deleted_product).must_be_nil
+
       must_respond_with :redirect
       must_redirect_to products_path
     end
