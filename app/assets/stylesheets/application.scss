@@ -84,3 +84,15 @@ footer .list-unstyled li a:hover {
   color: #72538F;
   text-decoration: none;
 }
+
+#social-media-icons {
+  list-style: none;
+  position: absolute;
+  //left: 2em;
+}
+
+#social-media-icons li {
+  display: inline-block;
+  font-size: 180%;
+  //right: 5em;
+}
