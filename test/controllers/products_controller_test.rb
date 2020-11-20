@@ -111,7 +111,7 @@ describe ProductsController do
 
       expect {
         delete product_path(id)
-      }.must_change "Product.count", -1
+      }.must_change "Product.count", -5
 
       deleted_product = Product.find_by(id: id)
       expect(deleted_product).must_be_nil

@@ -14,5 +14,5 @@ Description: <%= @product.description %>
 <br>
 <%= link_to "Back", products_path %>
 <%= link_to "Update", edit_product_path %>
-<%= link_to "Delete", product_path(@product.id), model: :delete, data: {
+<%= link_to "Delete", product_path(@product.id), method: :delete, data: {
     confirm: "Are you sure you want to delete this product?"} %>
