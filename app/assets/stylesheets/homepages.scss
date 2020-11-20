@@ -1,6 +1,12 @@
 // Place all the styles related to the Homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body .background-image {
+  background-image: url("background image/background.png");
+  background-size: auto;
+  backgroud-repeat: no-repeat;
+}
+
 .carousel-caption {
   text-align: center;
   margin-bottom: 10%;
