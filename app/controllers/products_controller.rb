@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
       return
     else
       @product.destroy
-      flash[:success] = "Successfully deleted"
+      flash[:success] = "Poof! Successfully relinquished the entire stock of #{@product.name}!"
       redirect_to products_path
     end
   end
