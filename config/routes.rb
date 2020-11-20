@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   # cart
-  get 'user/cart', to: 'order_item#cart', as: 'cart'
-  post 'products/:id/add-to-cart', to: 'order_item#add_to_cart', as: 'add_to_cart'
-  post 'guest/cart/remove', to: 'order_item#remove_from_cart', as: 'remove_from_cart'
+  get 'guest/cart', to: 'order_items#cart', as: 'cart'
+
+
 
 
   resources :orders
@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new]
   end
 
-  resources :products
+  resources :products do
+    resources :order_items, only: [:create]
+  end
+
   resources :categories, only: [:new, :create]
 
   # get '/products', to: 'products#index', as: 'products'
