@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
+  # cart
+  get 'guest/cart', to: 'order_items#cart', as: 'cart'
+
+
+
 
   resources :orders
+
 
   root to: 'homepages#index'
   resources :users do
     resources :products, only: [:index, :new]
   end
 
-  resources :products
+  resources :products do
+    resources :order_items, only: [:create]
+  end
+
   resources :categories, only: [:new, :create]
 
   # get '/products', to: 'products#index', as: 'products'

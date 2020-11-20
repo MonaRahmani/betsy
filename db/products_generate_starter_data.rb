@@ -8,7 +8,7 @@ require "csv"
 # note: doesn't currently check for if names are unique against each other
 
 CSV.open("db/products_seeds.csv", "w", :write_headers => true,
-         :headers => ["username", "name", "description", "price", "photo_url", "stock", "retired"]) do |csv|
+         :headers => ["username", "name", "price", "stock", "photo_url", "retired", "categories", "description"]) do |csv|
   20.times do
     username = ""
     name = ""
@@ -16,8 +16,9 @@ CSV.open("db/products_seeds.csv", "w", :write_headers => true,
     price = 0
     photo_url = "https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg"
     stock = 0
-    retired = true
+    retired = false
+    categories = ""
 
-    csv << [username, name, description, price, photo_url, stock, retired]
+    csv << [username, name, price, stock, photo_url, retired, categories, description]
   end
 end

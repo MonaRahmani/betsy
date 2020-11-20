@@ -1,0 +1,9 @@
+<div class="form">
+  <%= form_with model: @category do |f| %>
+    <div class="form-group">
+      <%= f.label "Name:" %>
+      <%= f.text_field :category_name %>
+    </div>
+    <%= f.submit "#{action_name}", class: "product-button" %>
+  <% end %>
+</div>
