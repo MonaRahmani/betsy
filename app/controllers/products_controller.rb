@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
     if @product.save
       flash[:success] = "#{@product.name} was successfully added!"
-      redirect_to product_path(@product.id)
+      redirect_to product_path(@product)
       return
     else
       flash.now[:error] = "Oh no! Unable to save."
