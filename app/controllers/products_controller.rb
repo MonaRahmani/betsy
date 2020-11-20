@@ -47,9 +47,8 @@ class ProductsController < ApplicationController
       flash.now[:error] = "Product doesn't exist, please select another... (nil)"
       redirect_to products_path
       return
-    elsif
-      @product.update(product_params)
-      flash.now[:error] = "Update complete!"
+    elsif @product.update(product_params)
+      flash.now[:success] = "Update complete!"
       redirect_to product_path(@product)
     else # save failed
       flash.now[:error] = "A problem occurred: Could not update #{@product.name}"
