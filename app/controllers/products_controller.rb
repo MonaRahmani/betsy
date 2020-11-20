@@ -32,7 +32,6 @@ class ProductsController < ApplicationController
       # p @product.errors.messages
       flash[:error] = "Oh no! Unable to save."
       flash[:reasons] = @product.errors.messages
-                         # .first[1]
       render :new
       return
     end

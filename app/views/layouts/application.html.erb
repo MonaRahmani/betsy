@@ -38,11 +38,8 @@
       <% if flash[:reasons] %>
         <ul>
         <% flash[:reasons].values.flatten.each do |value| %>
-
           <li><%= value %></li>
           <% end %>
-
-<!--          <li><%#= flash[:reasons] %></li>-->
         </ul>
       <% end %>
     </div>
@@ -51,14 +48,6 @@
       <%= flash[:success] %>
     </div>
   <% end %>
-
-<!--  <section class="alert__container">-->
-    <%# flash[:error_each do |name, message| %>
-<!--      <div class="<%#=name%>"><%#= message %></div>-->
-    <%# end %>
-<!--  </section>-->
-
-
   <%= yield %>
   </body>
 </html>
