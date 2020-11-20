@@ -17,22 +17,52 @@
 
 @import "**/*";
 
-h1 .dreamsy {
+.header-container {
+  border-bottom: black;
+}
+
+.navbar-brand {
   font-family: "Amatic SC", sans-serif;
   background: linear-gradient(to bottom, #ffffff, #68676A, #4F4F51, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 4rem;
+  font-size: 4.5rem;
   color: black;
+
 }
 
-.dreamsy:hover {
-  background: linear-gradient(to bottom, #000000, #000000);
+.navbar-brand:hover {
+  background: linear-gradient(to bottom, #72538F, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: black;
 }
 
-nav ul {
+.nav-item {
   list-style-type: none;
+  font-family: "Raleway", Sans-Serif;
+  font-size: 1.3em;
 }
+
+.nav-link {
+  margin-left: 300px;
+  //margin-right: 250px;
+}
+
+.nav-item .nav-link {
+  color: black;
+  text-decoration: none;
+}
+
+.nav-item .nav-link:hover {
+  color: #72538F;
+}
+
+
+//.nav-item .log-link {
+//  color: black;
+//  font-size: 1rem;
+//  text-decoration: none;
+//  margin-left: 200px;
+//
+//}

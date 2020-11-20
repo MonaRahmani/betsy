@@ -12,22 +12,34 @@
   </head>
 
   <body>
-  <nav>
-    <ul>
-      <li>
-        <h1><%= link_to "DREAMSy", root_path, class: "dreamsy" %></h1>
-      </li>
-      <% if @logged_in_user%>
-        <li>
-          <%= link_to "Log out", logout_path, method: :delete, class: "nav-button" %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Login", github_login_path, class: "nav-button" %>
-        </li>
-      <% end %>
-    </ul>
-  </nav>
+    <header class="header-container">
+      <nav class="navbar navbar-expand-sm">
+        <%= link_to "DREAMSy", root_path, class:"navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></button>
+          <span class="navbar-toggler-icon"></span>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <%= link_to "MERCHANTS", users_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "PRODUCTS", products_path, class: "nav-link" %>
+              </li>
+            </ul>
+              <ul class ="navbar-nav">
+                <% if @logged_in_user%>
+                  <li class="nav-item">
+                    <%= link_to "Log out", logout_path, method: :delete, class: "nav-link" %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to "Login", github_login_path, class: "nav-link" %>
+                  </li>
+                <% end %>
+            </ul>
+          </div>
+      </nav>
+    </header>
 
   <% if flash[:error] %>
     <div class="alert alert-warning alert-container">
