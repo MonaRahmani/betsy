@@ -45,6 +45,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    # @product.user_id = session[:user_id]
     if @product.nil?
       flash[:error] = "Product doesn't exist, please select another..."
       redirect_to products_path

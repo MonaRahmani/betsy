@@ -1,35 +1,38 @@
 product1:
   name: product 1 name
   description: product 1 desc
-  price: 1.00
+  price: 1
   photo_url: product1.url
   stock: 1
   retired: false
-  categories: Dreams
+  user: user1
+  categor: Category.find_by(category_name: "Emotion")
 
 product2:
   name: product 2 name
   description: product 2 desc
-  price: 2.00
+  price: 2
   photo_url: product2.url
   stock: 2
   retired: false
-  categories: Dreams
+#  categories:
+  user: user2
 
 product3:
   name: product 3 name
   description: product 3 desc
-  price: 3.00
+  price: 3
   photo_url: product3.url
   stock: 3
   retired: false
-  categories: Dreams
+#  categories:
+  user: user2
 
-#sample:
-#  name: Test User
-#  description: Impossible to see the future is
-#  price: 250.00
-#  stock: 2
-#  photo_url: https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg
-#  retired: false
-#  user_id: 100
+sample:
+  name: Test User
+  description: Impossible to see the future is
+  price: 250.00
+  stock: 2
+  photo_url: https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg
+  retired: false
+  user_id: 100
