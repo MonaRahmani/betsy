@@ -1,3 +1,33 @@
+product1:
+  name: product 1 name
+  description: product 1 desc
+  price: 1
+  photo_url: product1.url
+  stock: 1
+  retired: false
+  user: user1
+  categories: category1
+
+product2:
+  name: product 2 name
+  description: product 2 desc
+  price: 2
+  photo_url: product2.url
+  stock: 2
+  retired: false
+  user: user2
+  categories: category1
+
+product3:
+  name: product 3 name
+  description: product 3 desc
+  price: 3
+  photo_url: product3.url
+  stock: 3
+  retired: false
+  user: user2
+  categories: category1
+
 sample:
   name: Test User
   description: Impossible to see the future is

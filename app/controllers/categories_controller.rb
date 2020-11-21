@@ -17,6 +17,12 @@ class CategoriesController < ApplicationController
       render :new, status: :bad_request
     end
 
+    # @category = Category.new(category_params)
+    #
+    # def category_params
+    #   params.require(:category).permit(:category_name, product_ids: [])
+    # end
+
     private
 
     def category_params
