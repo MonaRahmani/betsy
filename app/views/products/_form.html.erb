@@ -1,5 +1,12 @@
 <%= form_with model: @product, class: 'edit-product' do |f| %>
   <div class="edit-product-form">
+
+
+    <%= f.label :categories%>
+    <%= f.select(:categories, Category.all.map {|p| [ p.category_name, p.id ] },
+                 { :prompt => "Select at least one"},
+                 { :multiple => true }) %>
+    <br>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br>
