@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:current]
+  before_action :find_logged_user, only: [:current]
 
   def index
     @users = User.all

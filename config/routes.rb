@@ -19,10 +19,16 @@ Rails.application.routes.draw do
     resources :order_items, only: [:create]
   end
 
-  resources :categories, only: [:new, :create]
+  resources :categories, only: [:new, :create] do
+    resources :products, only: [:index]
+  end
+
+
+
+
 
   # get '/products', to: 'products#index', as: 'products'
-  # get '/products/new', to: 'products#new', as: 'new_product'
+  # get '/products/new', to: 'products#new', as: 'new_product'sch
   # post '/products', to: 'products#create'
   # get '/products/:id', to: 'products#show', as: 'product'
   # get '/products/:id/edit', to: 'products#edit', as: 'edit_product'

@@ -1,5 +1,4 @@
 class OrderItemsController < ApplicationController
-  before_action :set_cart, only: [:create]
 
   def create
     product_id = params[:product_id]
@@ -15,12 +14,12 @@ class OrderItemsController < ApplicationController
 
     if session[:order_id]
       order = Order.find_by(id: session[:order_id])
-      order.add_product(product, quantity)
     else
       order = Order.create(status: :pending)
-      order.add_product(product, quantity)
       session[:order_id] = order.id
     end
+    order.add_product(product, quantity)
+    flash[:success] = "#{product.name} added to cart!"
     redirect_to products_path(product)
     # else
     #   flash[:error] = 'There was a problem adding this item to your cart.'
@@ -30,7 +29,7 @@ class OrderItemsController < ApplicationController
 
   private
   def order_params
-    return params.require(:order_item).permit(:quantity)
+    return params.permit(:quantity)
   end
 
 end
