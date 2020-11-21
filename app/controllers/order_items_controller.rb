@@ -13,13 +13,18 @@ class OrderItemsController < ApplicationController
 
     quantity = order_params[:quantity].to_i
 
-    if @cart.add_product(product, quantity)
-      redirect_to cart_path
-
+    if session[:order_id]
+      order = Order.find_by(id: session[:order_id])
+      order.add_product(product, quantity)
     else
-      flash[:error] = 'There was a problem adding this item to your cart.'
-      redirect_to product_path(product)
+      order = Order.create(status: :pending)
+      order.add_product(product, quantity)
+      session[:order_id] = order.id
     end
+    redirect_to products_path(product)
+    # else
+    #   flash[:error] = 'There was a problem adding this item to your cart.'
+    #   redirect_to product_path(product)
   end
 
 
