@@ -1,10 +1,7 @@
 require "test_helper"
 
 describe ProductsController do
-  # before do
-  #   @product = Product.create(name: "Test Product", description: "Smelly test product", price: 5.00, photo_url: "http://photo.com", stock: 2, retired: false)
-  # end
-  # maybe get a products.yml file going to DRY up code
+
   describe "index" do
     it "must get index" do
       get products_path
@@ -18,7 +15,7 @@ describe ProductsController do
 
       product_id = products(:product1).id
 
-      get products_path(product_id) #why products plural?
+      get product_path(product_id)
 
       must_respond_with :success
     end
@@ -29,7 +26,7 @@ describe ProductsController do
 
       must_respond_with :redirect
 
-      # must_redirect_to products_path
+      must_redirect_to products_path
     end
   end
 
@@ -41,37 +38,39 @@ describe ProductsController do
     end
   end
 
-  # describe "create" do TODO need to figure out how to set categories and users here.
-  #   it "can create a new product" do
-  #     product_hash = {
-  #       product: {
-  #         name: "New Product",
-  #         description: "Great new product",
-  #         price: 10,
-  #         photo_url: "www.newimage.com",
-  #         stock: 5,
-  #         retired: false,
-  #         categories: [ {id: categories(:category1).id} ],
-  #         user_id: users(:user1).id
-  #       },
-  #     }
-  #
-  #     expect {
-  #       post products_path, params: product_hash
-  #     }.must_change "Product.count", 1
-  #
-  #     new_product = Product.find_by(name: product_hash[:product][:name])
-  #     expect(new_product.name).must_equal product_hash[:product][:name]
-  #     expect(new_product.description).must_equal product_hash[:product][:description]
-  #     expect(new_product.price).must_equal product_hash[:product][:price]
-  #     expect(new_product.photo_url).must_equal product_hash[:product][:photo_url]
-  #     expect(new_product.stock).must_equal product_hash[:product][:stock]
-  #     expect(new_product.retired).must_equal false
-  #
-  #     must_respond_with :redirect
-  #     must_redirect_to product_path(new_product.id)
-  #   end
-  # end
+  describe "create" do
+    it "can create a new product" do
+      product_hash = {
+        product: {
+          name: "New Product",
+          description: "Great new product",
+          price: 10,
+          photo_url: "www.newimage.com",
+          stock: 5,
+          retired: false,
+          categories: [categories(:category1).id.to_s],
+          user_id: users(:user1).id
+        },
+      }
+
+      perform_login
+
+      expect {
+        post products_path, params: product_hash
+      }.must_change "Product.count", 1
+
+      new_product = Product.find_by(name: product_hash[:product][:name])
+      expect(new_product.name).must_equal product_hash[:product][:name]
+      expect(new_product.description).must_equal product_hash[:product][:description]
+      expect(new_product.price).must_equal product_hash[:product][:price]
+      expect(new_product.photo_url).must_equal product_hash[:product][:photo_url]
+      expect(new_product.stock).must_equal product_hash[:product][:stock]
+      expect(new_product.retired).must_equal false
+
+      must_respond_with :redirect
+      must_redirect_to product_path(new_product.id)
+    end
+  end
 
   describe "edit" do
     it "must get edit" do

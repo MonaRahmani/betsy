@@ -27,7 +27,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = session[:user_id]
-
+    params[:product][:categories].each do |category_id|
+      if category_id != ""
+        @product.categories << Category.find_by(id: category_id)
+      end
+    end
+    # raise
     if @product.save
       flash[:success] = "#{@product.name} was successfully added!"
       redirect_to product_path(@product)
