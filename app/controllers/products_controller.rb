@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
       @products = @user.products
-      @orderitems = OrderItem.find_by()
     else
       @products = Product.all
     end

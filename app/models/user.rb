@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :products
+  has_many :order_items, through: :products
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: true
@@ -21,11 +22,10 @@ class User < ApplicationRecord
   def total_rev
     sum = 0
     # iterate through user products to find particular order item price
-    self.products.each do |product|
-      product.order_items.each do |item|
+    self.order_items.each do |item|
         sum += item.order_item_subtotal
-      end
     end
+    return sum
   end
 
   # Total Revenue by status
