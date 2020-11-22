@@ -2,8 +2,13 @@
 Rails.application.routes.draw do
 
   # cart
+  #
+  resources :products do
+    resources :order_items, only: [:create]
+  end
 
   get '/users/:id/user_dashboard', to: 'users#user_dashboard', as: 'user_dashboard'
+  # get '/categories/:id/products', to: 'categories#products', as: 'products_by_category'
 
   # order matters
   get 'orders/cart', to: 'orders#cart', as: 'cart'
@@ -17,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :order_items, only: [:create]
+    # resources :categories, only: [:index]
   end
 
   resources :categories, only: [:new, :create] do

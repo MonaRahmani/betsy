@@ -1,5 +1,10 @@
-<h1>Products</h1>
 <ul>
+  <%if @category %>
+    <h1>Products by category: <%= @category.category_name %></h1>
+  <% else %>
+    <h1>Products</h1>
+  <% end %>
+
   <% if @products.length > 0 %>
     <% @products.each do |product| %>
       <li><%= link_to product.name, product_path(product.id)  %></li>
@@ -8,6 +13,7 @@
   <% else %>
     No products.
   <% end %>
+
 </ul>
 
 <%= link_to "Create New Product", new_product_path %>
