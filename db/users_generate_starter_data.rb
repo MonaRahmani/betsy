@@ -9,7 +9,7 @@ require "csv"
 
 CSV.open("db/users_seeds.csv", "w", :write_headers => true,
          :headers => ["username", "email", "uid"]) do |csv|
-  i = 0
+  i = 1
   25.times do
     username = Faker::Name.unique.name
     email = "#{username.split(" ").join.downcase}@dream-team.com"
