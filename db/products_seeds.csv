@@ -1,22 +1,21 @@
-username,name,price,stock,photo_url,retired,categories,description
-Lashawn Romaguera,Travel the world,50,3,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Dreams,That is why you fail.
-Mrs. Ilene Kemmer,Walk on the moon,90,10,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Dreams,"Through the Force, things you will see. Other places. The future - the past. Old friends long gone."
-Venita Flatley,Find your soulmate,100,40,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Dreams,Do. Or do not. There is no try.
-Seth Heathcote,Buy an island,88,5,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Dreams,Reckless he is. Matters are worse.
-Tyra Zulauf,Bottle of joy,44,25,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,"Hmm. In the end, cowards are those who follow the dark side."
-Gordon Jerde,Botte of love,53,20,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,Difficult to see. Always in motion is the future...
-Devin Farrell,Bottle of strength,18,30,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,"Soon will I rest, yes, forever sleep. Earned it I have. Twilight is upon me, soon night must fall."
-Stephane Cronin,Bottle of calm,36,1,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,Adventure. Excitement. A Jedi craves not these things.
-Austin Bahringer,Bottle of courage,70,6,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,Mudhole? Slimy? My home this is!
-Hayley Raynor,Bottle of motivation,95,11,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,"Once you start down the dark path, forever will it dominate your destiny, consume you it will."
-Nolan Jacobson,Bottle of rage,52,15,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,"Clear your mind must be, if you are to find the villains behind this plot."
-Rev. Tari Cummings,Bottle of envy,30,3,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Emotion,"Like fire across the galaxy the Clone Wars spread. In league with the wicked Count Dooku, more and more planets slip. Against this threat, upon the Jedi Knights falls the duty to lead the newly formed army of the Republic. And as the heat of war grows, so, to, grows the prowess of one most gifted student of the Force."
-Bernie Corkery,Fly,87,67,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Power Hour,"Always two there are, no more, no less. A master and an apprentice."
-Ginger Fisher,Teleport,40,12,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Power Hour,Already know you that which you need.
-Karolyn Monahan,Talk to animals,100,11,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Power Hour,"Truly wonderful, the mind of a child is."
-Timothy Schowalter,Be invisible,200,5,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Power Hour,Luminous beings are we - not this crude matter.
-Dr. Elwanda Monahan,Jump to your career,22,12,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Dreams,"Pain, suffering, death I feel. Something terrible has happened. Young Skywalker is in pain. Terrible pain"
-Conchita Jones,Learn a new language,45,10,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Dreams,"To answer power with power, the Jedi way this is not. In this war, a danger there is, of losing who we are."
-Lupita Mosciski Sr.,Bottle of edge case brainstorms,5,1000,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Power Hour,"Your weapons, you will not need them."
-Angelika Bartell MD,Early retirement,25,3,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false,Dreams,"Good relations with the Wookiees, I have."
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+username,name,price,stock,categories,description,photo_url,retired
+Lashawn Romaguera,Travel the world,50,3,Dreams,"Drink our potion, see the world. Facemask not included.",https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Mrs. Ilene Kemmer,Walk on the moon,90,10,Dreams,"Walk the moon, then tell us what it's like.",https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Venita Flatley,Find your soulmate,100,40,Dreams,Soulmates... do they exist? Try our soulmate potion.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Seth Heathcote,Buy an island,88,5,Dreams,An island all to yourself!,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Tyra Zulauf,Bottle of joy,44,25,Emotion,A potion that brings more joy into your life.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Gordon Jerde,Botte of love,53,20,Emotion,A potion that bring more love into your life.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Devin Farrell,Bottle of strength,18,30,Emotion,A potion that gives a boost of strength.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Stephane Cronin,Bottle of calm,36,1,Emotion,A little bottle of calm.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Austin Bahringer,Bottle of courage,70,6,Emotion,A potion that brings out your courage.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Hayley Raynor,Bottle of motivation,95,11,Emotion,A potion that motivates you to achieve your dreams.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Nolan Jacobson,Bottle of rage,52,15,Emotion,Rage more with our rage potion.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Rev. Tari Cummings,Bottle of envy,30,3,Emotion,A bottle of envy to sneak into someone's coffee.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Bernie Corkery,Fly,87,67,Dreams,Learn to fly. ,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Ginger Fisher,Teleport,40,12,Dreams,Learn to teleport. Where would you go?,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Karolyn Monahan,Talk to animals,100,11,Dreams,Discover what your cat is thinking... if you dare!,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Timothy Schowalter,Be invisible,200,5,Dreams,Ever wish you could be invisible? Now you can!,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Dr. Elwanda Monahan,Jump to your career,22,12,Dreams,It's hard to start new things. Jump forward a bit.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Conchita Jones,Learn a new language,45,10,Dreams,So you can speak to anyone.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Lupita Mosciski Sr.,Bottle of edge case brainstorms,5,1000,Power Hour,"Rest your mind, let this power hour potion do the work.",https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,false
+Angelika Bartell MD,Early retirement,25,3,Dreams,Be in charge of your days forever.,https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg,true
