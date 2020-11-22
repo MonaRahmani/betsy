@@ -42,7 +42,7 @@
       <%= f.label "cc_exp_year:" %>
       <%= f.text_field :cc_exp_year %>
     </div>
-    <%= f.submit "COMPLETE ORDER", class: "button-style"%>
+    <%= f.submit "COMPLETE ORDER", order_path(@order.id), method: :patch,  class: "button-style"%>
   <%end%>
 </div>
 

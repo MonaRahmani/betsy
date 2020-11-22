@@ -19,7 +19,7 @@
         <li>
           <%= link_to "Log out", logout_path, method: :delete, class: "nav-button" %>
           <%#= link_to "My Account", user_path(@logged_in_user) %>
-          <%= link_to "My Account", user_dashboard_path(session[:user_id]) %>
+          <%= link_to "My Account", user_path(session[:user_id]) %>
         </li>
       <% else %>
         <li>

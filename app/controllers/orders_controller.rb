@@ -1,11 +1,17 @@
 class OrdersController < ApplicationController
-  def index
-    @orders = Order.all
+
+  def cart
+    @order = Order.find_by(id: session[:order_id])
+    if @order.nil?
+      flash[:error] = "order not found"
+      redirect_to root_path
+    end
   end
 
-  def show
-    @order = Order.find_by(id: params[:id])
-  end
+  # def show
+  #
+  # end
+
 
   def edit
   end
@@ -13,6 +19,11 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
   end
+
+  def check_out
+    @order = Order.find_by(id: session[:order_id])
+  end
+
 
   private
 
