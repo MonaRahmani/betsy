@@ -8,6 +8,14 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+
+    if params[:category_id].nil?
+      @products = Product.all
+    else
+      @products = Category.find_by(id: params[:category_id]).products
+      @category = Category.find_by(id: params[:category_id])
+
+    end
   end
 
   def show
@@ -82,7 +90,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    return params.require(:product).permit(:name, :description, :price, :photo_url, :stock, :retired, :categories)
+    return params.require(:product).permit(:name, :description, :price, :photo_url, :stock, :retired, :category_id)
   end
 
   def find_product

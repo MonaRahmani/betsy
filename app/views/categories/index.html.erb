@@ -1,1 +1,7 @@
 <h1>shop by category#index</h1>
+<% @category.products.each do |product| %>
+  <p>
+    <b>Product:</b>
+    <%= product.name %>
+  </p>
+<% end %>
