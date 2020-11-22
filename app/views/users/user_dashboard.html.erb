@@ -1,13 +1,19 @@
 <h1> ORDER SUMMARY </h1>
 
 <h5>Total Revenue</h5>
-<p>Paid: $ </p>
-<p>Completed: $ </p>
+<p>Total Revenue: $ <%= @user.total_rev_filtered(nil) %> </p>
+<p>Pending: $ <%= @user.total_rev_filtered("pending") %></p>
+<p>Paid: $ <%= @user.total_rev_filtered("paid") %></p>
+<p>Complete: $ <%= @user.total_rev_filtered("complete") %></p>
+<p>Cancelled: $ <%= @user.total_rev_filtered("cancelled") %></p>
 
 <h5>Total Orders</h5>
-<h5>Total Revenue: <%= @user.total_rev %> </h5>
-<p>Paid: $ </p>
-<p>Completed: $ </p>
+<!--<p>Total Revenue: $ <%#= @user.total_rev_filtered(nil) %> </p>-->
+<!--<p>Pending: $ <%#= @user.total_rev_filtered("pending") %></p>-->
+<!--<p>Paid: $ <%#= @user.total_rev_filtered("paid") %></p>-->
+<!--<p>Complete: $ <%#= @user.total_rev_filtered("complete") %></p>-->
+<!--<p>Cancelled: $ <%#= @user.total_rev_filtered("cancelled") %></p>-->
+
 
 <h5>Filter By Status:</h5>
 <p><%= link_to "All Orders", order_path %></p>

@@ -22,7 +22,7 @@ class User < ApplicationRecord
   # Total Revenue
   def total_rev
     sum = 0
-    if self.trips.empty?
+    if self.order_items.empty?
       return 0
     else
       # iterate through user products to find particular order item price
@@ -33,11 +33,13 @@ class User < ApplicationRecord
     return sum
   end
 
-  # Total Revenue by status: paid vs completed
-  def total_rev_status
+  # Total Revenue by status:  ("pending", "paid", "complete", "cancelled")
+  def total_rev_filtered(status)
     sum = 0
-    self.products.filter_by_status.each do |product|
-      product.order_items.each do |item|
+  self.order_items.each do |item|
+      if status.nil?
+        sum += item.order_item_subtotal
+      elsif item.order.status == status
         sum += item.order_item_subtotal
       end
     end
@@ -55,3 +57,16 @@ class User < ApplicationRecord
   end
 
 end
+
+# def self.filter_category(category)
+#   Work.where(category: category)
+# end
+# def self.movies
+#   Work.filter_category(:movie)
+# end
+# def self.albums
+#   Work.filter_category(:album)
+# end
+# def self.books
+#   Work.filter_category(:book)
+# end
