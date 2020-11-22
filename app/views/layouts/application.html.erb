@@ -15,14 +15,14 @@
       <li>
         <h1><%= link_to "DREAMsy", root_path, class: "dreamsy" %></h1>
       </li>
-      <% if categories_method.length > 0 %>
-        <p>Shop by Category:</p>
-        <% @categories.each do |category| %>
-          <li><%= link_to category.category_name, product_category_path(category.id)  %></li>
-        <% end %>
-      <% else %>
-      No categories.
-      <% end %>
+      <%# if categories_method.length > 0 %>
+<!--        <p>Shop by Category:</p>-->
+        <%# @categories.each do |category| %>
+<!--          <li><%#= link_to category.category_name, product_category_path(category.id)  %></li>-->
+        <%# end %>
+      <%# else %>
+<!--      No categories.-->
+      <%# end %>
 
       <% if session[:user_id]%>
         <li>
