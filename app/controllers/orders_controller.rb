@@ -8,9 +8,24 @@ class OrdersController < ApplicationController
     end
   end
 
-  # def show
-  #
-  # end
+  def show
+
+  end
+
+  def update
+    @order = Order.find_by(id: session[:order_id])
+    if @order.nil?
+      flash[:error] = "cant update, order dose not exist"
+      redirect_to root_path
+    elsif @order.update(order_params)
+      flash[:success] = "order has been submited"
+      render :show
+    else
+      flash[:error] = "order can't be submited"
+      redirect_to cart_path
+      return
+    end
+  end
 
 
   def edit

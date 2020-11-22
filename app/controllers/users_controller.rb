@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     flash[:success] = "Successfully logged out!"
     redirect_to root_path
   end
-  
+
   def user_dashboard
     @user = User.find_by(id: params[:id])
     if session[:user_id] != @user.id
