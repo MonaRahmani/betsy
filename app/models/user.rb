@@ -20,19 +20,6 @@ class User < ApplicationRecord
   end
 
   # Total Revenue
-  def total_rev
-    sum = 0
-    if self.order_items.empty?
-      return 0
-    else
-      # iterate through user products to find particular order item price
-      self.order_items.each do |item|
-          sum += item.order_item_subtotal
-      end
-    end
-    return sum
-  end
-
   # Total Revenue by status:  ("pending", "paid", "complete", "cancelled")
   def total_rev_filtered(status)
     sum = 0
