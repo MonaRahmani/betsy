@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :require_login, only: [:create]
+  # before_action :require_login, only: [:create]
   before_action :find_category, only: [:create]
 
   def new
@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
       flash[:error] = "Could not create category"
       render :new, status: :bad_request
     end
+  end
 
     # @category = Category.new(category_params)
     #
@@ -33,8 +34,8 @@ class CategoriesController < ApplicationController
       @category = Category.find_by(id: params[:id])
     end
 
-  end
 end
+
 
 
 

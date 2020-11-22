@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:current]
+  before_action :find_logged_user, only: [:current]
 
   def index
     @users = User.all
@@ -44,16 +44,8 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  # def current
-  #   if @user.nil?
-  #     flash[:error] = "You must be logged in to view this page."
-  #     redirect_to root_path
-  #     return
-  #   end
-  # end
   def user_dashboard
     @user = User.find_by(id: params[:id])
-
     if session[:user_id] != @user.id
       flash[:error] = "HEY! Not your page."
       redirect_to root_path

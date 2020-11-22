@@ -2,12 +2,12 @@
 Rails.application.routes.draw do
 
   # cart
-  get 'guest/cart', to: 'order_items#cart', as: 'cart'
+
   get '/users/:id/user_dashboard', to: 'users#user_dashboard', as: 'user_dashboard'
 
-
-
-  resources :orders
+  # order matters
+  get 'orders/cart', to: 'orders#cart', as: 'cart'
+  resources :orders, except: [:index]
 
 
   root to: 'homepages#index'
@@ -19,10 +19,16 @@ Rails.application.routes.draw do
     resources :order_items, only: [:create]
   end
 
-  resources :categories, only: [:new, :create]
+  resources :categories, only: [:new, :create] do
+    resources :products, only: [:index]
+  end
+
+
+
+
 
   # get '/products', to: 'products#index', as: 'products'
-  # get '/products/new', to: 'products#new', as: 'new_product'
+  # get '/products/new', to: 'products#new', as: 'new_product'sch
   # post '/products', to: 'products#create'
   # get '/products/:id', to: 'products#show', as: 'product'
   # get '/products/:id/edit', to: 'products#edit', as: 'edit_product'
