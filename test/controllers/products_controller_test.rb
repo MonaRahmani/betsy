@@ -1,10 +1,7 @@
 require "test_helper"
 
 describe ProductsController do
-  before do
-    @product = Product.create(name: "Test Product", description: "Smelly test product", price: 5.00, photo_url: "http://photo.com", stock: 2, retired: false)
-  end
-  # maybe get a products.yml file going to DRY up code
+
   describe "index" do
     it "must get index" do
       get products_path
@@ -15,13 +12,19 @@ describe ProductsController do
 
   describe "show" do
     it "must get show" do
-      get product_path(@product.id)
+
+      product_id = products(:product1).id
+
+      get product_path(product_id)
 
       must_respond_with :success
     end
 
     it "can redirect if there's an invalid product id" do
+
       get product_path(-1)
+
+      must_respond_with :redirect
 
       must_redirect_to products_path
     end
@@ -38,15 +41,19 @@ describe ProductsController do
   describe "create" do
     it "can create a new product" do
       product_hash = {
-          product: {
-              name: "New Product",
-              description: "Great new product",
-              price: 10.50,
-              photo_url: "www.newimage.com",
-              stock: 5,
-              retired: false
-          },
+        product: {
+          name: "New Product",
+          description: "Great new product",
+          price: 10,
+          photo_url: "www.newimage.com",
+          stock: 5,
+          retired: false,
+          categories: [categories(:category1).id.to_s],
+          user_id: users(:user1).id
+        },
       }
+
+      perform_login
 
       expect {
         post products_path, params: product_hash
@@ -67,7 +74,9 @@ describe ProductsController do
 
   describe "edit" do
     it "must get edit" do
-      get edit_product_path(@product.id)
+      product = products(:product1)
+
+      get edit_product_path(product)
 
       must_respond_with :success
     end
@@ -81,33 +90,35 @@ describe ProductsController do
 
   describe "update" do
     it "can update an existing product" do
-          product_hash = {
-              product: {
-                  name: "New Product",
-                  description: "Great new product",
-                  price: 10.50,
-                  photo_url: "www.newimage.com",
-                  stock: 5,
-                  retired: false
-              },
-          }
-      product_id = Product.first.id
+      product_hash = {
+        product: {
+          name: "New Product",
+          description: "Great new product",
+          price: 10.50,
+          photo_url: "www.newimage.com",
+          stock: 5,
+          retired: true
+        },
+      }
+      product_id = products(:product1).id
+
+      patch product_path(product_id), params: product_hash
 
       expect {
         patch product_path(product_id), params: product_hash
       }.wont_change "Product.count"
-
-      must_redirect_to products_path
-
+      # must_redirect_to product_path(product_id)
+      must_respond_with :success
       updated_product = Product.find_by(id: product_id)
-      expect(updated_product.id).must_equal product_id
       expect(updated_product.name).must_equal product_hash[:product][:name]
+
     end
   end
 
   describe "destroy" do
     it "can destroy a product" do
-      id = Product.first.id
+      product = products(:product1)
+      id = product.id
 
       expect {
         delete product_path(id)

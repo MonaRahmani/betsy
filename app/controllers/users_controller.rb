@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_logged_user, only: [:current]
 
   def index
     @users = User.all
@@ -41,5 +42,13 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:success] = "Successfully logged out!"
     redirect_to root_path
+  end
+
+  def user_dashboard
+    @user = User.find_by(id: params[:id])
+    if session[:user_id] != @user.id
+      flash[:error] = "HEY! Not your page."
+      redirect_to root_path
+    end
   end
 end

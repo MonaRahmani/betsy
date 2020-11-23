@@ -1,0 +1,40 @@
+<h1> ORDER SUMMARY </h1>
+<h5>Total Revenue</h5>
+<p>Total Revenue: $ <%= @user.total_rev_filtered(nil) %> </p>
+<p>Pending: $ <%= @user.total_rev_filtered("pending") %></p>
+<p>Paid: $ <%= @user.total_rev_filtered("paid") %></p>
+<p>Complete: $ <%= @user.total_rev_filtered("complete") %></p>
+<p>Cancelled: $ <%= @user.total_rev_filtered("cancelled") %></p>
+<h5>Total Orders</h5>
+<!--<p>Total Revenue: $ <%#= @user.total_rev_filtered(nil) %> </p>-->
+<!--<p>Pending: $ <%#= @user.total_rev_filtered("pending") %></p>-->
+<!--<p>Paid: $ <%#= @user.total_rev_filtered("paid") %></p>-->
+<!--<p>Complete: $ <%#= @user.total_rev_filtered("complete") %></p>-->
+<!--<p>Cancelled: $ <%#= @user.total_rev_filtered("cancelled") %></p>-->
+<h5>Filter By Status:</h5>
+<p><%= link_to "All Orders", order_path %></p>
+<p>Paid </p>
+<p>Completed </p>
+<%= link_to "Add Category", new_category_path %></p>
+<section class="orders-show__container">
+  <h3 class="orders-show__header">Products</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Order #</th>
+      <th>Purchase Date</th>
+      <th>Order Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--        <td><%#= link_to @order.id, order_path(@order.id), class: 'table-link' %></td>-->
+    <% @user.order_items.each do |item| %>
+      <tr>
+        <td><%= link_to item.id, order_path(item) %> </td>
+        <td><%= item.completed_at %></td>
+        <td><%= item.status %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>

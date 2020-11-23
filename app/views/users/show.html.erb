@@ -2,7 +2,7 @@
 <p>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></p>
 <h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
 <h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
-<h3><%= link_to "Order Summary", order_path, class: "btn btn-secondary" %></h3>
+<h3><%= link_to "Order Summary", user_dashboard_path, class: "btn btn-secondary" %></h3>
 
 <section class="user-votes__container">
   <h3 class="user-votes__header">Products</h3>
@@ -20,13 +20,14 @@
     <% @user.products.each do |product| %>
       <tr>
 <!--        <td><%#= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>-->
-        <td><%= link_to product.name, product_path(product.id) %></td>
+        <td><%= link_to product.name, product_path(product.id)%></td>
+
         <td><%= product.stock %></td>
         <td><%= product.price %></td>
         <% if product.retired %>
           <td><%= product.retired %></td>
         <% end %>
-        <%= link_to "Edit product", edit_product_path(product.id) %>
+        <%= link_to "Edit product", edit_product_path(product.id)%>
       </tr>
     <% end %>
     </tbody>

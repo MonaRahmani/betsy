@@ -1,0 +1,24 @@
+order_item1:
+  qty: 2
+  product: product1
+  order: order1
+
+order_item2:
+  qty: 3
+  product: product2
+  order: order1
+
+order_item3:
+  qty: 3
+  product: product3
+  order: order5
+
+order_item4:
+  qty: 2
+  product: product1
+  order: order5
+
+order_item5:
+  qty: 2
+  product: product4
+  order: order2

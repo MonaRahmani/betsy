@@ -1,6 +1,5 @@
 require 'csv'
-# commented out below is seeds.rb from media ranker, can be used as a template.
-#
+
 USER_FILE = Rails.root.join('db', 'users_seeds.csv')
 puts "Loading raw user data from #{USER_FILE}"
 
@@ -9,6 +8,7 @@ CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.username = row['username']
   user.email = row['email']
+
   successful = user.save
   if !successful
     user_failures << user
@@ -100,7 +100,27 @@ end
 puts "Added #{Product.count} product records"
 puts "#{product_failures.length} products failed to save"
 
+ORDER_ITEM_FILE = Rails.root.join('db', 'order_items_seeds.csv')
+puts "Loading raw order_item data from #{ORDER_ITEM_FILE}"
 
+order_item_failures = []
+CSV.foreach(ORDER_ITEM_FILE, :headers => true) do |row|
+  order_item = OrderItem.new
+  order_item.quantity = row['quantity']
+  order_item.shipped = row['shipped']
+  order_item.product_id = Product.find_by(name: row['name']).id
+  order_item.order_id = Order.find_by(credit_card_name: row['credit_card_name']).id
+  successful = order_item.save
+  if !successful
+    order_item_failures << order_item
+    puts "Failed to save order_item: #{order_item.inspect}"
+  else
+    puts "Created order_item: #{order_item.inspect}"
+  end
+end
+
+puts "Added #{OrderItem.count} order_item records"
+puts "#{order_item_failures.length} order_items failed to save"
 
 
 
