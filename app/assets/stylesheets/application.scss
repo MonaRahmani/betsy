@@ -46,16 +46,18 @@
 
 .dropdown:hover>.dropdown-menu {
   display: block;
-
 }
-
 
 .nav-item {
   list-style-type: none;
   font-family: "Raleway", Sans-Serif;
   font-size: 1.3em;
+  color: black;
 }
 
+.nav-item {
+  color: black;
+}
 
 .nav-link {
   margin-left: 300px;
@@ -78,10 +80,12 @@
 .dropdown:hover>.dropdown-menu {
   display: block;
   font-family: "Raleway", Sans-Serif;
+  margin-left: 12rem;
 }
 
 .account-links {
   color: black;
+  font-size: 1.3em;
 }
 
 .account-links:hover {
@@ -94,6 +98,7 @@
   color: black;
   font-size: 1.7em;
   padding: 7px;
+  margin-left: 12rem;
 }
 
 .bi-bi-person:hover{
