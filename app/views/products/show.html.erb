@@ -6,12 +6,15 @@
   Sold by: <%= @product.user.username%>
   <br>
   <%= number_to_currency(@product.price) %>
-  <br>
-  In Stock: <%= @product.stock %>
+  <% if @product.stock == 0 %> <br>
+    Out of Stock!
+  <% elsif @product.stock < 5 %> <br>
+    Almost out of Stock!
+  <% end %>
   <!--might have to change this later. Should just say in stock or not?-->
   <br>
   <%= f.label :quantity %>
-  <%= f.text_field :quantity %>
+  <%= f.text_field :quantity, :required => true%>
 <%#= @product.retired %>
   <br>
   Description: <%= @product.description %>

@@ -9,6 +9,4 @@ class Product < ApplicationRecord
   validates :stock, numericality: { only_integer: true, greater_than: 0, message: "Enter a positive number for stock."}
   # validates :stock, numericality: { greater_than: 0, message: "Stock must be numeric."}
   validates :categories, presence: { message: "Please enter at least one category." }
-
-
 end

@@ -10,19 +10,21 @@ class OrderItemsController < ApplicationController
     end
 
     quantity = order_params[:quantity].to_i
-
-    if session[:order_id]
-      order = Order.find_by(id: session[:order_id])
+    if quantity <= 0
+      flash[:error] = 'Please enter a quantity greater than 0.'
+      # how to render the same page with flash?
     else
-      order = Order.create(status: :pending)
-      session[:order_id] = order.id
+        if session[:order_id]
+          order = Order.find_by(id: session[:order_id])
+        else
+          # order = Order.create(status: :pending)
+          order = Order.create
+          session[:order_id] = order.id
+        end
+      order.add_product(product, quantity)
+      flash[:success] = "#{product.name} added to cart!"
     end
-    order.add_product(product, quantity)
-    flash[:success] = "#{product.name} added to cart!"
-    redirect_to products_path(product)
-    # else
-    #   flash[:error] = 'There was a problem adding this item to your cart.'
-    #   redirect_to product_path(product)
+      redirect_to products_path(product)
   end
 
 

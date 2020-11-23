@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_logged_user, only: [:show]
+  before_action :find_current_user, only: [:show]
 
   def cart
     @order = Order.find_by(id: session[:order_id])
@@ -30,7 +30,15 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: session[:order_id])
+    if session[:order_id] != @order.id
+      flash[:error] = "HEY! Not your page."
+      redirect_to root_path
+    end
 
+    if find_logged_user.nil?
+      head :not_found
+      return
+    end
   end
 
   def update
@@ -58,6 +66,10 @@ class OrdersController < ApplicationController
 
   def check_out
     @order = Order.find_by(id: session[:order_id])
+    if @order.nil?
+      flash[:error] = "Sorry, we can't complete your checkout because that order no longer exists."
+      return redirect_to root_path
+    end
   end
 
 

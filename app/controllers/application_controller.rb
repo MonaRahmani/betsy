@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
     @categories = Category.all
   end
 
-  def find_logged_user
-     @logged_in_user = User.find_by(id: session[:user_id])
+  def find_current_user
+   @current_user = User.find_by(id: session[:user_id])
   end
 
   def require_login

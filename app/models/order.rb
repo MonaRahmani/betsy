@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   has_many :order_items
   #validation status:string
+
+  # method to set default values before saving
   after_initialize :init
 
   def init
@@ -21,7 +23,11 @@ class Order < ApplicationRecord
   end
 
   def total
-    return @order_items.order_item_subtotal
+    total = 0
+    self.order_items.each do |item|
+      total += item.order_item_subtotal
+    end
+    return total
   end
 end
 
