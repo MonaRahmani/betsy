@@ -24,7 +24,7 @@
                 <%= link_to "MERCHANTS", users_path, class: "nav-link" %>
               </li>
               <div class="dropdown">
-                <li class="navbar-item dropdown nav-item" type="button" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=  link_to "PRODUCTS", products_path, class: "nav-link"%>
+                <li class="navbar-item dropdown nav-item" type="button" id="navbarDropdown" role="button"><%= link_to "PRODUCTS", products_path, class: "nav-link"%>
                 </li>
                 <ul class="dropdown-menu" >
                   <% Category.all.each do |category| %>
