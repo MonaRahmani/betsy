@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: session[:order_id])
+    raise
   end
 
   def update
@@ -57,6 +58,10 @@ class OrdersController < ApplicationController
 
   def check_out
     @order = Order.find_by(id: session[:order_id])
+    if @order.nil?
+      flash[:error] = "Sorry, we can't complete your checkout because that order no longer exists."
+      return redirect_to root_path
+    end
   end
 
 

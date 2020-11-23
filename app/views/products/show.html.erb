@@ -11,7 +11,7 @@
   <!--might have to change this later. Should just say in stock or not?-->
   <br>
   <%= f.label :quantity %>
-  <%= f.text_field :quantity %>
+  <%= f.text_field :quantity, :required => true%>
 <%#= @product.retired %>
   <br>
   Description: <%= @product.description %>

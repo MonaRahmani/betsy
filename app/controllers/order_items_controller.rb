@@ -18,12 +18,15 @@ class OrderItemsController < ApplicationController
       order = Order.create(status: :pending)
       session[:order_id] = order.id
     end
-    order.add_product(product, quantity)
-    flash[:success] = "#{product.name} added to cart!"
-    redirect_to products_path(product)
-    # else
-    #   flash[:error] = 'There was a problem adding this item to your cart.'
-    #   redirect_to product_path(product)
+
+    if quantity <= 0
+      flash[:error] = "Order quantity must be greater than 0"
+      redirect_to products_path(product)
+    else
+      order.add_product(product, quantity)
+      flash[:success] = "#{product.name} added to cart!"
+      redirect_to products_path(product)
+    end
   end
 
 

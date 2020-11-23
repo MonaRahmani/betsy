@@ -43,9 +43,9 @@
         <tr>
           <td><%= link_to item.products.photo_url, product_path(item.product_id)%></td>
           <td><%= item.product.name %></td>
-          <td><%= item.product.price %></td>
           <td><%= item.quantity %></td>
           <td><%= item.product_id %></td>
+          <td><%= item.product.price %></td>
 
           <%# if product.retired %>
   <!--          <td><%#= product.retired %></td>-->
