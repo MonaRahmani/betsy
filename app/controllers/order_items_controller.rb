@@ -27,6 +27,16 @@ class OrderItemsController < ApplicationController
       redirect_to products_path(product)
   end
 
+  def cart
+    if session[:order_items].nil?
+      flash[:error] = "You have nothing in your cart!"
+      redirect_to root_path
+    else
+      @cart = OrderItem.display_items(session[:order_items])
+      return @cart
+    end
+  end
+
 
   private
   def order_params
