@@ -1,44 +1,12 @@
 class OrdersController < ApplicationController
-  before_action :find_current_user, only: [:show]
+  before_action :find_current_user, only: [:show, :cart]
 
-  def cart
-    @order = Order.find_by(id: session[:order_id])
-    if @order.nil?
-      flash[:error] = "Your cart is empty!"
-      redirect_to root_path
-    end
+  def new
+    @order = Order.new
   end
 
-  def create
-    if session[:order_id] #checking for guest items in cart and creating an order
-      @order = Order.new(order_params)
-    else
-      @order = Order.new #if there are 0 items in cart, create a new order
-      session[:order_id] = @order.id
-    end
-    if @order.save
-      session[:order_id] = @order.id
-      flash[:success] = "Order was created!"
-      redirect_to order_path(@order.id)
-      return
-    else
-      flash[:error] = "Could not create order."
-      redirect_to root_path
-      return
-    end
-  end
-
-  def show
+  def edit
     @order = Order.find_by(id: session[:order_id])
-    if session[:order_id] != @order.id
-      flash[:error] = "HEY! Not your page."
-      redirect_to root_path
-    end
-
-    if find_logged_user.nil?
-      head :not_found
-      return
-    end
   end
 
   def update
@@ -47,21 +15,56 @@ class OrdersController < ApplicationController
       flash[:error] = "cant update, order dose not exist"
       redirect_to root_path
     elsif @order.update(order_params)
-      flash[:success] = "order has been submited"
+      flash[:success] = "order has been submitted"
+      session[:order_id]
       render :show
     else
-      flash[:error] = "order can't be submited"
+      flash[:error] = "order can't be submitted"
       redirect_to cart_path
       return
     end
   end
 
-
-  def edit
+  def cart
+    if session[:order_id].nil?
+      flash[:error] = "You have nothing in your cart!"
+      redirect_to root_path
+    else
+      @order = Order.find_by(id: session[:order_id])
+      @cart = @order.display_items
+    end
   end
 
-  def new
-    @order = Order.new
+  # def create
+  #   if session[:order_id] #checking for guest items in cart and creating an order
+  #     @order = Order.new(order_params)
+  #   else
+  #     @order = Order.new #if there are 0 items in cart, create a new order
+  #     session[:order_id] = @order.id
+  #   end
+  #   if @order.save
+  #     session[:order_id] = @order.id
+  #     flash[:success] = "Order was created!"
+  #     redirect_to order_path(@order.id)
+  #     return
+  #   else
+  #     flash[:error] = "Could not create order."
+  #     redirect_to root_path
+  #     return
+  #   end
+  # end
+
+  def show
+    @order = Order.find_by(id: session[:order_id])
+    if session[:order_id] != @order.id
+      flash[:error] = "HEY! Not your page."
+      redirect_to root_path
+    end
+    
+    if find_current_user.nil?
+      head :not_found
+      return
+    end
   end
 
   def check_out

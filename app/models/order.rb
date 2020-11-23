@@ -22,6 +22,15 @@ class Order < ApplicationRecord
     end
   end
 
+  def display_items
+    current_items = {}
+    self.order_items.each do |item|
+      product = Product.find_by(id: item["product_id"])
+      current_items[product] = item["quantity"]
+    end
+    return current_items
+  end
+
   def total
     total = 0
     self.order_items.each do |item|
