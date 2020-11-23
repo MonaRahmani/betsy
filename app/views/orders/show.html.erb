@@ -9,13 +9,14 @@
 <h5> Order Summary </h5>
 
 <p>Name: <%= @logged_in_user.username %></p>
-<p>Shipping Address: </p>
+<p>Mailing Address: <%= @order.street_address %></p>
 <p>Email: <%= @logged_in_user.email %></p>
-<p>Order: </p>
-<p>Purchased On: </p>
-<p>Purchase Status: </p>
+<p>Order #: <%= @order.id %> </p>
+<p>Purchased On: <%= @order.created_at %> </p>
+<p>Purchase Status: <%= @order.status %> </p>
+<p>Last four digits of Credit Card: <%= @order.credit_card_num[-4..-1] %> </p>
+<p>Card Exp. Date: <%= @order.cc_exp_year %></p>
 
-</section>
 <section class="user-votes__container">
   <h3 class="user-votes__header">Products</h3>
   <table class="table">
@@ -23,28 +24,36 @@
     <tr>
       <th></th>
       <th>Name</th>
-      <th>Price</th>
       <th>Quantity</th>
       <th>Product ID</th>
-      <th>Purchased On</th>
-      <th>Purchase Status</th>
+      <th>Price</th>
+
     </tr>
     </thead>
     <tbody>
-    <td><img src="https://m.media-amazon.com/images/I/61jhreLTzzL._AC_SS350_.jpg"></td>
+      <% @order.order_items.each do |item| %>
+        <tr>
+          <td><%= link_to order_items.products.photo_url, product_path(item.product_id)%></td>
+          <td><%= item.product.name %></td>
+          <td><%= item.product.price %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.product_id %></td>
 
-    <%# @user.products.each do |product| %>
-<!--      <tr>-->
-        <!--        <td><%#= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>-->
-<!--        <td><%#= link_to product.name, product_path(product.id)%></td>-->
-        <td></td>
-<!--        <td><%#= product.price %></td>-->
-        <%# if product.retired %>
-<!--          <td><%#= product.retired %></td>-->
-        <%# end %>
-        <%#= link_to "Edit product", edit_product_path(product.id)%>
-<!--      </tr>-->
-    <%# end %>
+          <%# if product.retired %>
+  <!--          <td><%#= product.retired %></td>-->
+          <%# end %>
+          <%#= link_to "Edit product", edit_product_path(product.id)%>
+        </tr>
+
+      <% end %>
     </tbody>
+    <tfoot>
+    <tr>
+      <th><h5 colspan="6">Total</h5></th>
+      <td colspan="6">
+        <h5>$ 1250.80 </h5>
+      </td>
+    </tr>
+    </tfoot>
   </table>
 </section>

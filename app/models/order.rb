@@ -19,4 +19,8 @@ class Order < ApplicationRecord
   def total
     return @order_items.order_item_subtotal
   end
+
+  # def mailing_address
+  #   address = order_items.user.
+  # end
 end
