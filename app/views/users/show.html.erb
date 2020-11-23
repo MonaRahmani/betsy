@@ -13,20 +13,20 @@
       <th>stock</th>
       <th>price</th>
       <th>Active</th>
+      <th>Edit</th>
     </tr>
     </thead>
     <tbody>
 
     <% @user.products.each do |product| %>
       <tr>
-<!--        <td><%#= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>-->
-        <td><%= link_to product.name, product_path(product.id)%></td>
+        <td> <%= link_to product.name, product_path(product)%> </td>
         <td><%= product.stock %></td>
         <td><%= product.price %></td>
         <% if product.retired %>
           <td><%= product.retired %></td>
         <% end %>
-        <%= link_to "Edit product", edit_product_path(product.id)%>
+        <td> <%= link_to "Edit", edit_product_path(product.id)%> </td>
       </tr>
     <% end %>
     </tbody>

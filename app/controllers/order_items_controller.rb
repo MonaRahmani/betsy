@@ -26,6 +26,9 @@ class OrderItemsController < ApplicationController
     #   redirect_to product_path(product)
   end
 
+  # method to delete items from cart
+  # def delete
+  # end
 
   private
   def order_params

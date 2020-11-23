@@ -8,11 +8,11 @@
 <p>Cancelled: $ <%= @user.total_rev_filtered("cancelled") %></p>
 
 <h5>Total Orders</h5>
-<!--<p>Total Revenue: $ <%#= @user.total_rev_filtered(nil) %> </p>-->
-<!--<p>Pending: $ <%#= @user.total_rev_filtered("pending") %></p>-->
-<!--<p>Paid: $ <%#= @user.total_rev_filtered("paid") %></p>-->
-<!--<p>Complete: $ <%#= @user.total_rev_filtered("complete") %></p>-->
-<!--<p>Cancelled: $ <%#= @user.total_rev_filtered("cancelled") %></p>-->
+<p>Total Orders: $ <%= @user.total_orders_filtered(nil) %> </p>
+<p>Pending: $ <%= @user.total_orders_filtered("pending") %></p>
+<p>Paid: $ <%= @user.total_orders_filtered("paid") %></p>
+<p>Complete: $ <%= @user.total_orders_filtered("complete") %></p>
+<p>Cancelled: $ <%= @user.total_orders_filtered("cancelled") %></p>
 
 
 <h5>Filter By Status:</h5>

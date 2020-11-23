@@ -13,6 +13,11 @@ class UsersController < ApplicationController
       head :not_found
       return
     end
+    # prevents users from viewing other users "user summary page"
+    if session[:user_id] != @user.id
+      flash[:error] = "HEY! Not your page."
+      redirect_to root_path
+    end
   end
 
   def create
@@ -45,6 +50,7 @@ class UsersController < ApplicationController
   end
 
   def user_dashboard
+    # prevents users from viewing other users "order summary page"
     @user = User.find_by(id: params[:id])
     if session[:user_id] != @user.id
       flash[:error] = "HEY! Not your page."

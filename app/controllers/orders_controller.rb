@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def cart
     @order = Order.find_by(id: session[:order_id])
     if @order.nil?
-      flash[:error] = "order not found"
+      flash[:error] = "order not found/nothing in cart yet"
       redirect_to root_path
     end
   end
@@ -29,7 +29,6 @@ class OrdersController < ApplicationController
       return
     end
   end
-
 
   def edit
   end

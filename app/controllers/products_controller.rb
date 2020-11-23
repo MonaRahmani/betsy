@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # conditional for out-of-stock products 
     @product = Product.new(product_params)
     @product.user_id = session[:user_id]
     params[:product][:categories].each do |category_id|

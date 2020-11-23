@@ -1,8 +1,6 @@
 <h2 class="new-order-header">CHECKOUT</h2>
-
 <div class="form">
-
-  <%= form_with model: @order, url: order_path(@order.id) do |f| %>
+  <%= form_with model: @order do |f| %>
     <div class="form-group">
       <%= f.label "email:" %>
       <%= f.text_field :email %>
@@ -43,9 +41,6 @@
       <%= f.label "cc_exp_year:" %>
       <%= f.text_field :cc_exp_year %>
     </div>
-
     <%= f.submit "COMPLETE ORDER", class: "button-style"%>
   <%end%>
 </div>
-
-
