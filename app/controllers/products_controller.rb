@@ -37,10 +37,15 @@ class ProductsController < ApplicationController
         @product.categories << Category.find_by(id: category_id)
       end
     end
+    if params[:product][:retired] = true
+      @product.retired = true
+    else
+      @product.retired = false
+    end
     # raise
     if @product.save
-      flash[:success] = "#{@product.name} was successfully added!"
-      redirect_to product_path(@product)
+      flash[:success] = "#{@product.name} added to inventory."
+      redirect_to user_path(session[:user_id])
       return
     else
       # p @product.errors.messages
@@ -59,15 +64,25 @@ class ProductsController < ApplicationController
     end
   end
 
-  def update
-    # @product.user_id = session[:user_id]
+  def update #updated of check box and category field isnt working
     if @product.nil?
       flash[:error] = "Product doesn't exist, please select another..."
       redirect_to products_path
       return
     elsif @product.update(product_params)
-      flash[:success] = "Update successful"
-      render :show
+      @product.user_id = session[:user_id]
+      params[:product][:categories].each do |category_id|
+        if category_id != ""
+          @product.categories << Category.find_by(id: category_id)
+        end
+      end
+      if params[:product][:retired] = true
+        @product.retired = true
+      else
+        @product.retired = false
+      end
+      flash[:success] = "Updated #{@product.name}"
+      redirect_to user_path(session[:user_id])
     else # save failed
       flash[:error] = "A problem occurred: Could not update #{@product.name}"
       render :edit
