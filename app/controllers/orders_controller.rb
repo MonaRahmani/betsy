@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: session[:order_id])
-    raise
   end
 
   def update

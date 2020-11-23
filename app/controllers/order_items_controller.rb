@@ -11,22 +11,20 @@ class OrderItemsController < ApplicationController
     end
 
     quantity = order_params[:quantity].to_i
-
-    if session[:order_id]
-      order = Order.find_by(id: session[:order_id])
-    else
-      order = Order.create(status: :pending)
-      session[:order_id] = order.id
-    end
-
     if quantity <= 0
-      flash[:error] = "Order quantity must be greater than 0"
-      redirect_to products_path(product)
+      flash[:error] = 'Please enter a quantity greater than 0.'
     else
+        if session[:order_id]
+          order = Order.find_by(id: session[:order_id])
+        else
+          order = Order.create()
+          session[:order_id] = order.id
+        end
+
       order.add_product(product, quantity)
       flash[:success] = "#{product.name} added to cart!"
-      redirect_to products_path(product)
     end
+      redirect_to products_path(product)
   end
 
 
