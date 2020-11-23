@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :find_logged_user, only: [:show]
 
   def cart
     @order = Order.find_by(id: session[:order_id])
@@ -8,7 +9,27 @@ class OrdersController < ApplicationController
     end
   end
 
+  def create
+    if session[:order_id] #checking for guest items in cart and creating an order
+      @order = Order.new(order_params)
+    else
+      @order = Order.new #if there are 0 items in cart, create a new order
+      session[:order_id] = @order.id
+    end
+    if @order.save
+      session[:order_id] = @order.id
+      flash[:success] = "Order was created!"
+      redirect_to order_path(@order.id)
+      return
+    else
+      flash[:error] = "Could not create order."
+      redirect_to root_path
+      return
+    end
+  end
+
   def show
+    @order = Order.find_by(id: session[:order_id])
 
   end
 
@@ -42,7 +63,7 @@ class OrdersController < ApplicationController
 
   private
 
-  def user_params
+  def order_params
     return params.require(:order)
                .permit(:email, :street_address, :city, :state, :zip_code, :credit_card_name,
                        :credit_card_num, :cvv_num, :cc_exp_month, :cc_exp_year)
