@@ -12,82 +12,75 @@
   </head>
 
   <body>
-    <header class="header-container">
-      <nav class="navbar navbar-expand-sm">
+    <header>
+      <nav class="navbar navbar-expand-sm ">
         <%= link_to "DREAMSy", root_path, class:"navbar-brand" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="nav justify-content-center">
-              <li class="nav-item">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto text-md-center text-left">
+              <li class="nav-item active">
                 <%= link_to "MERCHANTS", users_path, class: "nav-link" %>
               </li>
-
               <div class="dropdown">
-                  <li class="navbar-item dropdown" type="button"  id="dropdownmenu"><%=  link_to "Products", products_path, class: "nav-link"%></li><span class="caret"></span></li>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownmenu">
-              <% Category.all.each do |category| %>
-                        <li class="nav-item"><%= link_to category.category_name, category_products_path(category.id),class:"nav-link"%></li>
-              <% end %>
-                    </ul>
+                <li class="navbar-item dropdown nav-item" type="button" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=  link_to "PRODUCTS", products_path, class: "nav-link"%>
+                </li>
+                <ul class="dropdown-menu" >
+                  <% Category.all.each do |category| %>
+                    <li>
+                      <%= link_to category.category_name, category_products_path(category.id),class:"account-links"%>
+                    </li>
+                  <% end %>
+                </ul>
               </div>
-<!--              <ul class ="navbar-nav">-->
-
-                <%# if session[:user_id]%>
-                <!--      <li>-->
-                <%#= link_to "Log out", logout_path, method: :delete, class: "nav-button" %>
-                <!--      </li>-->
-                <!--      <li class="navbar-item dropdown-toggle main-drop" type="button" data-toggle="dropdown">My Account<span class="caret"></span></li>-->
-                <!--        <ul class="dropdown-menu">-->
-                <!--          <li><%#= link_to "Orders", user_path(session[:user_id]) %></li>-->
-                <!--          <li><%#= link_to "Sales", user_dashboard_path(session[:user_id]) %></li>-->
-                <!--        </ul>-->
-                <%# else %>
-                <!--      <li>-->
-                <%#= link_to "Login", github_login_path, class: "nav-button" %>
-                <!--      </li>-->
-                <%# end %>
-                <% if session[:user_id]%>
-                  <li class="nav-item">
-                    <%= link_to "Log out", logout_path, method: :delete, class: "nav-link" %>
-                  </li>
+            </ul>
+            <ul class="nav navbar-nav justify-content-md-right align-items-right text-right ">
+              <% if session[:user_id]%>
+                <li class="nav-item" >
+                  <%= link_to "LOG OUT", logout_path, method: :delete, class: "nav-link" %>
+                </li>
                 <div class="dropdown ">
-                  <li class="navbar-item dropdown" type="button"><%= link_to '<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <li class="navbar-item dropdown nav-link" type="button"><%= link_to '<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-          </svg>'.html_safe, products_path, class: "bi-bi-person" %><span class="caret"></span></li>
+          </svg>'.html_safe, products_path, class: "bi-bi-person" %><span class="caret"></span>
+                  </li>
                   <ul class="dropdown-menu" >
                     <li><%= link_to "Orders", user_path(session[:user_id]), class:"account-links" %></li>
                     <li><%= link_to "Sales", user_dashboard_path(session[:user_id]), class:"account-links" %></li>
                   </ul>
                 </div>
-                <% else %>
-                  <li class="nav-item">
-                    <%= link_to "Login", github_login_path, class: "nav-link" %>
-                  </li>
-                <% end %>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "Login", github_login_path, class: "nav-link" %>
+                </li>
+              <% end %>
+                <li class="nav-item">
+                  <%= link_to '<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
+                  </svg>'.html_safe, cart_path, class: "bi-bi-bag nav-link" %>
+                </li>
+<!--            </ul>-->
             </ul>
           </div>
-          <%= link_to '<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
-          </svg>'.html_safe, cart_path, class: "bi-bi-bag" %>
       </nav>
     </header>
-  <% if flash[:error] %>
-    <div class="alert alert-warning alert-container">
-      <%= flash[:error] %>
-      <% if flash[:reason] %>
-        <ul>
-          <li><%= flash[:reason] %></li>
-        </ul>
-      <% end %>
-    </div>
-  <% elsif flash[:success] %>
-    <div class="alert alert-success alert-container">
-      <%= flash[:success] %>
-    </div>
-  <% end %>
-  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-  <%= yield %>
+    <% if flash[:error] %>
+      <div class="alert alert-warning alert-container">
+        <%= flash[:error] %>
+        <% if flash[:reason] %>
+          <ul>
+            <li><%= flash[:reason] %></li>
+          </ul>
+        <% end %>
+      </div>
+    <% elsif flash[:success] %>
+      <div class="alert alert-success alert-container">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <%= yield %>
   </body>
   <!-- Footer -->
   <footer class="page-footer font-small stylish-color-dark pt-4">
