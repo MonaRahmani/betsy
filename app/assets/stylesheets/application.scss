@@ -60,6 +60,29 @@
   color: #72538F;
 }
 
+#nav-icons {
+  padding: 10px;
+}
+
+#nav-icons .bi-bi-person {
+  color: black;
+  font-size: 1.7em;
+  padding: 7px;
+}
+
+#nav-icons .bi-bi-person:hover{
+  color: #72538F;
+}
+
+#nav-icons .bi-bi-bag {
+  color: black;
+  font-size: 1.5em;
+}
+
+#nav-icons .bi-bi-bag:hover{
+  color: #72538F;
+}
+
 body {
   background-color: #EFE6E6;
 }
