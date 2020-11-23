@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   has_many :order_items
   #validation status:string
+
+  # method to set default values before saving
   after_initialize :init
 
   def init
