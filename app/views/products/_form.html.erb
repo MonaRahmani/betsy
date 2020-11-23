@@ -22,7 +22,7 @@
                  { :multiple => true }) %>
     <br>
     <%= f.label :retired, "Retired"%>
-    <%= check_box_tag :retired %>
+    <%= f.select :retired, [true, false] %>
     <br>
   </div>
 <%= f.submit action_name, class:"btn btn-primary" %>

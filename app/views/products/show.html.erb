@@ -7,7 +7,8 @@
   <br>
   <%= number_to_currency(@product.price) %>
   <br>
-  In Stock: <%= @product.stock %>
+  Stock: <%= @product.stock %>
+  Retired: <%= @product.retired %>
   <!--might have to change this later. Should just say in stock or not?-->
   <br>
   <%= f.label :quantity %>

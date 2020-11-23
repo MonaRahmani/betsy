@@ -8,4 +8,10 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than: 0, message: "Enter a positive value for price."}
   validates :stock, numericality: { only_integer: true, greater_than: 0, message: "Enter a positive number for stock."}
   validates :categories, presence: { message: "Please enter at least one category." }
+
+
+  def self.active_only
+    self.where(retired: false)
+  end
+
 end
