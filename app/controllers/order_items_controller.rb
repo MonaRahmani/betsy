@@ -29,7 +29,7 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    order_item = OrderItem.find_by(id: session[order_id] )
+    order_item = OrderItem.find_by(id: params[:id])  #use id from params not order_id
     if order_item.nil?
       flash[:error] = "Sorry, there was a problem. Could not remove item from cart"
       redirect_to cart_path
