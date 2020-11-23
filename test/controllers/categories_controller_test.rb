@@ -1,17 +1,17 @@
 require "test_helper"
 
 describe CategoriesController do
-  describe "guest user" do
-    before do
-      @category = Category.first
-    end
-
-    it "can(guest) can access product by category" do
-      get category_products_path(@category.id)
-      must_respond_with :success
-    end
-  end
-
+  # describe "guest user" do
+  #   before do
+  #     @category = Category.first
+  #   end
+  #
+  #   it "can(guest) can access product by category" do
+  #     get category_products_path(@category.id)
+  #     must_respond_with :success
+  #   end
+  # end
+  #
   # describe "create" do
   #   before do
   #     @user = perform_login()
