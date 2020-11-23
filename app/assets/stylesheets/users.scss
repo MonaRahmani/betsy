@@ -1,3 +1,27 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+  font-family: "Raleway", Sans-Serif;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+ul li {
+  list-style: none;
+
+}
+
+.user-names {
+  color: black;
+  font-size: 2em;
+}
+
+.user-names:hover {
+  color: #9C7BC2;
+  text-decoration: none;
+  font-size: 2rem;
+}

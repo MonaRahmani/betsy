@@ -1,17 +1,10 @@
-<h1>All Merchants</h1>
-
-
-<table class="table">
-  <thead>
-  <tr>
-    <th>Users</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= link_to user.username, user_products_path(user) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<body>
+<div class="container">
+  <h1>All Merchants</h1>
+    <ul>
+    <% @users.each do |user| %>
+       <li><%= link_to user.username, user_products_path(user), class:"user-names" %></li>
+    <% end %>
+    </ul>
+  </div>
+</body>

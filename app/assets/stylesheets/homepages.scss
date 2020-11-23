@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+body {
+  background-color: #EFE6E6;
+}
+
 body .background-image {
   background-image: url("background image/background.png");
   background-size: auto;
