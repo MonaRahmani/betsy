@@ -1,8 +1,8 @@
 class OrderItemsController < ApplicationController
 
   def create
-    product_id = params[:product_id]
-    product = Product.find_by(id: product_id)
+
+    product = Product.find_by(id: params[:product_id])
 
     if product.nil?
       redirect_to cart_path
@@ -12,18 +12,32 @@ class OrderItemsController < ApplicationController
 
     quantity = order_params[:quantity].to_i
 
-    if session[:order_id]
-      order = Order.find_by(id: session[:order_id])
+    if quantity <= 0
+      flash[:error] = 'Please enter a quantity greater than 0.'
+      # how to render the same page with flash?
     else
-      order = Order.create(status: :pending)
-      session[:order_id] = order.id
+      if session[:order_id]
+        @order = Order.find_by(id: session[:order_id])
+      else
+        @order = Order.create
+        session[:order_id] = order.id
+      end
+      @order.add_product(product, quantity)
+      flash[:success] = "#{product.name} added to cart!"
     end
-    order.add_product(product, quantity)
-    flash[:success] = "#{product.name} added to cart!"
     redirect_to products_path(product)
-    # else
-    #   flash[:error] = 'There was a problem adding this item to your cart.'
-    #   redirect_to product_path(product)
+  end
+
+  def destroy
+    order_item = OrderItem.find_by(id: session[order_id] )
+    if order_item.nil?
+      flash[:error] = "Sorry, there was a problem. Could not remove item from cart"
+      redirect_to cart_path
+    else
+      order_item.destroy
+      flash[:success] = "#{order_item.product.name} removed from cart"
+      return redirect_to cart_path
+    end
   end
 
   def cart
@@ -37,9 +51,8 @@ class OrderItemsController < ApplicationController
   end
 
 
-  private
-  def order_params
-    return params.permit(:quantity)
-  end
-
+    private
+    def order_params
+      return params.permit(:quantity, :product_id)
+    end
 end
