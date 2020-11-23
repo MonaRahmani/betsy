@@ -13,5 +13,4 @@ class Product < ApplicationRecord
   def self.active_only
     self.where(retired: false)
   end
-
 end
