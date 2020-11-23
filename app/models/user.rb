@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   # validates :uid, presence: true, uniqueness: true
+
   # build a user from github hash info
   def self.build_from_github(auth_hash)
     user = User.new
@@ -23,9 +24,10 @@ class User < ApplicationRecord
       elsif item.order.status == status
         sum += item.order_item_subtotal
       end
+      return sum
     end
-    return sum
   end
+
   # Total number of orders filtered by status
   def total_orders_filtered(status)
     if status.nil?
