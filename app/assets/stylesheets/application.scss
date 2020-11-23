@@ -109,19 +109,21 @@ footer .list-unstyled li a:hover {
   text-decoration: none;
 }
 
+.footer-copyright {
+  //background-color: #EFE6E6;
+}
+
 #social-media-icons {
   list-style: none;
   position: absolute;
   right: 1em;
   padding-top: 4em;
-
 }
 
 #social-media-icons li {
   display: inline-block;
   font-size: 2.5em;
   word-spacing: 70px;
-
 }
 
 #social-media-icons li a {
