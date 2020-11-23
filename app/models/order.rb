@@ -21,7 +21,11 @@ class Order < ApplicationRecord
   end
 
   def total
-    return @order_items.order_item_subtotal
+    total = 0
+    self.order_items.each do |item|
+      total += item.order_item_subtotal
+    end
+    return total
   end
 end
 
