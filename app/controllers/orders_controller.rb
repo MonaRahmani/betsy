@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     elsif @order.update(order_params)
       flash[:success] = "order has been submitted"
-      session[:order_id]
+      session[:order_id] = nil
       render :show
     else
       flash[:error] = "order can't be submitted"
@@ -34,25 +34,6 @@ class OrdersController < ApplicationController
       @cart = @order.display_items
     end
   end
-
-  # def create
-  #   if session[:order_id] #checking for guest items in cart and creating an order
-  #     @order = Order.new(order_params)
-  #   else
-  #     @order = Order.new #if there are 0 items in cart, create a new order
-  #     session[:order_id] = @order.id
-  #   end
-  #   if @order.save
-  #     session[:order_id] = @order.id
-  #     flash[:success] = "Order was created!"
-  #     redirect_to order_path(@order.id)
-  #     return
-  #   else
-  #     flash[:error] = "Could not create order."
-  #     redirect_to root_path
-  #     return
-  #   end
-  # end
 
   def show
     @order = Order.find_by(id: session[:order_id])

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :products do
-    resources :order_items, only: [:create]
+    resources :order_items, only: [:create, :destroy]
     # resources :categories, only: [:index]
   end
 
