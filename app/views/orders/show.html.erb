@@ -1,4 +1,75 @@
-<h1>order details page, after user checkout</h1>
+<h4><%= @logged_in_user.username %> ~ Thank you for your order! </h4>
+<h6>...May your dreams come true...</h6></br>
 
+<h5> ORDER CONFIRMATION </h5>
+<p> We've received your order and will contact you as soon as your package is shipped.
+   You can find your purchase information below.
+</p>
 
-<!--summery-->
+<h5> Order Summary </h5>
+
+<p>Name: <%= @logged_in_user.username %></p>
+<p>Shipping Address: </p>
+<p>Email: <%= @logged_in_user.email %></p>
+<p>Order: </p>
+<p>Purchased On: </p>
+<p>Purchase Status: </p>
+
+<!--<section>-->
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th><strong> Name: hgjhg </strong></th>-->
+<!--      <th>Price: fdsfsf</th>-->
+<!--      <th>Quantity: jhghgh@yes.com</th>-->
+<!--      <th>Purchase Total: #264</th>-->
+<!--      <th>Purchased On: Friday, Nov 20 at 11:07 pm</th>-->
+<!--      <th>Purchase Status: paid</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--      <tr>-->
+<!--        <td> ffd</td>-->
+<!--        <td>fdfd</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+
+<!--      </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+</section>
+<section class="user-votes__container">
+  <h3 class="user-votes__header">Products</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Product ID</th>
+      <th>Purchased On</th>
+      <th>Purchase Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <td><img src="https://m.media-amazon.com/images/I/61jhreLTzzL._AC_SS350_.jpg"></td>
+
+    <%# @user.products.each do |product| %>
+<!--      <tr>-->
+        <!--        <td><%#= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>-->
+<!--        <td><%#= link_to product.name, product_path(product.id)%></td>-->
+        <td></td>
+<!--        <td><%#= product.price %></td>-->
+        <%# if product.retired %>
+<!--          <td><%#= product.retired %></td>-->
+        <%# end %>
+        <%#= link_to "Edit product", edit_product_path(product.id)%>
+<!--      </tr>-->
+    <%# end %>
+    </tbody>
+  </table>
+</section>

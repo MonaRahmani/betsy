@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def categories_method
     @categories = Category.all
   end
+
   def find_logged_user
      @logged_in_user = User.find_by(id: session[:user_id])
   end
