@@ -22,10 +22,14 @@
               <li class="nav-item">
                 <%= link_to "MERCHANTS", users_path, class: "nav-link" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "PRODUCTS", products_path, class: "nav-link" %>
-              </li>
-            </ul>
+              <div class="dropdown">
+                  <li class="navbar-item dropdown nav-item" type="button"  id="dropdownmenu"><%=  link_to "Products", products_path, class: "nav-link"%></li>
+                    <ul data-toggle="dropdown" class="dropdown-menu" aria-labelledby="dropdownmenu">
+              <% Category.all.each do |category| %>
+                        <li class="nav-item"><%= link_to category.category_name, category_products_path(category.id), class: "nav-link" %></li>
+              <% end %>
+                    </ul>
+              </div>
               <ul class ="navbar-nav">
                 <% if @logged_in_user%>
                   <li class="nav-item">

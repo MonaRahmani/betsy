@@ -29,8 +29,6 @@
   -webkit-text-fill-color: transparent;
   font-size: 4.5rem;
   color: black;
-
-
 }
 
 .navbar-brand:hover {
@@ -40,11 +38,23 @@
   color: black;
 }
 
-.nav-item {
+.navbar-item {
   list-style-type: none;
   font-family: "Raleway", Sans-Serif;
   font-size: 1.3em;
 }
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.nav-item {
+  list-style-type: none;
+  font-family: "Raleway", Sans-Serif;
+  font-size: 1.3em;
+
+}
+
 
 .nav-link {
   margin-left: 300px;
