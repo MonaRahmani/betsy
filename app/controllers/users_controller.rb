@@ -13,6 +13,10 @@ class UsersController < ApplicationController
       head :not_found
       return
     end
+    if session[:user_id] != @user.id
+      flash[:error] = "HEY! Not your page."
+      redirect_to root_path
+    end
 
     @orders = Order.find_by(credit_card_name: params[:username])
   end

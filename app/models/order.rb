@@ -7,9 +7,10 @@ class Order < ApplicationRecord
   def init
     self.status ||= "Paid"          #will set the default value only if it's nil
   end
-  
+
   def add_product(product, quantity)
     current_item = OrderItem.find_by(product_id: product.id, order_id: self.id )
+
     if current_item
       current_item.quantity += quantity
       current_item.save

@@ -1,5 +1,7 @@
 <h1><%= @user.username %>'s Sale History </h1>
 <br>
+
+<h3><%= link_to "Back to Sales Account", user_path(session[:user_id]), class: "btn btn-secondary" %></h3>
 <br>
 <table class="table">
   <h3 class="orders-show__header">Order Summary</h3>
@@ -35,18 +37,12 @@
   </tr>
 </table>
 
+<!--<h5>By Status:</h5>-->
+<!--<p><%#= link_to "All Orders", order_path %></p>-->
+<!--<p>Paid </p>-->
+<!--<p>Completed </p>-->
+<!--<%#= link_to "Add Category", new_category_path %></p>-->
 
-
-
-
-
-
-
-<h5>By Status:</h5>
-<p><%= link_to "All Orders", order_path %></p>
-<p>Paid </p>
-<p>Completed </p>
-<%= link_to "Add Category", new_category_path %></p>
 <section class="orders-show__container">
   <h3 class="orders-show__header">Products</h3>
   <table class="table">
@@ -69,3 +65,4 @@
     </tbody>
   </table>
 </section>
+<h3><%= link_to "Back to Top", user_dashboard_path, class: "btn btn-secondary" %></h3>

@@ -1,7 +1,8 @@
 <h2><%= @user.username%>'s Sales Account</h2>
 <p>Member since <%= @user.created_at.strftime("%Y-%m-%d") %></p>
 <h3><%= link_to "Sale History", user_dashboard_path, class: "btn btn-secondary" %></h3>
-
+<h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
+<h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
 <section class="user-votes__container">
   <h3 class="user-votes__header">Inventory</h3>
   <table class="table">
@@ -31,6 +32,6 @@
     <% end %>
     </tbody>
   </table>
-  <h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
-  <h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
+
 </section>
+<h3><%= link_to "Back to Top", user_dashboard_path, class: "btn btn-secondary" %></h3>
