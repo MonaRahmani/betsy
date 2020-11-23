@@ -21,9 +21,5 @@
   <br>
   <%= link_to "Back", products_path %>
 
-<!--  guest user should not have this option -->
-  <%= link_to "Update", edit_product_path %>
-  <%= link_to "Delete", product_path(@product.id), model: :delete, data: {
-      confirm: "Are you sure you want to delete this product?"} %>
   <%= f.submit "Add to Cart" %>
 <% end %>

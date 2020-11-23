@@ -94,12 +94,12 @@ class ProductsController < ApplicationController
   def destroy
     if @product.nil?
       flash[:error] = "Product doesn't exist, please select another..."
-      redirect_to products_path
+      redirect_to user_path(session[:user_id])
       return
     else
       @product.destroy
       flash[:success] = "Poof! Successfully relinquished the entire stock of #{@product.name}!"
-      redirect_to products_path
+      redirect_to user_path(session[:user_id])
     end
   end
 

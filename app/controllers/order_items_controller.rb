@@ -20,16 +20,16 @@ class OrderItemsController < ApplicationController
         @order = Order.find_by(id: session[:order_id])
       else
         @order = Order.create
-        session[:order_id] = order.id
+        session[:order_id] = @order.id
       end
       @order.add_product(product, quantity)
       flash[:success] = "#{product.name} added to cart!"
     end
 
-    if current_item.stock < quantity
+    if product.stock < quantity
       flash[:error] = "Not enough #{product.name} in stock!"
     end
-    order.add_product(product, quantity)
+    @order.add_product(product, quantity)
     flash[:success] = "#{product.name} added to cart!"
 
     redirect_to products_path(product)
