@@ -31,6 +31,7 @@
   <ul>
     <li class="navbar-item dropdown-toggle main-drop" type="button" data-toggle="dropdown">Products<span class="caret"></span></li>
       <ul class="dropdown-menu">
+        <%= link_to "View all", products_path %>
         <% Category.all.each do |category| %>
           <li><%= link_to category.category_name, category_products_path(category.id) %></li>
         <% end %>

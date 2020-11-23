@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def cart
     @order = Order.find_by(id: session[:order_id])
     if @order.nil?
-      flash[:error] = "order not found"
+      flash[:error] = "Your cart is empty!"
       redirect_to root_path
     end
   end
