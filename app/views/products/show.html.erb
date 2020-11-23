@@ -3,21 +3,20 @@
 <!--to add item to car-->
 <%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
   <h1><%= @product.name %></h1>
-  Sold by: <%= @product.user.username%>
+  Description: <%= @product.description %>
   <br>
   <%= number_to_currency(@product.price) %>
+  <br>
+  Sold by: <%= @product.user.username%>
   <% if @product.stock == 0 %> <br>
     Out of Stock!
   <% elsif @product.stock < 5 %> <br>
     Almost out of Stock!
-  <% end %>
+  <% end %> <br>
   <!--might have to change this later. Should just say in stock or not?-->
-  <br>
   <%= f.label :quantity %>
   <%= f.text_field :quantity, :required => true%>
 <%#= @product.retired %>
-  <br>
-  Description: <%= @product.description %>
   <br>
   <%= link_to "Back", products_path %>
   <%= link_to "Update", edit_product_path %>

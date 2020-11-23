@@ -8,19 +8,19 @@
 
 
 <!--cart-->
-<div>
-  <div>
-    <!--  checkout link-->
-    <%= link_to "Check Out", new_order_path, action: 'new', controller: 'orders', class: 'btn button-style' %>
-  </div>
-  <div>
-    <% @cart.each do |product, val|%>
-      <p><%= product.name %> </p>
-      <%= image_tag product.photo_url, alt: product.description %>
-      <p><%= product.price.to_f * val.to_i %></p>
-      <%= link_to 'Remove', remove_from_cart_path(product.id), method: :post %>
-      <%= link_to "Edit", product_path(product.id) %>
-      <h3> Order Total: <%= OrderItem.order_item_subtotal(@cart) %>  </h3>
-    <% end %>
-  </div>
-</div>
+<!--<div>-->
+<!--  <div>-->
+<!--      checkout link-->
+    <%#= link_to "Check Out", new_order_path, action: 'new', controller: 'orders', class: 'btn button-style' %>
+<!--  </div>-->
+<!--  <div>-->
+    <%# @cart.each do |product, val|%>
+<!--      <p><%#= product.name %> </p>-->
+      <%#= image_tag product.photo_url, alt: product.description %>
+<!--      <p><%#= product.price.to_f * val.to_i %></p>-->
+      <%#= link_to 'Remove', remove_from_cart_path(product.id), method: :post %>
+      <%#= link_to "Edit", product_path(product.id) %>
+<!--      <h3> Order Total: <%#= OrderItem.order_item_subtotal(@cart) %>  </h3>-->
+    <%# end %>
+<!--  </div>-->
+<!--</div>-->
