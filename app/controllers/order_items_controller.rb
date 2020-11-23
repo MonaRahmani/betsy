@@ -20,7 +20,7 @@ class OrderItemsController < ApplicationController
         @order = Order.find_by(id: session[:order_id])
       else
         @order = Order.create
-        session[:order_id] = order.id
+        session[:order_id] = @order.id
       end
       @order.add_product(product, quantity)
       flash[:success] = "#{product.name} added to cart!"

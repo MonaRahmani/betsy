@@ -43,7 +43,7 @@
         <td><%= link_to Product.find(item.product_id).name, product_path(item.product_id) %></td>
         <td><%= item.quantity %></td>
         <td><%= Product.find(item.product_id).price %></td>
-        <td><%= link_to "Remove ", product_path(item.product_id), method: :delete, data: {confirm: "Are you sure you want to remove this item from cart?"}%>
+<!--        <td><%#= link_to "Remove ", product_order_item_path(), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product_id.name} item from cart?"}%>-->
       </tr>
     <% end %>
     <tr>
