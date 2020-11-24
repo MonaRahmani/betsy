@@ -3,7 +3,7 @@
     <h1>PRODUCTS BY CATEGORY: <%= @category.category_name %></h1>
 
     <% if @products.active_only.length > 0 %>
-    <div class="grid">
+    <div class="grid-product-category">
       <% @products.active_only.each do |product| %>
         <div>
           <%= image_tag(product.photo_url, :size => '300x350') %>
@@ -23,7 +23,7 @@
     <h1>PRODUCTS BY MERCHANT: <%= @user.username %></h1>
 
     <% if @user.products.active_only.length > 0 %>
-    <div class="grid">
+    <div class="grid-product-user">
       <% @user.products.active_only.each do |product| %>
       <div>
         <%= image_tag(product.photo_url, :size => '300x350') %>

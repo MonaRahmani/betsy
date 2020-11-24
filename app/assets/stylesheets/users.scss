@@ -6,6 +6,13 @@ body {
   font-family: "Raleway", Sans-Serif;
 }
 
+body h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1%;
+}
+
 .body-content {
   margin-left: 50%;
 }
@@ -16,7 +23,6 @@ h1 {
 
 ul li {
   list-style: none;
-
 }
 
 .user-names {
@@ -29,3 +35,49 @@ ul li {
   text-decoration: none;
   font-size: 2rem;
 }
+
+.user-account-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-account-links {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 3px;
+}
+
+.btn {
+  background-color: #EFE6E6;
+  color: black;
+}
+
+.btn:hover {
+  color: #9C7BC2;
+  background-color: #EFE6E6;
+}
+
+body h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1%;
+}
+
+.table thead th {
+  border-bottom: 1px solid;
+}
+
+table {
+  border: 1px double black;
+}
+.column-heading tr {
+  border: 1px double black;
+}
+
+th, td {
+  border: 1px double black;
+  padding:4px 6px;
+}
+

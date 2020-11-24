@@ -1,27 +1,29 @@
+<body>
 <h2><%= @user.username%>'s Sales Account</h2>
-<p>Member since <%= @user.created_at.strftime("%Y-%m-%d") %></p>
-<h3><%= link_to "Sale History", user_dashboard_path, class: "btn btn-secondary" %></h3>
-<h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
-<h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
-<section class="user-votes__container">
-  <h3 class="user-votes__header">Inventory</h3>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Stock</th>
-      <th>Price</th>
-      <th>Status</th>
+<div class="user-account-page">
+  <p>Member since <%= @user.created_at.strftime("%Y-%m-%d") %></p>
+  <div class="user-account-links">
+    <h3><%= link_to "Sale History", user_dashboard_path, class: "btn btn-secondary" %></h3>
+    <h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
+    <h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
+  </div>
+</div>
+  <section class="user-votes__container">
+    <div class="inventory-table">
+    <h3 class="user-votes__header">Inventory</h3>
+    <table class="table">
+     <thead>
+      <tr class="column-heading">
+        <th>Name</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>Status</th>
 <!--      <th>Edit</th>-->
-    </tr>
-    </thead>
+      </tr>
+     </thead>
     <tbody>
-
-
-
     <% @user.products.each do |product| %>
-      <tr>
-<!--        <td><%#= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>-->
+      <tr class="table-items">
         <td><%= link_to product.name, edit_product_path(product.id)%></td>
         <td><%= product.stock %></td>
         <td><%= product.price %></td>
@@ -33,7 +35,8 @@
       </tr>
     <% end %>
     </tbody>
-  </table>
-
+    </table>
+    </div>
 </section>
 <h3><%= link_to "Back to Top", user_dashboard_path, class: "btn btn-secondary" %></h3>
+</body>

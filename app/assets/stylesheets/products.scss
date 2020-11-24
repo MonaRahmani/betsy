@@ -27,6 +27,28 @@ body h1 {
   text-align: center;
 }
 
+.grid-product-category {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.grid-product-category > div {
+  font-size: 1.3em;
+}
+
+.grid-product-user {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.grid-product-user > div {
+  font-size: 1.3em;
+}
+
 .product-name {
   color: black;
 }
@@ -49,8 +71,8 @@ body h1 {
 .product-details-page > div {
   display: flex;
   flex-direction: column;
-  align-items: right;
-  padding: 2%;
+  align-items: left;
+  //padding: 2%;
 }
 
 .add-to-cart {
@@ -63,4 +85,5 @@ body h1 {
 
 .back-button:hover {
   color: #9C7BC2;
+  text-decoration: none;
 }
