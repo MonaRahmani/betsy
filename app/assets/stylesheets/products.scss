@@ -93,3 +93,29 @@ body h1 {
   color: #9C7BC2;
   text-decoration: none;
 }
+
+.edit-product-form {
+  display: grid;
+  grid-template-columns: 20%;
+  justify-content: center;
+}
+
+.button  {
+  color: black;
+  border-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.btn {
+  border-color: black;
+}
+
+.delete-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
