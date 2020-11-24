@@ -1,5 +1,8 @@
 require "test_helper"
 
+# test for update
+# confirmation
+
 describe OrdersController do
   describe "new" do
     it "responds with success" do
@@ -35,7 +38,7 @@ describe OrdersController do
       flash[:error].must_equal "You have nothing in your cart!"
     end
   end
-  
+
   describe "show" do
     it "will show an order" do
       order = orders(:order1)
@@ -43,7 +46,4 @@ describe OrdersController do
       must_respond_with :success
     end
   end
-
-
-
 end
