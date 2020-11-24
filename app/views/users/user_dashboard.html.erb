@@ -1,37 +1,37 @@
-<h1><%= @user.username %>'s Sale History </h1>
+<h1><%= @user.username %>'s SALE HISTORY </h1>
 <br>
 
 <h3><%= link_to "Back to Sales Account", user_path(session[:user_id]), class: "btn btn-secondary" %></h3>
 <br>
 <table class="table">
-  <h3 class="orders-show__header">Order Summary</h3>
+  <h3 class="orders-show__header">ORDER SUMMARY</h3>
   <tr>
     <td></td>
-    <th scope="col">Orders</th>
-    <th scope="col">Revenue</th>
+    <th scope="col">ORDERS</th>
+    <th scope="col">REVENUE</th>
   </tr>
   <tr>
-    <th scope="row">Pending</th>
+    <th scope="row">PENDING</th>
     <td><%= @user.total_orders_by_status("pending")%></td>
     <td>$<%= @user.total_rev_filtered("pending") %></td>
   </tr>
   <tr>
-    <th scope="row">Paid</th>
+    <th scope="row">PAID</th>
     <td><%= @user.total_orders_by_status("paid") %></td>
     <td>$<%= @user.total_rev_filtered("paid") %></td>
   </tr>
   <tr>
-    <th scope="row">Complete</th>
+    <th scope="row">COMPLETE</th>
     <td><%= @user.total_orders_by_status("complete") %></td>
     <td>$<%= @user.total_rev_filtered("complete") %></td>
   </tr>
   <tr>
-    <th scope="row">Cancelled</th>
+    <th scope="row">CANCELLED</th>
     <td><%= @user.total_orders_by_status("cancelled") %></td>
     <td>$<%= @user.total_rev_filtered("cancelled")%></td>
   </tr>
   <tr>
-    <th scope="row">Total</th>
+    <th scope="row">TOTAL</th>
     <td><%= @user.total_orders_by_status(nil)%></td>
     <td>$<%= @user.total_rev_filtered(nil) %></td>
 

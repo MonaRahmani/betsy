@@ -1,5 +1,5 @@
 <body>
-<h2><%= @user.username%>'s Sales Account</h2>
+<h2><%= @user.username%>'s SALES ACCOUNT </h2>
 <div class="user-account-page">
   <p>Member since <%= @user.created_at.strftime("%Y-%m-%d") %></p>
   <div class="user-account-links">
@@ -10,7 +10,7 @@
 </div>
   <section class="user-votes__container">
     <div class="inventory-table">
-    <h3 class="user-votes__header">Inventory</h3>
+    <h3 class="user-votes__header">INVENTORY</h3>
     <table class="table">
      <thead>
       <tr class="column-heading">
@@ -26,7 +26,7 @@
       <tr class="table-items">
         <td><%= link_to product.name, edit_product_path(product.id), class:"table-item-name"%></td>
         <td><%= product.stock %></td>
-        <td><%= product.price %></td>
+        <td><%= number_to_currency(product.price) %></td>
           <% if product.retired %>
             <td>retired</td>
             <% else %>
