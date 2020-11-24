@@ -1,14 +1,6 @@
 require "test_helper"
 
 describe OrdersController do
-  describe "show" do
-    it "will show an order" do
-      order = orders(:order1)
-      get order_path(order.id)
-      must_respond_with :success
-    end
-  end
-
   describe "new" do
     it "responds with success" do
       Order.new(
@@ -35,4 +27,23 @@ describe OrdersController do
       must_respond_with :success
     end
   end
+
+  describe "cart" do
+    it "will redirect if session[order_items] is nil" do
+      get cart_path
+      must_redirect_to root_path
+      flash[:error].must_equal "You have nothing in your cart!"
+    end
+  end
+  
+  describe "show" do
+    it "will show an order" do
+      order = orders(:order1)
+      get order_path(order.id)
+      must_respond_with :success
+    end
+  end
+
+
+
 end
