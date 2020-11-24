@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   # has_and_belongs_to_many :categories
   validates :name, presence: { message: "Product name is required" }, uniqueness: { message: "This product is already for sale." }
   validates :description, presence: { message: "Please enter a description." }
-  validates :price, numericality: { greater_than: 0, message: "Enter a positive value for price."}
+  validates :price, numericality: { greater_than: 0, message: "Enter a positive number for price."}
   validates :stock, numericality: { only_integer: true, greater_than: 0, message: "Enter a positive number for stock."}
   validates :categories, presence: { message: "Please enter at least one category." }
 
