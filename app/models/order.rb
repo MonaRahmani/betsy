@@ -20,7 +20,7 @@ class Order < ApplicationRecord
       new_item = OrderItem.new(product_id: product.id,
                                quantity: quantity,
                                   order_id: self.id)
-      new_item.save
+      new_item.save 
     end
   end
 
