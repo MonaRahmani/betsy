@@ -28,3 +28,23 @@
 
   <%= f.submit "Add to Cart" %>
 <% end %>
+
+<div>
+  <section class='reviews'>
+    <h3>Review & Rating</h3>
+    <h5>Average Rating: <%= @product.average_rating %> out of <%= @reviews.length %> Reviews </h5>
+    <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
+    <% if @reviews.length != 0 %>
+      <ul class="review-list">
+        <% @reviews.each do |review| %>
+          <li>
+            <strong>
+              <%= format_datetime(review.created_at) %> - Rating: <%= review.rating %>
+            </strong>
+          </li>
+          <ul class="review-item"><li><%= review.review_content %></li></ul>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+</div>
