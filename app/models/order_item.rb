@@ -11,6 +11,6 @@ class OrderItem < ApplicationRecord
   end
 
   def stock_update
-     self.product.stock - self.quantity
+    self.product.stock - self.quantity
   end
 end

@@ -10,7 +10,7 @@ class OrderItemsController < ApplicationController
       return
     end
 
-    quantity = order_params[:quantity].to_i
+    quantity = order_items_params[:quantity].to_i
 
     if quantity <= 0
       flash[:error] = 'Please enter a quantity greater than 0.'
@@ -41,6 +41,20 @@ class OrderItemsController < ApplicationController
     redirect_to cart_path
   end
 
+  def update
+    order_item = OrderItem.find_by(id: params[:id])
+    if order_item.nil?
+      return head :not_found
+    elsif order_item.update(order_items_params)
+      flash[:success] = "Successfully updated #{order_item.product.name} quantity to #{order_item.quantity}"
+      return redirect_to cart_path
+    else
+      flash[:error] = "A problem occurred: Could not update #{order_item.product.name} quantity"
+      return redirect_to cart_path
+    end
+  end
+
+
   def destroy
     order_item = OrderItem.find_by(id: params[:id])  #use id from params not order_id
     if order_item.nil?
@@ -63,9 +77,8 @@ class OrderItemsController < ApplicationController
     end
   end
 
-
     private
-    def order_params
+    def order_items_params
       return params.permit(:quantity, :product_id)
     end
 end
