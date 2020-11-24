@@ -2,33 +2,36 @@
   <%= image_tag("background image/background.png") %>
 </div>
 
-<div class="container-fluid">
-  <h1 class="carousel-caption">BEST SELLERS</h1>
-</div>
+<div class="slideshow-container">
+  <h1 class="text-center">BEST SELLERS</h1>
 
-<section id="carousel">
-  <div class="slideshow-container">
-    <div class="slide">
-      <%= link_to image_tag("dreams/Dream.png", :size => "350x280", class:"img-responsive", alt:"Vase"), products_path %>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row">
+          <div class="col-3"><%= link_to image_tag("dreams/Dream.png", :size => "350x280", class:"d-block w-100", alt:"dream-potion"), product_path(3) %></div>
+          <div class="col-3"><%= link_to image_tag("power_hour/power_hour.png", :size => "350x280", class:"d-block w-100", alt:"power-potion"), product_path(19) %></div>
+          <div class="col-3"><%= link_to image_tag("dreams/Dream_2.png", :size => "350x280", class:"d-block w-100", alt:"dream-potion"), product_path(1) %></div>
+          <div class="col-3"><%= link_to image_tag("dreams/dream_5.jpg", :size => "350x280", class:"d-block w-100", alt:"dream-potion"), product_path(4) %></div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-3"><%= link_to image_tag("emotions/Emotion_2.png", :size => "350x280", class:"d-block w-100", alt:"emotion-potion"), product_path(11) %></div>
+          <div class="col-3"><%= link_to image_tag("dreams/dream_.3.png", :size => "350x280", class:"d-block w-100", alt:"dream-potion"), product_path(10) %></div>
+          <div class="col-3"><%= link_to image_tag("dreams/dream_4.png", :size => "350x280", class:"d-block w-100", alt:"dream-potion"), product_path(17) %></div>
+          <div class="col-3"><%= link_to image_tag("emotions/emotion.png", :size => "350x280", class:"d-block w-100", alt:"emotion-potion"), product_path(6) %></div>
+        </div>
+      </div>
     </div>
-    <div class="slide">
-      <%= link_to image_tag("power_hour/power_hour_7.png", :size => "350x280", class:"img-responsive", alt:"Potion"), products_path %>
-    </div>
-    <div class="slide">
-      <%= link_to image_tag("dreams/Dream_2.png", :size => "350x280", class:"img-responsive", alt:"Bottle"), products_path  %>
-    </div>
-    <div class="slide">
-      <%= link_to image_tag("dreams/dream_5.jpg", :size => "350x280", class:"img-responsive", alt:"Vile"), products_path  %>
-    </div>
-    <!--        <div class="slide">-->
-    <!--          <img src="http://placehold.it/300x150"/>-->
-    <!--        </div>-->
-    <!--        <div class="slide">-->
-    <!--          <img src="http://placehold.it/300x150"/>-->
-    <!--        </div>-->
-    <!--        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>-->
-    <!--        <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
-
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
 
-</section>
+</div>
