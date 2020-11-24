@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_current_user, only: [:show, :cart]
+  before_action :find_current_user, only: [:show, :cart, :confirmation]
 
   def new
     @order = Order.new
@@ -12,16 +12,17 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find_by(id: session[:order_id])
     if @order.nil?
-      flash[:error] = "cant update, order does not exist"
+      flash[:error] = "Sorry, but you cannot access this page."
       redirect_to root_path
     elsif @order.update(order_params)
-      flash[:success] = "order has been submitted"
+      flash[:success] = "Order has been submitted"
       session[:order_id] = nil
+
       # TODO update inventory here
       # consider first creating the shopping cart as pending, and set to paid here?
-      render :show
+      render :confirmation
     else
-      flash[:error] = "order can't be submitted"
+      flash[:error] = "Order can't be submitted"
       redirect_to cart_path
       return
     end
@@ -39,24 +40,33 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: session[:order_id])
-    if session[:order_id] != @order.id
-      flash[:error] = "HEY! Not your page."
+
+    if session[:order_id] != @order
+      flash[:error] = "Sorry, but you cannot access this page."
       redirect_to root_path
     end
-    
+
     if find_current_user.nil?
       head :not_found
       return
     end
   end
 
-  def check_out
-    @order = Order.find_by(id: session[:order_id])
+  def confirmation
+    @order = Order.find_by(id: params[:id])
     if @order.nil?
-      flash[:error] = "Sorry, we can't complete your checkout because that order no longer exists."
-      return redirect_to root_path
+      return head :not_found
     end
   end
+
+
+  # def check_out
+  #   @order = Order.find_by(id: session[:order_id])
+  #   if @order.nil?
+  #     flash[:error] = "Sorry, we can't complete your checkout because that order no longer exists."
+  #     return redirect_to root_path
+  #   end
+  # end
 
 
   private
