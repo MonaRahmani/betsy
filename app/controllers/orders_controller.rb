@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 
   def cart
     if session[:order_id].nil?
-      flash[:error] = "You have nothing in your cart!"
+      flash[:error] = "Your cart is empty!"
       redirect_to root_path
     else
       @order = Order.find_by(id: session[:order_id])
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params[:id])   #changing from sessions[:order_id] to params[:id], works
+    @order = Order.find_by(id: params[:id])   # changing from sessions[:order_id] to params[:id], works
     @logged_user = User.find_by(id: session[:user_id])
 
     # anyone can view this page, how to prevent that.
