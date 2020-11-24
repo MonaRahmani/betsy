@@ -36,7 +36,9 @@ class OrderItemsController < ApplicationController
     end
     
     if product.stock < quantity
-      flash[:error] = "Not enough #{product.name} in stock!"
+      flash[:error] = "Sorry, looks like we don't have enough #{product.name} in stock! ~ Only #{product.stock} left."
+      redirect_to product_path(order_item.product.id)
+      return
     end
 
     @order.add_product(product, quantity)

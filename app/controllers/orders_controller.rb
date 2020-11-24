@@ -18,6 +18,10 @@ class OrdersController < ApplicationController
       session[:order_id] = nil
       # TODO update inventory here
       # consider first creating the shopping cart as pending, and set to paid here?
+      #   if @order.status == 'pending'
+      #     Order.update(id: @order.id, "paid")
+      #   end
+
       render :confirmation
 
     else
@@ -25,6 +29,7 @@ class OrdersController < ApplicationController
       flash[:reasons] = @order.errors.messages
       redirect_back fallback_location: '/'
       redirect_to root_path
+      return
     end
   end
 
