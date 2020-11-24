@@ -122,7 +122,27 @@ end
 puts "Added #{OrderItem.count} order_item records"
 puts "#{order_item_failures.length} order_items failed to save"
 
+REVIEW_FILE = Rails.root.join('db', 'categories_seeds.csv')
+puts "Loading raw review data from #{REVIEW_FILE}"
 
+review_failures = []
+CSV.foreach(REVIEW_FILE, :headers => true) do |row|
+  review = Review.new
+  review.name = Product.find_by(name: row['name']).id
+  review.reviewer_name = row['reviewer_name']
+  review.rating = row['rating']
+  review.name = row['description']
+  successful = review.save
+  if !successful
+    review_failures << review
+    puts "Failed to save review: #{review.inspect}"
+  else
+    puts "Created review: #{review.inspect}"
+  end
+end
+
+puts "Added #{Review.count} review records"
+puts "#{review_failures.length} reviews failed to save"
 
 
 # Since we set the primary key (the ID) manually on each of the
