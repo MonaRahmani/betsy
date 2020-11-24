@@ -24,15 +24,36 @@ product3:
   price: 3
   photo_url: product3.url
   stock: 3
+  retired: true
+  user: user2
+  categories: category1
+
+product4:
+  name: product 4 name
+  description: product 4 desc
+  price: 4
+  photo_url: product4.url
+  stock: 4
+  retired: true
+  user: user1
+  categories: category1
+
+product5:
+  name: product 5 name
+  description: product 5 desc
+  price: 5
+  photo_url: product5.url
+  stock: 5
   retired: false
   user: user2
   categories: category1
 
-sample:
-  name: Test User
-  description: Impossible to see the future is
-  price: 250.00
-  stock: 2
-  photo_url: https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg
-  retired: false
-  user_id: 100
+
+#sample:
+#  name: Test User
+#  description: Impossible to see the future is
+#  price: 250.00
+#  stock: 2
+#  photo_url: https://i.pinimg.com/564x/a9/f3/b1/a9f3b1e3aef96d52fca5e01d3fb22434.jpg
+#  retired: false
+#  user_id: 100

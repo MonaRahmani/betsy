@@ -26,7 +26,7 @@
 <!--</div>-->
 
 <section class="orders-show__container">
-  <h3 class="orders-show__header">Cart</h3>
+  <h3 class="orders-show__header">YOUR CART</h3>
   <table class="table">
     <thead>
     <tr>
@@ -34,29 +34,34 @@
       <th>Name</th>
       <th>Quantity</th>
       <th>Price</th>
-      <th>Edit</th>
-      <th>Delete</th>
+
+      <th>Item Total</th>
+      <th>Update</th>
+      <th>Remove</th>
+
     </tr>
     </thead>
     <tbody>
     <% @order.order_items.each do |item| %>
       <tr>
         <td><%= image_tag( Product.find(item.product_id).photo_url) %></td>
-        <td><%= link_to Product.find(item.product_id).name, product_path(item.product_id) %></td>
+        <td><%= Product.find(item.product_id).name %></td>
         <td><%= item.quantity %></td>
+
         <td><%= Product.find(item.product_id).price %></td>
 
-<!--        short cut for now, doesn't update just adds a new item to cart -->
-        <td> <%= link_to "Edit", product_path(item.product_id) %> </td>
-        <td><%= link_to "Remove", product_order_item_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}%>
-        <td><%= link_to "Edit", product_path(item.product_id, item.id)%>
+        <td><%= number_to_currency(Product.find(item.product_id).price) %></td>
+        <td><%= number_to_currency(Product.find(item.product_id).price * item.quantity) %></td>
+        <td><%= link_to "△", cart_item_path(item.product_id) %></td>
+        <td><%= link_to "X", product_order_item_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}%>
+
       </tr>
     <% end %>
     <tr>
-      <td>TOTAL: $<%=@order.total%></td>
-      <%=link_to "CHECKOUT", edit_order_path(@order)%>
-
+      <td>TOTAL: <%=number_to_currency(@order.total) %></td>
     </tr>
     </tbody>
   </table>
+  <%#= button_to "CHECKOUT", edit_order_path(@order), class: "btn btn-primary" %>
+  <%= link_to "CHECKOUT", edit_order_path(@order)%>
 </section>

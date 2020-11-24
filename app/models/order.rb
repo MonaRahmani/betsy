@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   has_many :order_items
+
   validates :credit_card_name, presence: { message: "Name required" }, :on => :update
   validates :credit_card_num, length: { is: 16, message: "Enter valid 16-digit credit card number" }, :on => :update # doesn't check for digits only
   validates :cvv_num, length: { is: 3, message: "Enter valid 3-digit cvv" }, :on => :update # doesn't check for digits only
@@ -11,10 +12,11 @@ class Order < ApplicationRecord
   validates :state, presence: { message: "State is required" }, :on => :update
   validates :zip_code, length: { is: 5, message: "Enter valid 5-digit zip code" }, :on => :update# doesn't check for digits only
 
+
   after_initialize :init
 
   def init
-    self.status ||= "paid" # will set the default value only if it's nil
+    self.status ||= "pending" # will set the default value only if it's nil
   end
 
   def add_product(product, quantity)
@@ -37,6 +39,7 @@ class Order < ApplicationRecord
     end
     return current_items
   end
+
 
   def total
     total = 0

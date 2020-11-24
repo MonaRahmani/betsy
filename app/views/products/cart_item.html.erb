@@ -1,0 +1,17 @@
+<h1>Update Product Quantity</h1>
+
+<h3><%= @product.name %></h3>
+
+<%= image_tag( @product.photo_url) %>
+
+<%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity, :required => true%>
+  <%= f.submit "Update Quantity", class: "btn btn-primary"%>
+<% end %>
+<% if @product.stock == 0 %> <br>
+  Out of Stock!
+<% elsif @product.stock < 5 %> <br>
+  Almost out of Stock!
+<% end %>
+  <%= link_to "Back to Cart", cart_path %>
