@@ -40,11 +40,11 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])   #changing from sessions[:order_id] to params[:id], works
     @logged_user = User.find_by(id: session[:user_id])
 
-    # anyone can view this page, look into it.
-    if session[:user_id] != @logged_user
-      flash[:error] = "Sorry, you cannot access this page."
-      redirect_to root_path
-    end
+    # anyone can view this page, how to prevent that.
+    # if session[:user_id] != @logged_user
+    #   flash[:error] = "Sorry, you cannot access this page."
+    #   redirect_to root_path
+    # end
   end
 
   def confirmation
