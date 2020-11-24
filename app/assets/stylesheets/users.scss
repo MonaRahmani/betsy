@@ -88,3 +88,11 @@ th, td {
   text-decoration: none;
   color: #9C7BC2;
 }
+
+th {
+  text-align: center;
+}
+
+th[scope='row'] {
+  text-align: left;
+}
