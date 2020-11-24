@@ -3,7 +3,6 @@ class OrderItemsController < ApplicationController
   def create
 
     product = Product.find_by(id: params[:product_id])
-
     if product.nil?
       redirect_to cart_path
       flash[:error] = 'There was a problem adding this item to your cart.'
@@ -11,47 +10,39 @@ class OrderItemsController < ApplicationController
     end
 
     quantity = order_items_params[:quantity].to_i
-
+    order_item = OrderItem.new(order_items_params)
     if quantity <= 0
       flash[:error] = 'Please enter a quantity greater than 0.'
-      # how to render the same page with flash?
-    else
-      if session[:order_id]
-        @order = Order.find_by(id: session[:order_id])
-        if @order.nil?
-          flash[:error] = "Order no longer exists!"
-          session[:order_id] = nil
-          redirect_to cart_path
-          return
-        end
-      else
-        @order = Order.create
-        session[:order_id] = @order.id
-      end
-      @order.add_product(product, quantity)
-      flash[:success] = "#{product.name} added to cart!"
+      return redirect_to product_path(order_item.product.id)
     end
 
+    # Begin creating the order
+    if session[:order_id]
+      @order = Order.find_by(id: session[:order_id])
+
+      if @order.nil?
+        flash[:error] = "Order no longer exists!"
+      end
+
+    else
+      @order = Order.new(status: 'pending')
+      if @order.save
+        session[:order_id] = @order.id
+      else
+        flash[:error] = @order.errors.full_messages
+        redirect_to root_path
+        return
+      end
+    end
+    
     if product.stock < quantity
       flash[:error] = "Not enough #{product.name} in stock!"
     end
+
     @order.add_product(product, quantity)
     flash[:success] = "#{product.name} added to cart!"
-
     redirect_to cart_path
-  end
 
-  def update
-    order_item = OrderItem.find_by(id: params[:id])
-    if order_item.nil?
-      return head :not_found
-    elsif order_item.update(order_items_params)
-      flash[:success] = "Successfully updated #{order_item.product.name} quantity to #{order_item.quantity}"
-      return redirect_to cart_path
-    else
-      flash[:error] = "A problem occurred: Could not update #{order_item.product.name} quantity"
-      return redirect_to cart_path
-    end
   end
 
 
@@ -67,18 +58,8 @@ class OrderItemsController < ApplicationController
     end
   end
 
-  def cart
-    if session[:order_items].nil?
-      flash[:error] = "You have nothing in your cart!"
-      redirect_to root_path
-    else
-      @cart = OrderItem.display_items(session[:order_items])
-      return @cart
-    end
-  end
-
     private
-    def order_items_params
-      return params.permit(:quantity, :product_id)
-    end
+  def order_items_params
+    return params.permit(:quantity, :product_id)
+  end
 end

@@ -1,15 +1,15 @@
 class Order < ApplicationRecord
   has_many :order_items
-  validates :credit_card_name, presence: { message: "Name required" }
-  validates :credit_card_num, length: { is: 16, message: "Enter valid 16-digit credit card number" } # doesn't check for digits only
-  validates :cvv_num, length: { is: 3, message: "Enter valid 3-digit cvv" } # doesn't check for digits only
-  validates :cc_exp_month, numericality: { in: 1..12, message: "Enter valid expiration month (1-12)" } # date validation could be improved with time
-  validates :cc_exp_year, numericality: { in: 2020..2030, message: "Enter valid expiration year (2020-2030)" }
-  validates :email, email: true
-  validates :street_address, presence: { message: "Street address required" }
-  validates :city, presence: { message: "City is required" }
-  validates :state, presence: { message: "State is required" }
-  validates :zip_code, length: { is: 5, message: "Enter valid 5-digit zip code" } # doesn't check for digits only
+  validates :credit_card_name, presence: { message: "Name required" }, :on => :update
+  validates :credit_card_num, length: { is: 16, message: "Enter valid 16-digit credit card number" }, :on => :update # doesn't check for digits only
+  validates :cvv_num, length: { is: 3, message: "Enter valid 3-digit cvv" }, :on => :update # doesn't check for digits only
+  validates :cc_exp_month, numericality: { in: 1..12, message: "Enter valid expiration month (1-12)" }, :on => :update # date validation could be improved with time
+  validates :cc_exp_year, numericality: { in: 2020..2030, message: "Enter valid expiration year (2020-2030)" }, :on => :update
+  validates :email, email: true, :on => :update
+  validates :street_address, presence: { message: "Street address required" }, :on => :update
+  validates :city, presence: { message: "City is required" }, :on => :update
+  validates :state, presence: { message: "State is required" }, :on => :update
+  validates :zip_code, length: { is: 5, message: "Enter valid 5-digit zip code" }, :on => :update# doesn't check for digits only
 
   after_initialize :init
 
