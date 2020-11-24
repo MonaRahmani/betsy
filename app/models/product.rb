@@ -19,7 +19,7 @@ class Product < ApplicationRecord
     if self.reviews.length == 0
       return 0
     else
-      (self.reviews.sum { |review| review.rating.to_f } / self.reviews.length).round(2)
+      (self.reviews.sum { |review| review.rating.to_i } / self.reviews.length).round(2)
     end
   end
 
