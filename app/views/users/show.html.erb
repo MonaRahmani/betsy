@@ -1,5 +1,5 @@
 <h2><%= @user.username%>'s Sales Account</h2>
-<p>Member since <%= @user.created_at.strftime("%Y-%m-%d") %></p>
+<p>Member since <%= @user.created_at.strftime("%m-%d-%Y") %></p>
 <h3><%= link_to "Sale History", user_dashboard_path, class: "btn btn-secondary" %></h3>
 <h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
 <h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
