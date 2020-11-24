@@ -17,7 +17,7 @@
 
 @import "**/*";
 
-@media (min-width: 1200px) {
+@media (min-width: 1200px) and (min-width: 576px) {
 
   .navbar {
     background-color: white;
