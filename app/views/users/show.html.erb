@@ -14,17 +14,17 @@
     <table class="table">
      <thead>
       <tr class="column-heading">
-        <th>Name</th>
-        <th>Stock</th>
-        <th>Price</th>
-        <th>Status</th>
+        <th>NAME</th>
+        <th>STOCK</th>
+        <th>PRICE</th>
+        <th>STATUS</th>
 <!--      <th>Edit</th>-->
       </tr>
      </thead>
     <tbody>
     <% @user.products.each do |product| %>
       <tr class="table-items">
-        <td><%= link_to product.name, edit_product_path(product.id)%></td>
+        <td><%= link_to product.name, edit_product_path(product.id), class:"table-item-name"%></td>
         <td><%= product.stock %></td>
         <td><%= product.price %></td>
           <% if product.retired %>

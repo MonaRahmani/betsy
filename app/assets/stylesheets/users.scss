@@ -67,12 +67,10 @@ body h3 {
 
 .table thead th {
   border-bottom: 1px solid;
+  text-align: center;
 }
 
 table {
-  border: 1px double black;
-}
-.column-heading tr {
   border: 1px double black;
 }
 
@@ -81,3 +79,11 @@ th, td {
   padding:4px 6px;
 }
 
+.table-item-name {
+  color: black;
+}
+
+.table-item-name:hover {
+  text-decoration: none;
+  color: #9C7BC2;
+}
