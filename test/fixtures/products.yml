@@ -24,7 +24,7 @@ product3:
   price: 3
   photo_url: product3.url
   stock: 3
-  retired: false
+  retired: true
   user: user2
   categories: category1
 #

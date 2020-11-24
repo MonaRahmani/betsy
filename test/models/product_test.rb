@@ -131,6 +131,11 @@ describe Product do
       expect(product1.order_items.count).must_equal 2
       # expect(product1.order_items).must_be_instance_of OrderItem
     end
+  end
 
+  describe "active_only method" do
+    it "filters out retired products" do
+      expect(Product.active_only.count).must_equal 2
+    end
   end
 end
