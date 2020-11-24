@@ -12,23 +12,26 @@ class OrderItemsController < ApplicationController
 
     quantity = order_params[:quantity].to_i
 
+    # if @order.nil?
+    #   flash[:error] = "Order no longer exists!"
+    #   session[:order_id] = nil
+    #   raise
+    #   redirect_to cart_path
+    #   return
+    # end
+
     if quantity <= 0
       flash[:error] = 'Please enter a quantity greater than 0.'
       # how to render the same page with flash?
     else
       if session[:order_id]
         @order = Order.find_by(id: session[:order_id])
-        if @order.nil?
-          flash[:error] = "Order no longer exists!"
-          session[:order_id] = nil
-          redirect_to cart_path
-          return
-        end
       else
         @order = Order.create
         session[:order_id] = @order.id
       end
       @order.add_product(product, quantity)
+      raise
       flash[:success] = "#{product.name} added to cart!"
     end
 
