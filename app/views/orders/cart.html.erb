@@ -56,5 +56,6 @@
     </tr>
     </tbody>
   </table>
-  <%= button_to "CHECKOUT", edit_order_path(@order), class: "btn btn-primary" %>
+  <%#= button_to "CHECKOUT", edit_order_path(@order), class: "btn btn-primary" %>
+  <%= link_to "CHECKOUT", edit_order_path(@order)%>
 </section>
