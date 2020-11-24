@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   has_many :order_items
+
   validates :credit_card_name, presence: { message: "Name required" }
   validates :credit_card_num, length: { is: 16, message: "Enter valid 16-digit credit card number" } # doesn't check for digits only
   validates :cvv_num, length: { is: 3, message: "Enter valid 3-digit cvv" } # doesn't check for digits only
@@ -37,6 +38,7 @@ class Order < ApplicationRecord
     end
     return current_items
   end
+
 
   def total
     total = 0
