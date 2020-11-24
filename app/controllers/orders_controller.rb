@@ -12,11 +12,13 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find_by(id: session[:order_id])
     if @order.nil?
-      flash[:error] = "cant update, order dose not exist"
+      flash[:error] = "cant update, order does not exist"
       redirect_to root_path
     elsif @order.update(order_params)
       flash[:success] = "order has been submitted"
       session[:order_id] = nil
+      # TODO update inventory here
+      # consider first creating the shopping cart as pending, and set to paid here?
       render :show
     else
       flash[:error] = "order can't be submitted"
