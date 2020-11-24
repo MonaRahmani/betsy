@@ -112,17 +112,24 @@ describe Product do
 
   describe "relationships" do
     it "product belongs to a user" do
-      product = products(:product1)
+      product1 = products(:product1)
 
-      expect(product.user).must_be_instance_of User
+      expect(product1.user).must_be_instance_of User
     end
 
-    it "product has and belongs to many categories" do
+    it "product has many categories" do
+      product1 = products(:product1)
+      product1.categories << categories(:category2)
 
+      expect(product1.categories.count).must_equal 2
+      # expect(product1.categories).must_be_instance_of Category
     end
 
     it "has many order items" do
-      
+      product1 = products(:product1)
+
+      expect(product1.order_items.count).must_equal 2
+      # expect(product1.order_items).must_be_instance_of OrderItem
     end
 
   end
