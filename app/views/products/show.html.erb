@@ -34,25 +34,25 @@
         </div>
       </div>
     </div>
-  
-<div>
-  <section class='reviews'>
-    <h2>Review and Rating</h2>
-    <h5>Average Rating: <%= @product.average_rating %> out of <%= @reviews.length %> Reviews </h5>
-    <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
-    <% if @reviews.length != 0 %>
-      <ul class="review-list">
-        <% @reviews.each do |review| %>
-          <li>
-            <strong>
-              <%= review.created_at %> - Rating: <%= review.rating %> - Review by: <%= review.name %>
-            </strong>
-          </li>
-          <ul class="review-item"><li><%= review.review_content %></li></ul>
+
+    <div>
+      <section class='reviews'>
+        <h4>REVIEW AND RATINGS</h4>
+        <h5>AVERAGE RATING: <%= @product.average_rating %> out of <%= @reviews.length %> reviews </h5>
+        <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
+        <% if @reviews.length != 0 %>
+          <ul class="review-list">
+            <% @reviews.each do |review| %>
+              <li>
+                <strong>
+                  <%= review.created_at %> - Rating: <%= review.rating %> - Review by: <%= review.name %>
+                </strong>
+              </li>
+              <ul class="review-item"><li><%= review.review_content %></li></ul>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
-    <% end %>
-  </section>
-</div>
+      </section>
+    </div>
 <% end %>
 </body>

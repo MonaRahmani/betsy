@@ -9,7 +9,13 @@
 <% end %>
 <%= form_with model: Review.new, url: product_reviews_path(product) do |f| %>
   <div>
-    <%= f.select :rating, ["rating", 1, 2, 3, 4, 5] %>
+    <%= f.select :rating, ["rating",
+                           ['⭐️', 1],
+                           ['⭐⭐', 2],
+                           ['⭐⭐⭐', 3],
+                           ['⭐⭐⭐⭐', 4],
+                           ['⭐⭐⭐⭐⭐', 5],
+    ]%>
   </div>
   <div>
     <%= f.label :Leave_a_review %>
