@@ -16,9 +16,10 @@ class OrdersController < ApplicationController
     elsif @order.update(order_params)
       flash[:success] = "Order has been submitted"
       session[:order_id] = nil
-      render :confirmation
       # TODO update inventory here
       # consider first creating the shopping cart as pending, and set to paid here?
+      render :confirmation
+
     else
       flash[:error] = "Order wasn't submitted:"
       flash[:reasons] = @order.errors.messages
