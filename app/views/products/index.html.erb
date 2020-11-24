@@ -6,7 +6,7 @@
     <div class="grid">
       <% @products.active_only.each do |product| %>
         <div>
-          <%= image_tag(product.photo_url, :size => '300x350', class:"mx-auto d-block") %>
+          <%= image_tag(product.photo_url, :size => '300x350') %>
           <div>
             <%= link_to product.name, product_path(product.id), class:"product-name" %>
             <br>
@@ -26,7 +26,7 @@
     <div class="grid">
       <% @user.products.active_only.each do |product| %>
       <div>
-        <%= image_tag(product.photo_url, :size => '300x350', class:"mx-auto d-block") %>
+        <%= image_tag(product.photo_url, :size => '300x350') %>
         <div>
           <%= link_to product.name, product_path(product.id), class:"product-name" %>
           <br>
@@ -46,7 +46,7 @@
       <div class="grid">
       <% @products.active_only.each do |product| %>
         <div>
-          <%= image_tag(product.photo_url, :size => '300x350', class:"mx-auto d-block") %>
+          <%= image_tag(product.photo_url, :size => '300x350') %>
         <div>
           <%= link_to product.name, product_path(product.id), class:"product-name" %>
           <br>
