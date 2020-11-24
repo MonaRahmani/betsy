@@ -14,4 +14,13 @@ class Product < ApplicationRecord
   def self.active_only
     self.where(retired: false)
   end
+
+  def average_rating
+    if self.reviews.length == 0
+      return 0
+    else
+      (self.reviews.sum { |review| review.rating.to_f } / self.reviews.length).round(2)
+    end
+  end
+
 end

@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     resources :products, only: [:index]
   end
 
+  resources :products do
+    resources :reviews, only: [:create]
+  end
+
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as:"auth_callback"
   delete "/logout", to: "users#destroy", as: "logout"
