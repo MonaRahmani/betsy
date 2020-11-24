@@ -27,7 +27,28 @@ product3:
   retired: true
   user: user2
   categories: category1
-#
+
+product4:
+  name: product 4 name
+  description: product 4 desc
+  price: 4
+  photo_url: product4.url
+  stock: 4
+  retired: true
+  user: user1
+  categories: category1
+
+product5:
+  name: product 5 name
+  description: product 5 desc
+  price: 5
+  photo_url: product5.url
+  stock: 5
+  retired: false
+  user: user2
+  categories: category1
+
+
 #sample:
 #  name: Test User
 #  description: Impossible to see the future is

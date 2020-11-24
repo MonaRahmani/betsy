@@ -228,62 +228,56 @@ describe Order do
       expect(order2.errors.messages).must_include :zip_code
       expect(order3.valid?).must_equal true
     end
-
-
-
-
-
-
-
-
-
-  #
-  #   it "needs a description" do
-  #     order = orders(:order1)
-  #     order.description = nil
-  #     expect(order.valid?).must_equal false
-  #   end
-  #
-  #   it "needs a stock" do
-  #     order = orders(:order1)
-  #     order.stock = nil
-  #     expect(order.valid?).must_equal false
-  #   end
-  #
-  #   it "stock needs to be numeric" do
-  #     order = orders(:order1)
-  #     order.stock = "Y1892"
-  #     expect(order.valid?).must_equal false
-  #   end
-  #
-  #   it "stock needs to be positive" do
-  #     order = orders(:order1)
-  #     order.stock = -1
-  #     expect(order.valid?).must_equal false
-  #   end
-  #
-  #   it "price needs to be numeric" do
-  #     order = orders(:order1)
-  #     order.price = "Y1892"
-  #     expect(order.valid?).must_equal false
-  #   end
-  #
-  #   it "price needs to be positive" do
-  #     order = orders(:order1)
-  #     order.price = -1
-  #     expect(order.valid?).must_equal false
-  #   end
-  #
-  #   it "doesn't need a photo url" do
-  #     order = orders(:order1)
-  #     order.photo_url = nil
-  #     expect(order.valid?).must_equal true
-  #   end
-  #
-  #   it "needs categories" do
-  #     order = orders(:order1)
-  #     order.categories = []
-  #     expect(order.valid?).must_equal false
-  #   end
   end
+
+  describe "relationships" do
+    it "has many order items" do
+      order1 = orders(:order1)
+      expect(order1.order_items.count).must_equal 2
+    end
+  end
+
+  describe "add product" do
+    it "if product isnt already in cart creates new instance of OrderItem" do
+      product1 = products(:product1)
+      order2 = orders(:order2) # order2 doesn't have any product1s in it (fixture)
+      quantity = 1 # stock of product1 is 1 (edge case)
+
+      expect(OrderItem.count).must_equal 5
+      order2.add_product(product1, quantity)
+      expect(OrderItem.count).must_equal 6
+    end
+
+    it "if product is already in cart updates quantity doesnt create new instance or OrderItem" do
+      product3 = products(:product3)
+      order5 = orders(:order5) # order5 already has 3 product3s in it
+      quantity = 3
+
+      expect(OrderItem.count).must_equal 5
+      order5.add_product(product3, quantity)
+      expect(OrderItem.count).must_equal 5
+    end
+
+    it "cant add item to cart if its retired" do #TODO perhaps move this to order_items controller
+      product4 = products(:product4) # product4 is retired and has a stock of 4
+      order1 = orders(:order1)
+      quantity = 3
+
+      expect(OrderItem.count).must_equal 5
+      order1.add_product(product4, quantity)
+      expect(OrderItem.count).must_equal 5
+    end
+
+    it "cant add more quantity than there is stock" do #TODO and this one as well
+    end
+  end
+
+  describe "display_items" do
+
+  end
+
+  describe "total" do
+
+  end
+
 end
