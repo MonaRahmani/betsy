@@ -17,7 +17,7 @@
 
 @import "**/*";
 
-@media (min-width: 1200px) and (min-width: 576px) {
+@media (min-width: 1200px) {
 
   .navbar {
     background-color: white;
@@ -45,7 +45,6 @@
     font-family: "Raleway", Sans-Serif;
     font-size: 1.3em;
   }
-
 
   .dropdown:hover > .dropdown-menu {
     display: block;
@@ -107,17 +106,21 @@
     color: #72538F;
   }
 
-  footer {
+  footer p{
     font-family: "Raleway", Sans-Serif;
+    color: black;
+
   }
 
   footer h5 {
     font-family: "Amatic SC", Sans-Serif;
     font-size: 50px;
+    color: black;
   }
 
   footer h3 {
     font-size: 20px;
+    color: black;
   }
 
   footer .list-unstyled li a {
@@ -131,6 +134,7 @@
 
   .footer-copyright {
     background-color: #fff;
+    color: black;
   }
 
   #social-media-icons {
