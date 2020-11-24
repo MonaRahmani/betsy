@@ -1,38 +1,34 @@
-<!--Product details-->
-<!--add form-->
-<!--to add item to car-->
 <body>
-<%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
-  <h1><%= @product.name %></h1>
-  <div class="product-details-page">
-    <%= image_tag( @product.photo_url, :size => '300x350') %>
-    <div>
-    <br>
-<!--  </div>-->
-    <div class="product-details">
-    Description: <%= @product.description %>
-    <br>
-    <%= number_to_currency(@product.price) %>
-    <br>
-    Sold by: <%= @product.user.username%>
-    <% if @product.stock == 0 %>
-      <br>
-      Out of Stock!
-    <% elsif @product.stock < 5 %>
-      <br>
-      Almost out of Stock!
-    <% end %>
-    </div>
-    <br>
-      <div class="product-detail-fields">
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity, in: 1..100 %>
-      <br>
-    <%= f.submit "Add to Cart", class:"add-to-cart" %>
+  <%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
+    <h1><%= @product.name %></h1>
+    <div class="product-details-page">
+      <%= image_tag( @product.photo_url, :size => '300x350') %>
+      <div>
         <br>
-        <%= link_to "Back", products_path, class:'back-button' %>
+        <div class="product-details">
+          Description: <%= @product.description %>
+        <br>
+          <%= number_to_currency(@product.price) %>
+        <br>
+         Sold by: <%= @product.user.username %>
+          <% if @product.stock == 0 %>
+            <br>
+            Out of Stock!
+          <% elsif @product.stock < 5 %>
+            <br>
+            Almost out of Stock!
+          <% end %>
+        </div>
+        <br>
+        <div class="product-detail-fields">
+          <%= f.label :quantity %>
+          <%= f.number_field :quantity, in: 1..100 %>
+           <br>
+          <%= f.submit "Add to Cart", class:"add-to-cart" %>
+            <br>
+          <%= link_to "Back", products_path, class:'back-button' %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </body>
