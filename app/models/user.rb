@@ -55,4 +55,8 @@ class User < ApplicationRecord
   def list_purchases
     Order.where(credit_card_name: self.username)
   end
+
+  def sorted_products
+    self.products.sort_by { |product| product.retired.to_s } # f(for false) comes after t(for true)
+  end
 end

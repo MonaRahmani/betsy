@@ -19,7 +19,7 @@
 
 
 
-    <% @user.products.each do |product| %>
+    <% @user.sorted_products.each do |product| %>
       <tr>
 <!--        <td><%#= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>-->
         <td><%= link_to product.name, edit_product_path(product.id)%></td>
