@@ -25,6 +25,13 @@ class OrderItemsController < ApplicationController
       @order.add_product(product, quantity)
       flash[:success] = "#{product.name} added to cart!"
     end
+
+    if product.stock < quantity
+      flash[:error] = "Not enough #{product.name} in stock!"
+    end
+    @order.add_product(product, quantity)
+    flash[:success] = "#{product.name} added to cart!"
+
     redirect_to products_path(product)
   end
 

@@ -1,19 +1,46 @@
 <ul>
   <%if @category %>
     <h1>Products by category: <%= @category.category_name %></h1>
+
+    <% if @products.active_only.length > 0 %>
+      <% @products.active_only.each do |product| %>
+        <li><%= link_to product.name, product_path(product.id) %></li>
+        <li><%= number_to_currency(product.price) %></li>
+      <% end %>
+    <% else %>
+      No products.
+    <% end %>
+
+  <%elsif @user %>
+    <h1>Products by merchant: <%= @user.username %></h1>
+
+    <% if @user.products.active_only.length > 0 %>
+      <% @user.products.active_only.each do |product| %>
+        <li><%= link_to product.name, product_path(product.id) %></li>
+        <li><%= number_to_currency(product.price) %></li>
+      <% end %>
+    <% else %>
+      No products.
+    <% end %>
+
   <% else %>
     <h1>Products</h1>
+
+
+
+    <% if @products.active_only.length > 0 %>
+      <% @products.active_only.each do |product| %>
+        <li><%= link_to product.name, product_path(product.id) %></li>
+        <li><%= number_to_currency(product.price) %></li>
+      <% end %>
+    <% else %>
+      No products.
+    <% end %>
+
+
   <% end %>
 
-  <% if @products.length > 0 %>
-    <% @products.each do |product| %>
-      <li><%= link_to product.name, product_path(product.id)  %></li>
-      <li><%= number_to_currency(product.price) %></li>
-    <% end %>
-  <% else %>
-    No products.
-  <% end %>
 
 </ul>
 
-<%= link_to "Create New Product", new_product_path %>
+<%#= link_to "Create New Product", new_product_path %>
