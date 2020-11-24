@@ -9,4 +9,8 @@ class OrderItem < ApplicationRecord
   def order_item_subtotal
     self.quantity * self.product.price
   end
+
+  def stock_update
+     self.product.stock - self.quantity
+  end
 end

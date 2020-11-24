@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  before_action :find_current_user, only: [:show, :cart, :confirmation]
 
   def new
     @order = Order.new
@@ -12,7 +11,7 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find_by(id: session[:order_id])
     if @order.nil?
-      flash[:error] = "Sorry, but you cannot access this page."
+      flash[:error] = "Sorry, you do not have access to this page."
       redirect_to root_path
     elsif @order.update(order_params)
       flash[:success] = "Order has been submitted"
@@ -39,17 +38,14 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: session[:order_id])
+    @order = Order.find_by(id: params[:id])   #changing from sessions[:order_id] to params[:id], works
+    @logged_user = User.find_by(id: session[:user_id])
 
-    if session[:order_id] != @order
-      flash[:error] = "Sorry, but you cannot access this page."
-      redirect_to root_path
-    end
-
-    if find_current_user.nil?
-      head :not_found
-      return
-    end
+    # anyone can view this page, how to prevent that.
+    # if session[:user_id] != @logged_user
+    #   flash[:error] = "Sorry, you cannot access this page."
+    #   redirect_to root_path
+    # end
   end
 
   def confirmation

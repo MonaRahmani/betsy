@@ -1,11 +1,9 @@
-
 Rails.application.routes.draw do
 
 
   get '/users/:id/user_dashboard', to: 'users#user_dashboard', as: 'user_dashboard'
   get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'confirmation_page'
   get '/users/:id/purchases', to: 'users#purchases', as: 'purchases'
-
 
   # order matters
   get 'orders/cart', to: 'orders#cart', as: 'cart'
