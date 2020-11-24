@@ -1,10 +1,8 @@
-
 Rails.application.routes.draw do
 
 
   get '/users/:id/user_dashboard', to: 'users#user_dashboard', as: 'user_dashboard'
   get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'confirmation_page'
-  get '/users/:id/purchases', to: 'users#purchases', as: 'purchases'
 
 
   # order matters
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new]
   end
 
+  get '/products/:id/cart_item', to: 'products#cart_item', as: 'cart_item'
   resources :products do
     resources :order_items, only: [:create]
     resources :categories, only: [:index]
@@ -23,6 +22,10 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:new, :create] do
     resources :products, only: [:index]
+  end
+
+  resources :products do
+    resources :reviews, only: [:create]
   end
 
   get "/auth/github", as: "github_login"

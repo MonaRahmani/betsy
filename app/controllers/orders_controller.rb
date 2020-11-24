@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  before_action :find_current_user, only: [:show, :cart, :confirmation]
 
   def new
     @order = Order.new
@@ -12,24 +11,31 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find_by(id: session[:order_id])
     if @order.nil?
-      flash[:error] = "Sorry, but you cannot access this page."
+      flash[:error] = 'Sorry, that order no longer exists.'
       redirect_to root_path
     elsif @order.update(order_params)
-      flash[:success] = "Order has been submitted"
+      flash[:success] = 'Order has been submitted.'
       session[:order_id] = nil
-      render :confirmation
       # TODO update inventory here
       # consider first creating the shopping cart as pending, and set to paid here?
+      #   if @order.status == 'pending'
+      #     Order.update(id: @order.id, "paid")
+      #   end
+
+      render :confirmation
+
     else
-      flash[:error] = "Order can't be submitted"
-      redirect_to cart_path
+      flash[:error] = "A problem occurred. The order was not submitted:"
+      flash[:reasons] = @order.errors.messages
+      redirect_back fallback_location: '/'
+      redirect_to root_path
       return
     end
   end
 
   def cart
     if session[:order_id].nil?
-      flash[:error] = "You have nothing in your cart!"
+      flash[:error] = 'Cart Empty! Please add a product to cart.'
       redirect_to root_path
     else
       @order = Order.find_by(id: session[:order_id])
@@ -38,17 +44,15 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: session[:order_id])
+    # changing from session[:order_id] to params[:id] for order works
+    @order = Order.find_by(id: params[:id])
+    @logged_user = User.find_by(id: session[:user_id])
 
-    if session[:order_id] != @order
-      flash[:error] = "Sorry, but you cannot access this page."
-      redirect_to root_path
-    end
-
-    if find_current_user.nil?
-      head :not_found
-      return
-    end
+    # anyone can view this page, how to prevent that.
+    # if session[:user_id] != @logged_user
+    #   flash[:error] = "Sorry, you cannot access this page."
+    #   redirect_to root_path
+    # end
   end
 
   def confirmation
@@ -57,15 +61,6 @@ class OrdersController < ApplicationController
       return head :not_found
     end
   end
-
-
-  # def check_out
-  #   @order = Order.find_by(id: session[:order_id])
-  #   if @order.nil?
-  #     flash[:error] = "Sorry, we can't complete your checkout because that order no longer exists."
-  #     return redirect_to root_path
-  #   end
-  # end
 
 
   private

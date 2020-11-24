@@ -1,3 +1,4 @@
+
 <body>
   <%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
     <h1><%= @product.name %></h1>
@@ -6,11 +7,14 @@
       <div>
         <br>
         <div class="product-details">
-          Description: <%= @product.description %>
+          CATEGORY: <% @product.categories.each do |category| %>
+            <%= link_to category.category_name, category_products_path(category.id) %>
+          <% end %>
+          DESCRIPTION: <%= @product.description %>
         <br>
           <%= number_to_currency(@product.price) %>
         <br>
-         Sold by: <%= @product.user.username %>
+         SOLD BY: <%= link_to @product.user.username, user_products_path(@product.id) %>
           <% if @product.stock == 0 %>
             <br>
             Out of Stock!
@@ -30,5 +34,25 @@
         </div>
       </div>
     </div>
-  <% end %>
+  
+<div>
+  <section class='reviews'>
+    <h2>Review and Rating</h2>
+    <h5>Average Rating: <%= @product.average_rating %> out of <%= @reviews.length %> Reviews </h5>
+    <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
+    <% if @reviews.length != 0 %>
+      <ul class="review-list">
+        <% @reviews.each do |review| %>
+          <li>
+            <strong>
+              <%= review.created_at %> - Rating: <%= review.rating %> - Review by: <%= review.name %>
+            </strong>
+          </li>
+          <ul class="review-item"><li><%= review.review_content %></li></ul>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+</div>
+<% end %>
 </body>
