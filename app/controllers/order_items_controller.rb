@@ -18,6 +18,12 @@ class OrderItemsController < ApplicationController
     else
       if session[:order_id]
         @order = Order.find_by(id: session[:order_id])
+        if @order.nil?
+          flash[:error] = "Order no longer exists!"
+          session[:order_id] = nil
+          redirect_to cart_path
+          return
+        end
       else
         @order = Order.create
         session[:order_id] = @order.id
