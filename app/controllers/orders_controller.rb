@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
       flash[:success] = "Order has been submitted"
       session[:order_id] = nil
       render :confirmation
+      # TODO update inventory here
+      # consider first creating the shopping cart as pending, and set to paid here?
     else
       flash[:error] = "Order can't be submitted"
       redirect_to cart_path
