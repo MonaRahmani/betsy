@@ -1,30 +1,3 @@
-<!--<h2>cart</h2>-->
-<!--<p>list all orders</p>-->
-
-<%# @order.order_items.each do |item| %>
-<%#= item.product.name %>
-<%# end %>
-<%#= link_to "Checkout", new_order_path(@order.id) %>
-
-
-<!--cart-->
-<!--<div>-->
-<!--  <div>-->
-<!--      checkout link-->
-    <%#= link_to "Check Out", new_order_path, action: 'new', controller: 'orders', class: 'btn button-style' %>
-<!--  </div>-->
-<!--  <div>-->
-    <%# @cart.each do |product, val|%>
-<!--      <p><%#= product.name %> </p>-->
-      <%#= image_tag product.photo_url, alt: product.description %>
-<!--      <p><%#= product.price.to_f * val.to_i %></p>-->
-      <%#= link_to 'Remove', remove_from_cart_path(product.id), method: :post %>
-      <%#= link_to "Edit", product_path(product.id) %>
-<!--      <h3> Order Total: <%#= OrderItem.order_item_subtotal(@cart) %>  </h3>-->
-    <%# end %>
-<!--  </div>-->
-<!--</div>-->
-
 <section class="orders-show__container">
   <h3 class="orders-show__header">YOUR CART</h3>
   <table class="table">
@@ -47,9 +20,6 @@
         <td><%= image_tag( Product.find(item.product_id).photo_url) %></td>
         <td><%= Product.find(item.product_id).name %></td>
         <td><%= item.quantity %></td>
-
-        <td><%= Product.find(item.product_id).price %></td>
-
         <td><%= number_to_currency(Product.find(item.product_id).price) %></td>
         <td><%= number_to_currency(Product.find(item.product_id).price * item.quantity) %></td>
         <td><%= link_to "△", cart_item_path(item.product_id) %></td>
