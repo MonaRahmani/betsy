@@ -14,7 +14,7 @@ class Order < ApplicationRecord
     current_item = OrderItem.find_by(product_id: product.id, order_id: self.id )
 
     if current_item
-      current_item.quantity += quantity
+      current_item.quantity = quantity
       current_item.save
     else
       new_item = OrderItem.new(product_id: product.id,
