@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
       redirect_to products_path
       return
     end
-    @reviews = @products.reviews
+    @reviews = @product.reviews
   end
 
   def new

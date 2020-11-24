@@ -31,7 +31,7 @@
 
 <div>
   <section class='reviews'>
-    <h3>Review & Rating</h3>
+    <h2>Review and Rating</h2>
     <h5>Average Rating: <%= @product.average_rating %> out of <%= @reviews.length %> Reviews </h5>
     <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
     <% if @reviews.length != 0 %>
@@ -39,7 +39,7 @@
         <% @reviews.each do |review| %>
           <li>
             <strong>
-              <%= format_datetime(review.created_at) %> - Rating: <%= review.rating %>
+              <%= review.created_at %> - Rating: <%= review.rating %> - Review by: <%= review.name %>
             </strong>
           </li>
           <ul class="review-item"><li><%= review.review_content %></li></ul>
