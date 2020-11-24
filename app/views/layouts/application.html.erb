@@ -13,7 +13,7 @@
       <li>
         <h1><%= link_to "DREAMsy", root_path, class: "dreamsy" %></h1>
       </li>
-      <% if session[:user_id]%>
+      <% if session[:user_id] %>
         <li>
           <%= link_to "Log out", logout_path, method: :delete, class: "nav-button" %>
         </li>

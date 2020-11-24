@@ -1,41 +1,51 @@
-<h3> ORDER # <%= @order.id %></h3>
+<h3> ORDER # <%= @order.id %> </h3>
+
+<p>Name: <%= @order.credit_card_name %></p>
+<p>Mailing Address:
+  <%= @order.street_address %>
+  <%= @order.city %>,
+  <%= @order.state %>
+  <%= @order.zip_code %>
+</p>
+<p>Email: <%= @order.email %></p>
+<p>Purchased On: <%= @order.created_at.strftime("%m/%d/%Y %H:%M %p") %> </p>
+<p>Purchase Status: <%= @order.status %> </p>
+<p>Credit Card: <%= @order.credit_card_num[-4..-1] %> </p>
+<p>Expiration Date:
+  <%= @order.cc_exp_month %>/<%= @order.cc_exp_year %>
+</p>
+
 <section class="user-votes__container">
-  <h3 class="user-votes__header">Products</h3>
   <table class="table">
     <thead>
     <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Product ID</th>
+      <th>Product</th>
       <th>Price</th>
-
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Shipping Status</th>
+      <th>Cancel Product</th>
     </tr>
     </thead>
     <tbody>
     <% @order.order_items.each do |item| %>
       <tr>
-        <td><%= link_to image_tag(item.product.photo_url), product_path(item.product.id)%></td>
-        <td><%= item.product.name %></td>
-        <td><%= item.quantity %></td>
-        <td><%= item.product_id %></td>
+        <td><%= link_to item.product.name, product_path(item.product.id)%></td>
         <td><%= item.product.price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.order_item_subtotal %></td>
+
+<!--        toggle status logic needed-->
+<!--        <td><%#= link_to "SHIP", edit_product_path(product.id)%></td>-->
+<!--        <td><%#= link_to "CANCEL", edit_product_path(product.id)%></td>-->
+
 
         <%# if product.retired %>
-        <!--          <td><%#= product.retired %></td>-->
+<!--                  <td><%#= product.retired %></td>-->
         <%# end %>
         <%#= link_to "Edit product", edit_product_path(product.id)%>
       </tr>
-
     <% end %>
     </tbody>
-    <tfoot>
-    <tr>
-      <th><h5 colspan="6">Total</h5></th>
-      <td colspan="6">
-        <h5> $ <%= @order.total %> </h5>
-      </td>
-    </tr>
-    </tfoot>
   </table>
-</section>0
+</section>
