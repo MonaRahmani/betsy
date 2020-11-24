@@ -9,7 +9,7 @@
   <br>
   <%= number_to_currency(@product.price) %>
   <br>
-  Sold by: <%= @product.user.username%>
+  Sold by: <%= link_to @product.user.username, user_products_path(@product.user.id) %>
   <% if @product.stock == 0 %> <br>
     Out of Stock!
   <% elsif @product.stock < 5 %> <br>
@@ -17,6 +17,11 @@
   <% end %> <br>
   <%= f.label :quantity %>
   <%= f.text_field :quantity, :required => true%>
+
+  <h4>Category: </h4>
+  <% @product.categories.each do |category| %>
+    <%= link_to category.category_name, category_products_path(category.id) %>
+  <% end %>
 <%#= @product.retired %>
   <br>
   <%= link_to "Back", products_path %>
