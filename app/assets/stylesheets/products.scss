@@ -28,14 +28,20 @@ body h1 {
 }
 
 .grid-product-category {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-row-gap: 50px;
+  grid-column-gap: 10px;
+  margin: 0 20%;
+  padding: 2%;
 }
 
 .grid-product-category > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   font-size: 1.3em;
+  text-align: center;
 }
 
 .grid-product-user {
