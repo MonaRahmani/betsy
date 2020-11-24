@@ -2,12 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+body h1 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1%;
+}
+
 .grid {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-row-gap: 50px;
   grid-column-gap: 10px;
   margin: 0 20%;
+  padding: 2%;
 }
 
 .grid > div {
