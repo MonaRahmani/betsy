@@ -8,13 +8,14 @@ require "csv"
 # note: doesn't currently check for if names are unique against each other
 
 CSV.open("db/reviews_seeds.csv", "w", :write_headers => true,
-         :headers => ["name", "reviewer_name", "rating", "review"]) do |csv|
+         :headers => ["rating", "review_content", "name", "product_id"]) do |csv|
 
   50.times do
-    name = "" # this is the product name
-    reviewer_name = Faker::Name.name
     rating = rand(1..5)
-    review = ""
-    csv << [name, reviewer_name, rating, review]
+    review_content = ""
+    name = Faker::Name.name # name of the reviewer
+    product_id = ""
+
+    csv << [rating, review_content, name, product_id]
   end
 end

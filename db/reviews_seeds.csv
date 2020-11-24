@@ -1,51 +1,51 @@
-name,reviewer_name,rating,review
-Travel the world,Wilbert Nienow,5,""
-Walk on the moon,Georgene Nikolaus,3,""
-Find your soulmate,Keith Heller,2,""
-Buy an island,Ryan Feest,1,""
-Bottle of joy,Ashley Flatley,5,""
-Botte of love,The Hon. Sherron Pollich,4,""
-Bottle of strength,Prof. Carroll Nicolas,4,""
-Bottle of calm,Sid Mayert,4,""
-Bottle of courage,Shara Terry,1,""
-Bottle of motivation,Floyd Wilkinson,4,""
-Bottle of rage,Mack McLaughlin,4,""
-Bottle of envy,Phoebe O'Reilly,1,""
-Fly,Hugh Price,3,""
-Teleport,Dorthea Legros,3,""
-Talk to animals,Kristi Wuckert,4,""
-Be invisible,Miss Abram Yost,2,""
-Jump to your career,Leif Daniel,4,""
-Learn a new language,Jacques Schmeler IV,2,""
-Bottle of edge case brainstorms,Rep. Ernestine Schaden,4,""
-Early retirement,Mei Wiegand Jr.,5,""
-Travel the world,Jeff Grant,1,""
-Walk on the moon,Tawanna Crooks Ret.,1,""
-Find your soulmate,Royce Thompson,1,""
-Buy an island,Joan Beier,2,""
-Bottle of joy,Edmundo Monahan,1,""
-Botte of love,Palmer Ryan Sr.,2,""
-Bottle of strength,Myrna Smith,2,""
-Bottle of calm,Gonzalo O'Keefe,2,""
-Bottle of courage,Chong Hermann MD,2,""
-Bottle of motivation,Augustine Gerlach,5,""
-Bottle of rage,Garnet Ullrich,2,""
-Bottle of envy,Evelynn Schinner,3,""
-Fly,Damien Boyle,2,""
-Teleport,Pres. Laura Hauck,2,""
-Talk to animals,Chae Flatley,5,""
-Be invisible,Stefanie Rohan,2,""
-Jump to your career,Rolf Skiles III,3,""
-Learn a new language,Louie Hand,2,""
-Bottle of edge case brainstorms,Erik Schinner,5,""
-Early retirement,Claude Wisoky,5,""
-Fly,Melodi Lubowitz,5,""
-Teleport,Mr. Jadwiga Crona,4,""
-Talk to animals,Alfonso Rohan,2,""
-Be invisible,Rima Bartell,1,""
-Jump to your career,Lorean Reilly,2,""
-Learn a new language,Mayme Weissnat,3,""
-Bottle of edge case brainstorms,Miss Roosevelt Wuckert,3,""
-Early retirement,Maris Lesch DO,3,""
-Be invisible,Asley Lowe,2,""
-Jump to your career,Pres. Clinton Rolfson,2,""
+rating,review_content,name,product_id
+5,Amazing,Andree Leannon,Travel the world
+4,Pretty good,Jeraldine Klocko,Walk on the moon
+2,Meh,Gerard Hilpert,Find your soulmate
+3,Mediocre!,Micah Buckridge CPA,Buy an island
+3,Mediocre!,Bobby Smith,Bottle of joy
+5,Perfect,Juliann Spinka,Bottle of love
+2,Not great,Sydney Renner,Bottle of strength
+3,Mediocre!,Kermit Rutherford III,Bottle of calm
+1,Horrible,Murray Bergstrom,Bottle of courage
+4,Good,Dusti Kunze JD,Bottle of motivation
+2,Meh,Stephen Ernser,Bottle of rage
+4,I liked it... but did I love it?,Pres. Maria Fahey,Bottle of envy
+1,Terrible,Pres. Lucinda Stiedemann,Fly
+3,Mediocre!,Phillip Hegmann,Teleport
+5,Will be back for more,Bradley Renner,Talk to animals
+4,Pretty good,Lexie Dietrich,Be invisible
+4,Good,Mrs. Rochelle Conroy,Jump to your career
+4,Pretty good,Eusebio Rau,Learn a new language
+4,Good,Johnette Thompson,Bottle of edge case brainstorms
+2,Not great,Len Kreiger,Early retirement
+5,Yay!,Jeremy Quigley,Travel the world
+1,Do not recommend,Stanley Vandervort,Walk on the moon
+4,Pretty good,Byron Flatley,Find your soulmate
+3,Mediocre!,Willard Auer,Buy an island
+2,Meh,Lee Fay DDS,Bottle of joy
+2,Not great,Kaylene Huel,Bottle of love
+3,Mediocre!,Newton Spinka MD,Bottle of strength
+3,Mediocre!,Yuette Gleason,Bottle of calm
+1,Horrible,Toby Bayer,Bottle of courage
+5,"LOVED IT, thanks dream team!",Nestor Konopelski LLD,Bottle of motivation
+1,Terrible,Celestine King,Bottle of rage
+4,Good,Genevieve Bartell JD,Bottle of envy
+5,Perfect,Armand Osinski,Fly
+2,Meh,Sean Hayes,Teleport
+4,Pretty good,Wayne Raynor,Talk to animals
+1,Do not recommend,Demarcus Kemmer,Be invisible
+3,Mediocre!,Felix Lindgren,Jump to your career
+4,Good,Kris Hilll,Learn a new language
+2,Not great,Loan Feeney,Bottle of edge case brainstorms
+3,Mediocre!,Doloris Jakubowski DO,Early retirement
+3,Mediocre!,Lauran Kilback,Bottle of envy
+5,Wonderful,Maureen Bins III,Fly
+3,Fine,Chantelle Kling,Teleport
+4,Good,Fr. Edgar Upton,Talk to animals
+2,Meh,Gov. Ray Senger,Be invisible
+1,No,Dane Roob,Jump to your career
+2,Not great,Venice Bayer,Learn a new language
+5,Will buy out the store. Lifesaver.,Trang Boyle,Bottle of edge case brainstorms
+5,Dream team is the best.,Willy Lebsack,Early retirement
+1,Nope,Danyelle Willms DO,Bottle of envy

@@ -11,6 +11,8 @@ CSV.open("db/orders_seeds.csv", "w", :write_headers => true,
          :headers => ["street_address", "city", "state", "zip_code", "credit_card_name", "credit_card_num", "email", "cc_exp_month", "cc_exp_year", "cvv_num", "status"]) do |csv|
   20.times do
 
+    # TODO to pass validation zip needs to be 5 char long and cc cant have dashes therefore would need to adjust here or in csv to seed successfully
+
     street_address = Faker::Address.street_address
     city = Faker::Address.city
     state = Faker::Address.state_abbr

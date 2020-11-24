@@ -122,16 +122,16 @@ end
 puts "Added #{OrderItem.count} order_item records"
 puts "#{order_item_failures.length} order_items failed to save"
 
-REVIEW_FILE = Rails.root.join('db', 'categories_seeds.csv')
+REVIEW_FILE = Rails.root.join('db', 'reviews_seeds.csv')
 puts "Loading raw review data from #{REVIEW_FILE}"
 
 review_failures = []
 CSV.foreach(REVIEW_FILE, :headers => true) do |row|
   review = Review.new
-  review.name = Product.find_by(name: row['name']).id
-  review.reviewer_name = row['reviewer_name']
   review.rating = row['rating']
-  review.name = row['description']
+  review.review_content = row['review_content']
+  review.name = row['name'] # the name is of the reviewer its random
+  review.product_id = Product.find_by(name: row['product_id']).id # the name here is of the product
   successful = review.save
   if !successful
     review_failures << review
