@@ -19,8 +19,8 @@
         </li>
         <li class="navbar-item dropdown-toggle main-drop" type="button" data-toggle="dropdown">Sales Account<span class="caret"></span></li>
           <ul class="dropdown-menu">
-            <li><%= link_to "Inventory", user_path(session[:user_id]) %></li>
-            <li><%= link_to "Sale History", user_dashboard_path(session[:user_id]) %></li>
+            <li><%= link_to "Product Inventory", user_path(session[:user_id]) %></li>
+            <li><%= link_to "Sales Dashboard", user_dashboard_path(session[:user_id]) %></li>
           </ul>
       <% else %>
         <li>
