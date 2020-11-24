@@ -1,7 +1,7 @@
-<h1><%= @user.username %>'s Sale History </h1>
+<h1><%= @user.username %>'s Sales Dashboard </h1>
 <br>
 
-<h3><%= link_to "Back to Sales Account", user_path(session[:user_id]), class: "btn btn-secondary" %></h3>
+<p><%= link_to "View Product Inventory", user_path(session[:user_id]) %><p>
 <br>
 <table class="table">
   <h3 class="orders-show__header">Order Summary</h3>
