@@ -18,6 +18,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def cart_item
+    find_product
+  end
+
   def show
     if @product.nil?
       redirect_to products_path

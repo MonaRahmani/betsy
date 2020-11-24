@@ -39,6 +39,7 @@ class Order < ApplicationRecord
     return current_items
   end
 
+
   def total
     total = 0
     self.order_items.each do |item|
