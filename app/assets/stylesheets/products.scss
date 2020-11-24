@@ -2,3 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-row-gap: 50px;
+  grid-column-gap: 10px;
+  margin: 0 20%;
+}
+
+.grid > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.product-name {
+  color: black;
+}
+
+.product-name:hover {
+  color: #9C7BC2;
+  text-decoration: none;
+}
+
+
+//.product-name {
+//  display: flex;
+//  align-items: center;
+//}
+
+//.product-price {
+//  display: flex;
+//  align-items: center;
+//}
+
+//.product-info {
+//  font-size: 2em;
+//}
+
+

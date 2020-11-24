@@ -1,6 +1,4 @@
 <body>
-<div class="products container text-md-center">
-<ul>
   <%if @category %>
     <h1>Products by category: <%= @category.category_name %></h1>
 
@@ -13,7 +11,6 @@
     <% else %>
       No products.
     <% end %>
-    </ul>
 
   <%elsif @user %>
     <h1>Products by merchant: <%= @user.username %></h1>
@@ -32,17 +29,22 @@
     <h1>Products</h1>
 
     <% if @products.active_only.length > 0 %>
+      <div class="grid">
       <% @products.active_only.each do |product| %>
-        <li><%= image_tag(product.photo_url, :size => '300x350') %></li>
-        <li><%= link_to product.name, product_path(product.id) %></li>
-        <li><%= number_to_currency(product.price) %></li>
+        <div>
+          <%= image_tag(product.photo_url, :size => '300x350', class:"mx-auto d-block") %>
+        <div>
+          <%= link_to product.name, product_path(product.id), class:"product-name" %>
+          <br>
+          <%= number_to_currency(product.price, class:"product-price") %>
+        </div>
+      </div>
       <% end %>
+      </div>
     <% else %>
       No products.
     <% end %>
   <% end %>
-</ul>
-</div>
 <%= link_to "Create New Product", new_product_path %>
 </body>
 
