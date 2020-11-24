@@ -6,12 +6,30 @@ class UsersController < ApplicationController
     @products = Product.all
   end
 
-  def show
+  def purchases
     @user = User.find_by(id: params[:id])
 
     if @user.nil?
       head :not_found
       return
+    end
+    if session[:user_id] != @user.id
+      flash[:error] = "HEY! Not your page."
+      redirect_to root_path
+    end
+
+    @orders = Order.find_by(credit_card_name: params[:username])
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      head :not_found
+      return
+    end
+    if session[:user_id] != @user.id
+      flash[:error] = "HEY! Not your page."
+      redirect_to root_path
     end
   end
 

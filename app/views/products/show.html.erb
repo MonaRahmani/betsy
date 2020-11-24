@@ -3,22 +3,23 @@
 <!--to add item to car-->
 <%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
   <h1><%= @product.name %></h1>
-  Sold by: <%= @product.user.username%>
+  <%= image_tag( @product.photo_url) %>
+  <br>
+  Description: <%= @product.description %>
   <br>
   <%= number_to_currency(@product.price) %>
   <br>
-  In Stock: <%= @product.stock %>
-  <!--might have to change this later. Should just say in stock or not?-->
-  <br>
+  Sold by: <%= @product.user.username%>
+  <% if @product.stock == 0 %> <br>
+    Out of Stock!
+  <% elsif @product.stock < 5 %> <br>
+    Almost out of Stock!
+  <% end %> <br>
   <%= f.label :quantity %>
   <%= f.number_field :quantity, in: 1..100 %>
 <%#= @product.retired %>
   <br>
-  Description: <%= @product.description %>
-  <br>
   <%= link_to "Back", products_path %>
-  <%= link_to "Update", edit_product_path %>
-  <%= link_to "Delete", product_path(@product.id), model: :delete, data: {
-      confirm: "Are you sure you want to delete this product?"} %>
+
   <%= f.submit "Add to Cart" %>
 <% end %>

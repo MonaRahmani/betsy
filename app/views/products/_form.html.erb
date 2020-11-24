@@ -1,11 +1,5 @@
 <%= form_with model: @product, class: 'edit-product' do |f| %>
   <div class="edit-product-form">
-
-
-    <%= f.label :categories%>
-    <%= f.select(:categories, Category.all.map {|p| [ p.category_name, p.id ] },
-                 { :prompt => "Select at least one"},
-                 { :multiple => true }) %>
     <br>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -21,6 +15,15 @@
     <br>
     <%= f.label :description %>
     <%= f.text_area :description %>
+    <br>
+    <%= f.label :categories%>
+    <%= f.select(:categories, Category.all.map {|p| [ p.category_name, p.id ] },
+                 { :prompt => "Select at least one"},
+                 { :multiple => true }) %>
+    <br>
+    <%= f.label :retired, "Retired"%>
+    <%= f.select :retired, [true, false] %>
+    <br>
   </div>
 <%= f.submit action_name, class:"btn btn-primary" %>
 <% end %>

@@ -1,21 +1,49 @@
-<h1> ORDER SUMMARY </h1>
-<h5>Total Revenue</h5>
-<p>Total Revenue: $ <%= @user.total_rev_filtered(nil) %> </p>
-<p>Pending: $ <%= @user.total_rev_filtered("pending") %></p>
-<p>Paid: $ <%= @user.total_rev_filtered("paid") %></p>
-<p>Complete: $ <%= @user.total_rev_filtered("complete") %></p>
-<p>Cancelled: $ <%= @user.total_rev_filtered("cancelled") %></p>
-<h5>Total Orders</h5>
-<!--<p>Total Revenue: $ <%#= @user.total_rev_filtered(nil) %> </p>-->
-<!--<p>Pending: $ <%#= @user.total_rev_filtered("pending") %></p>-->
-<!--<p>Paid: $ <%#= @user.total_rev_filtered("paid") %></p>-->
-<!--<p>Complete: $ <%#= @user.total_rev_filtered("complete") %></p>-->
-<!--<p>Cancelled: $ <%#= @user.total_rev_filtered("cancelled") %></p>-->
-<h5>Filter By Status:</h5>
-<p><%= link_to "All Orders", order_path %></p>
-<p>Paid </p>
-<p>Completed </p>
-<%= link_to "Add Category", new_category_path %></p>
+<h1><%= @user.username %>'s Sale History </h1>
+<br>
+
+<h3><%= link_to "Back to Sales Account", user_path(session[:user_id]), class: "btn btn-secondary" %></h3>
+<br>
+<table class="table">
+  <h3 class="orders-show__header">Order Summary</h3>
+  <tr>
+    <td></td>
+    <th scope="col">Orders</th>
+    <th scope="col">Revenue</th>
+  </tr>
+  <tr>
+    <th scope="row">Pending</th>
+    <td><%= @user.total_orders_by_status("pending")%></td>
+    <td>$<%= @user.total_rev_filtered("pending") %></td>
+  </tr>
+  <tr>
+    <th scope="row">Paid</th>
+    <td><%= @user.total_orders_by_status("paid") %></td>
+    <td>$<%= @user.total_rev_filtered("paid") %></td>
+  </tr>
+  <tr>
+    <th scope="row">Complete</th>
+    <td><%= @user.total_orders_by_status("complete") %></td>
+    <td>$<%= @user.total_rev_filtered("complete") %></td>
+  </tr>
+  <tr>
+    <th scope="row">Cancelled</th>
+    <td><%= @user.total_orders_by_status("cancelled") %></td>
+    <td>$<%= @user.total_rev_filtered("cancelled")%></td>
+  </tr>
+  <tr>
+    <th scope="row">Total</th>
+    <td><%= @user.total_orders_by_status(nil)%></td>
+    <td>$<%= @user.total_rev_filtered(nil) %></td>
+
+  </tr>
+</table>
+
+<!--<h5>By Status:</h5>-->
+<!--<p><%#= link_to "All Orders", order_path %></p>-->
+<!--<p>Paid </p>-->
+<!--<p>Completed </p>-->
+<!--<%#= link_to "Add Category", new_category_path %></p>-->
+
 <section class="orders-show__container">
   <h3 class="orders-show__header">Products</h3>
   <table class="table">
@@ -31,10 +59,11 @@
     <% @user.order_items.each do |item| %>
       <tr>
         <td><%= link_to item.id, order_path(item) %> </td>
-        <td><%= item.completed_at %></td>
-        <td><%= item.status %></td>
+        <td><%= item.created_at %></td>
+        <td><%= item.order.status %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 </section>
+<h3><%= link_to "Back to Top", user_dashboard_path, class: "btn btn-secondary" %></h3>

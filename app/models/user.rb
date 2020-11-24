@@ -18,20 +18,41 @@ class User < ApplicationRecord
   def total_rev_filtered(status)
     sum = 0
     self.order_items.each do |item|
-      if status.nil?
+      if status.nil? || item.order.status == status
         sum += item.order_item_subtotal
-      elsif item.order.status == status
-        sum += item.order_item_subtotal
+
       end
     end
     return sum
   end
   # Total number of orders filtered by status
-  def total_orders_filtered(status)
+  # def total_orders_filtered(status)
+  #   if status.nil?
+  #     return self.order_items.count
+  #   elsif
+  #
+  #       if order_item.order.status == status
+  #         count += 1
+  #       end
+  #   end
+  #   end
+  # end
+
+  def total_orders_by_status(status)
+    status_sort_hash = Hash.new(0)
     if status.nil?
-      return self.order_items.order.count
-    elsif order_items.order.status == status
-      return self.order_items.order.count
+      return self.order_items.count
+    else
+      self.order_items.each do |order_item|
+        if order_item.order.status == status
+          status_sort_hash[order_item.order.id] = status
+        end
+      end
+      return status_sort_hash.values.count(status)
     end
+  end
+
+  def list_purchases
+    Order.where(credit_card_name: self.username)
   end
 end

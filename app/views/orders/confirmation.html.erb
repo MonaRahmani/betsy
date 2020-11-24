@@ -1,4 +1,30 @@
-<h3> ORDER # <%= @order.id %></h3>
+<h4><%= @order.credit_card_name %> ~ Thank you for your order! </h4>
+<h6>...May your dreams come true...</h6></br>
+
+<h5> ORDER CONFIRMATION </h5>
+<p>
+  We've received your order and will contact you as soon as your package is shipped.
+  You can find your purchase information below.
+</p>
+
+<h5> Order Summary </h5>
+
+<p>Name: <%= @order.credit_card_name %></p>
+<p>Mailing Address:
+  <%= @order.street_address %>
+  <%= @order.city %>,
+  <%= @order.state %>
+  <%= @order.zip_code %>
+</p>
+<p>Email: <%= @order.email %></p>
+<p>Order #: <%= @order.id %> </p>
+<p>Purchased On: <%= @order.created_at.strftime("%m/%d/%Y %H:%M %p") %> </p>
+<p>Purchase Status: <%= @order.status %> </p>
+<p>Last four digits of Credit Card: <%= @order.credit_card_num[-4..-1] %> </p>
+<p>Card Exp. Date:
+  <%= @order.cc_exp_month %>/<%= @order.cc_exp_year %>
+</p>
+
 <section class="user-votes__container">
   <h3 class="user-votes__header">Products</h3>
   <table class="table">
@@ -38,4 +64,4 @@
     </tr>
     </tfoot>
   </table>
-</section>0
+</section>
