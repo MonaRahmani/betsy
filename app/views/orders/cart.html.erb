@@ -5,15 +5,15 @@
     <% @order.order_items.each do |item| %>
       <div class="cart-grid-details">
         <div>
-        <%= image_tag( Product.find(item.product_id).photo_url, :size => '300x350') %>
-        PRODUCT: <%= Product.find(item.product_id).name %> <br>
+        <%= image_tag( item.product.photo_url, :size => '300x350') %>
+        PRODUCT: <%= item.product.name %> <br>
         QUANTITY: <%= item.quantity %> <br>
-        PRICE: <%= number_to_currency(Product.find(item.product_id).price) %> <br>
-        ITEM TOTAL: <%= number_to_currency(Product.find(item.product_id).price * item.quantity) %>
+        PRICE: <%= number_to_currency(item.product.price) %> <br>
+        ITEM TOTAL: <%= number_to_currency(item.product.price * item.quantity) %>
         </div>
         <div class="edit-cart">
           <%= link_to "UPDATE", cart_item_path(item.product_id), class:"nav-link" %>
-          <%= link_to "REMOVE", product_order_items_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}, class:"nav-link"%>
+          <%= link_to "REMOVE", product_order_item_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}, class:"nav-link"%>
         </div>
       </div>
       <hr>
