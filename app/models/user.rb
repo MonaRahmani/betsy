@@ -21,7 +21,6 @@ class User < ApplicationRecord
     self.order_items.each do |item|
       if status.nil? || item.order.status == status
         sum += item.order_item_subtotal
-
       end
     end
     return sum
@@ -51,10 +50,6 @@ class User < ApplicationRecord
       end
       return status_sort_hash.values.count(status)
     end
-  end
-
-  def list_purchases
-    Order.where(credit_card_name: self.username)
   end
 
   def sorted_products
