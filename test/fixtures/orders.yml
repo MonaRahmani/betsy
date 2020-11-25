@@ -9,7 +9,7 @@ order1:
   city: First City
   state: IA
   zip_code: 11111
-  status: paid
+  status: pending
 
 order2:
   credit_card_name: Person2
