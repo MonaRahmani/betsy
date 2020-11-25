@@ -62,6 +62,8 @@ describe UsersController do
 
       # The new user's ID should be set in the session
       session[:user_id].must_equal User.last.id
+
+      flash[:success].must_equal "Logged in as returning user #{user.username}"
     end
 
     it "redirects to the root path if given invalid user data" do
@@ -71,7 +73,6 @@ describe UsersController do
       get auth_callback_path(:github)
       must_redirect_to root_path
     end
-  end
 
 
     describe "destroy action" do
@@ -84,6 +85,7 @@ describe UsersController do
         must_redirect_to root_path
         refute(session[:user_id])
       end
+    end
 
   end
 end
