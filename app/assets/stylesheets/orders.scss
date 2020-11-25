@@ -59,4 +59,17 @@
     color: #9C7BC2;
     text-decoration: none;
   }
+
+  .prod-in-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-size: 1.5em;
+  }
+  .prod-in-button:hover {
+    color: #9C7BC2;
+    text-decoration: none;
+  }
+
 }
