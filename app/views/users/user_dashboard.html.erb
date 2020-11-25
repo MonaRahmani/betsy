@@ -13,27 +13,27 @@
   <tr>
     <th scope="row">Pending</th>
     <td><%= @user.total_orders_by_status("pending")%></td>
-    <td>$<%= @user.total_rev_filtered("pending") %></td>
+    <td><%= number_to_currency(@user.total_rev_filtered("pending")) %></td>
   </tr>
   <tr>
     <th scope="row">Paid</th>
     <td><%= @user.total_orders_by_status("paid") %></td>
-    <td>$<%= @user.total_rev_filtered("paid") %></td>
+    <td><%= number_to_currency(@user.total_rev_filtered("paid")) %></td>
   </tr>
   <tr>
     <th scope="row">Complete</th>
     <td><%= @user.total_orders_by_status("complete") %></td>
-    <td>$<%= @user.total_rev_filtered("complete") %></td>
+    <td><%= number_to_currency(@user.total_rev_filtered("complete")) %></td>
   </tr>
   <tr>
     <th scope="row">Cancelled</th>
     <td><%= @user.total_orders_by_status("cancelled") %></td>
-    <td>$<%= @user.total_rev_filtered("cancelled")%></td>
+    <td><%= number_to_currency(@user.total_rev_filtered("cancelled")) %></td>
   </tr>
   <tr>
     <th scope="row">Total</th>
     <td><%= @user.total_orders_by_status(nil)%></td>
-    <td>$<%= @user.total_rev_filtered(nil) %></td>
+    <td><%= number_to_currency(@user.total_rev_filtered(nil)) %></td>
 
   </tr>
 </table>
