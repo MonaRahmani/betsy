@@ -2,13 +2,16 @@ review1:
   rating: 4
   review_content: awesome
   product: product1
+  name: Edd
 
 review2:
   rating: 3
   review_content: Amazing product
   product: product1
+  name: Steve
 
 review3:
   rating: 5
   review_content: Recommended
   product: product1
+  name: Nancy
