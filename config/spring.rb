@@ -3,7 +3,7 @@
 #   SimpleCov.start 'rails'
 #   puts "required simplecov"
 # end
-#
+
 Spring.watch(
   ".ruby-version",
   ".rbenv-vars",

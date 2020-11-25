@@ -1,35 +1,40 @@
-<%= form_with model: @product, class: 'edit-product' do |f| %>
-  <div class="edit-product-form">
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+<body>
+  <%= form_with model: @product, class: 'edit-product' do |f| %>
+    <div class="edit-product-form">
+      <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label :price %>
+        <%= f.text_field :price %>
+      </div>
+      <div>
+        <%= f.label :stock %>
+        <%= f.text_field :stock %>
+      </div>
+      <div>
+      <%= f.label :photo_url, "Photo URL" %>
+      <%= f.text_field :photo_url %>
+      </div>
+      <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      </div>
+      <div>
+      <%= f.label :categories%>
+      <%= f.select(:categories, Category.all.map {|p| [ p.category_name, p.id ] },
+                   { :prompt => "Select at least one"},
+                   { :multiple => true }) %>
+      </div>
+      <div>
+        <%= f.label :retired, "Retired"%>
+        <%= f.select :retired, [true, false] %>
+        <br>
+      <div class="submit-button">
+        <%= f.submit action_name, class:"btn btn-primary" %>
+      </div>
+      </div>
     </div>
-    <div>
-      <%= f.label :price %>
-      <%= f.text_field :price %>
-    </div>
-    <div>
-      <%= f.label :stock %>
-      <%= f.text_field :stock %>
-    </div>
-    <div>
-    <%= f.label :photo_url, "Photo URL" %>
-    <%= f.text_field :photo_url %>
-    </div>
-    <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    </div>
-    <div>
-    <%= f.label :categories%>
-    <%= f.select(:categories, Category.all.map {|p| [ p.category_name, p.id ] },
-                 { :prompt => "Select at least one"},
-                 { :multiple => true }) %>
-    </div>
-    <div>
-    <%= f.label :retired, "Retired"%>
-    <%= f.select :retired, [true, false] %>
-    </div>
-  </div>
-<%= f.submit action_name, class:"btn btn-primary" %>
-<% end %>
+  <% end %>
+</body>

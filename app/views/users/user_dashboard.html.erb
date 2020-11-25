@@ -1,62 +1,62 @@
-<h1><%= @user.username %>'s Sales Dashboard </h1>
-<br>
-
-<p><%= link_to "View Product Inventory", user_path(session[:user_id]) %><p>
-<br>
-<table class="table">
-  <h3 class="orders-show__header">Order Summary</h3>
-  <tr>
-    <td></td>
-    <th scope="col">Orders</th>
-    <th scope="col">Revenue</th>
-  </tr>
-  <tr>
-    <th scope="row">Pending</th>
-    <td><%= @user.total_orders_by_status("pending")%></td>
-    <td><%= number_to_currency(@user.total_rev_filtered("pending")) %></td>
-  </tr>
-  <tr>
-    <th scope="row">Paid</th>
-    <td><%= @user.total_orders_by_status("paid") %></td>
-    <td><%= number_to_currency(@user.total_rev_filtered("paid")) %></td>
-  </tr>
-  <tr>
-    <th scope="row">Complete</th>
-    <td><%= @user.total_orders_by_status("complete") %></td>
-    <td><%= number_to_currency(@user.total_rev_filtered("complete")) %></td>
-  </tr>
-  <tr>
-    <th scope="row">Cancelled</th>
-    <td><%= @user.total_orders_by_status("cancelled") %></td>
-    <td><%= number_to_currency(@user.total_rev_filtered("cancelled")) %></td>
-  </tr>
-  <tr>
-    <th scope="row">Total</th>
-    <td><%= @user.total_orders_by_status(nil)%></td>
-    <td><%= number_to_currency(@user.total_rev_filtered(nil)) %></td>
-
-  </tr>
-</table>
-
-<section class="orders-show__container">
-  <h3 class="orders-show__header">Products</h3>
+<body>
+  <h1><%= @user.username %>'s SALES DASHBOARD </h1>
+  <p><%= link_to "View Product Inventory", user_path(session[:user_id]), class:"prod-in-button" %><p>
   <table class="table">
-    <thead>
+    <h3 class="orders-show__header">ORDER SUMMARY</h3>
     <tr>
-      <th>Order #</th>
-      <th>Purchase Date</th>
-      <th>Order Status</th>
+      <td></td>
+      <th scope="col">ORDERS</th>
+      <th scope="col">REVENUE</th>
     </tr>
-    </thead>
-    <tbody>
-    <% @user.order_items.each do |item| %>
-      <tr>
-        <td><%= link_to item.order.id, order_path(item.order) %> </td>
-        <td><%= item.created_at.strftime("%m-%d-%Y") %></td>
-        <td><%= item.order.status %></td>
-      </tr>
-    <% end %>
-    </tbody>
+    <tr>
+      <th scope="row">PENDING</th>
+      <td><%= @user.total_orders_by_status("pending")%></td>
+      <td><%= number_to_currency(@user.total_rev_filtered("pending")) %></td>
+    </tr>
+    <tr>
+      <th scope="row">PAID</th>
+      <td><%= @user.total_orders_by_status("paid") %></td>
+      <td><%= number_to_currency(@user.total_rev_filtered("paid")) %></td>
+    </tr>
+    <tr>
+      <th scope="row">COMPLETE</th>
+      <td><%= @user.total_orders_by_status("complete") %></td>
+      <td><%= number_to_currency(@user.total_rev_filtered("complete")) %></td>
+    </tr>
+    <tr>
+      <th scope="row">CANCELLED</th>
+      <td><%= @user.total_orders_by_status("cancelled") %></td>
+      <td><%= number_to_currency(@user.total_rev_filtered("cancelled")) %></td>
+    </tr>
+    <tr>
+      <th scope="row">TOTAL</th>
+      <td><%= @user.total_orders_by_status(nil)%></td>
+      <td><%= number_to_currency(@user.total_rev_filtered(nil)) %></td>
+
+    </tr>
   </table>
-</section>
-<h3><%= link_to "Back to Top", user_dashboard_path, class: "btn btn-secondary" %></h3>
+
+  <section class="orders-show__container">
+    <h3 class="orders-show__header">Products</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Purchase Date</th>
+        <th>Order Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @user.order_items.each do |item| %>
+        <tr>
+          <td><%= link_to item.order.id, order_path(item.order) %> </td>
+          <td><%= item.created_at.strftime("%m-%d-%Y") %></td>
+          <td><%= item.order.status %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
+  <h3><%= link_to "Back to Top", user_dashboard_path, class: "btn btn-secondary" %></h3>
+<hr>
+</body>

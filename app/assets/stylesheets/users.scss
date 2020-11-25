@@ -1,3 +1,89 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+  font-family: "Raleway", Sans-Serif;
+}
+
+body h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1%;
+}
+
+.body-content {
+  margin-left: 50%;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+ul li {
+  list-style: none;
+}
+
+.user-names {
+  color: black;
+  font-size: 2em;
+}
+
+.user-names:hover {
+  color: #9C7BC2;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.user-account-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-account-links {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 3px;
+}
+
+body h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.table thead th {
+  border-bottom: 1px solid;
+  text-align: center;
+}
+
+table {
+  border: 1px double black;
+}
+
+th, td {
+  border: 1px double black;
+  padding:4px 6px;
+}
+
+.table-item-name {
+  color: black;
+}
+
+.table-item-name:hover {
+  text-decoration: none;
+  color: #9C7BC2;
+}
+
+th {
+  text-align: center;
+}
+
+th[scope='row'] {
+  text-align: left;
+}
+

@@ -34,7 +34,6 @@ class Order < ApplicationRecord
     return current_items
   end
 
-
   def total
     total = 0
     self.order_items.each do |item|
@@ -47,15 +46,12 @@ class Order < ApplicationRecord
     if self.status == 'pending'
       self.update_attribute(:status, 'paid')
     end
-
-
   end
 
   def update_stock
     self.order_items.each do |item|
-      matching_product = item.product
-      matching_product.stock -= item.quantity
-      matching_product.update_attribute(:stock, item.product.stock)
+      item.product.stock -= item.quantity
+      product.stock.update_attribute(:stock, item.product.stock)
     end
   end
 end

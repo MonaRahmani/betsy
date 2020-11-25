@@ -8,10 +8,9 @@ class CategoriesController < ApplicationController
   end
 
   # def show
-  #
   #   @category = Category.find_by(id: params[:id])
   #
-  #   if @cateogry.nil?
+  #   if @category.nil?
   #     head :not_found
   #     return
   # end
@@ -30,13 +29,13 @@ class CategoriesController < ApplicationController
 
     private
 
-    def category_params
-      params.require(:category).permit(:category_name)
-    end
+  def category_params
+    params.require(:category).permit(:category_name)
+  end
 
-    def find_category
-      @category = Category.find_by(id: params[:id])
-    end
+  def find_category
+    @category = Category.find_by(id: params[:id])
+  end
 
 end
 

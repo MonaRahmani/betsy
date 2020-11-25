@@ -2,8 +2,63 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@media (min-width: 1200px) {
+  .cart-grid-details {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 30px;
+    align-content: center;
+    margin: 0 20%;
+    padding: 2%;
+    font-size: 1.3em;
+  }
 
-// tr:last-child {
-//   text-align: right;
-// }
+  .cart-grid-details > div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10%;
+  }
 
+  .cart-checkout {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 0 45%;
+    row-gap: 2%;
+  }
+
+  .order-form-details {
+    display: grid;
+    grid-template-columns: auto;
+    align-content: center;
+    margin: 0 35%;
+  }
+
+  .order-form-grid h5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-sum-details {
+    display: flex;
+    flex-direction: column;
+    margin: 0 35%;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .prod-in-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-size: 1.5em;
+  }
+  .prod-in-button:hover {
+    color: #9C7BC2;
+    text-decoration: none;
+  }
+
+}

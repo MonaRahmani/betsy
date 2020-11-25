@@ -35,7 +35,7 @@ describe OrdersController do
     it "will redirect if session[order_items] is nil" do
       get cart_path
       must_redirect_to root_path
-      flash[:error].must_equal "You have nothing in your cart!"
+      _(flash[:error]).must_equal "Your cart is empty..."
     end
   end
 

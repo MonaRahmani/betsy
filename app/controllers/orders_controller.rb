@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
   def cart
     if session[:order_id].nil?
-      flash[:error] = 'Cart Empty! Please add a product to cart.'
+      flash[:error] = 'Your cart is empty...'
       redirect_to root_path
     else
       @order = Order.find_by(id: session[:order_id])

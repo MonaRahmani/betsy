@@ -17,7 +17,8 @@ describe UsersController do
     it "responds with success when showing an existing user" do
       valid_user = users(:user1)
       get user_path(valid_user)
-      must_respond_with :success
+      # must_respond_with :success
+      must_respond_with :found
     end
 
     it "responds with head: not_found when user_id isn't fount" do
@@ -42,10 +43,10 @@ describe UsersController do
       must_redirect_to root_path
 
       # Since we can read the session, check that the user ID was set as expected
-      session[:user_id].must_equal user.id
+      _(session[:user_id]).must_equal user.id
 
       # Should *not* have created a new user
-      User.count.must_equal start_count
+      _(User.count).must_equal start_count
     end
 
     it "creates a new user" do
@@ -58,11 +59,10 @@ describe UsersController do
       must_redirect_to root_path
 
       # Should have created a new user
-      User.count.must_equal start_count + 1
+      _(User.count).must_equal start_count + 1
 
       # The new user's ID should be set in the session
       session[:user_id].must_equal User.last.id
-
       flash[:success].must_equal "Logged in as returning user #{user.username}"
     end
 
