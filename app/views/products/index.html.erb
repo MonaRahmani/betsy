@@ -8,8 +8,7 @@
         <div>
           <%= image_tag(product.photo_url, :size => '300x350') %>
           <div>
-            <%= link_to product.name, product_path(product.id), class:"product-name" %>
-            <br>
+            <%= link_to product.name, product_path(product.id), class:"nav-link" %>
             <%= number_to_currency(product.price, class:"product-price") %>
           </div>
         </div>
@@ -28,8 +27,7 @@
       <div>
         <%= image_tag(product.photo_url, :size => '300x350') %>
         <div>
-          <%= link_to product.name, product_path(product.id), class:"product-name" %>
-          <br>
+          <%= link_to product.name, product_path(product.id), class:"nav-link" %>
           <%= number_to_currency(product.price, class:"product-price") %>
         </div>
       </div>
@@ -48,9 +46,8 @@
         <div>
           <%= image_tag(product.photo_url, :size => '300x350') %>
         <div>
-          <%= link_to product.name, product_path(product.id), class:"product-name" %>
-          <br>
-          <%= number_to_currency(product.price, class:"product-price") %>
+          <%= link_to product.name, product_path(product.id), class:"nav-link" %>
+          <%= number_to_currency(product.price, class:"nav-link") %>
         </div>
       </div>
       <% end %>

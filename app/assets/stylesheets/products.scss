@@ -13,7 +13,7 @@ body h1 {
 .grid {
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-row-gap: 50px;
+  grid-row-gap: 30px;
   grid-column-gap: 10px;
   margin: auto 20%;
   padding: 2%;
@@ -40,7 +40,6 @@ body h1 {
     padding: 2%;
   }
 }
-
 
 .grid > div {
   display: flex;
@@ -122,14 +121,6 @@ body h1 {
   font-size: 1.3em;
 }
 
-.product-name {
-  color: black;
-}
-
-.product-name:hover {
-  color: #9C7BC2;
-  text-decoration: none;
-}
 
 .product-details-page {
   display: grid;
@@ -153,6 +144,7 @@ body h1 {
   margin: 0 40%;
   padding: 5px;
   align-items: center;
+  text-align: center;
 }
 
 .rating-fields {
@@ -167,15 +159,6 @@ body h1 {
 
 .add-to-cart {
   margin-top: 2%;
-}
-
-.back-button {
-  color: black;
-}
-
-.back-button:hover {
-  color: #9C7BC2;
-  text-decoration: none;
 }
 
 .edit-product-form > div {

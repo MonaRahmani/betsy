@@ -29,6 +29,10 @@
     background-color: #EFE6E6;
   }
 
+  header {
+    margin: 5px;
+  }
+
   .navbar {
     background-color: white;
     border-color: white;
@@ -65,20 +69,21 @@
     font-family: "Raleway", Sans-Serif;
     font-size: 1.3em;
     color: black;
-    //padding: 15px;
+
   }
 
   #navbarSupportedContent {
     padding: 15px;
   }
 
-  .nav-link {
+  *.nav-link {
     color: black;
     text-decoration: none;
   }
 
-  .nav-link:hover {
+  *.nav-link:hover {
     color: #72538F;
+    text-decoration: none;
   }
 
   .dropdown:hover > .dropdown-menu {
@@ -87,15 +92,15 @@
     text-align: center;
   }
 
-  .account-links {
-    color: black;
-    font-size: 1em;
-  }
+  //.account-links {
+  //  color: black;
+  //  font-size: 1em;
+  //}
 
-  .account-links:hover {
-    color: #72538F;
-    text-decoration: none;
-  }
+  //.account-links:hover {
+  //  color: #72538F;
+  //  text-decoration: none;
+  //}
 
   .bi-bi-person {
     color: black;

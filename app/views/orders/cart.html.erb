@@ -12,8 +12,8 @@
         ITEM TOTAL: <%= number_to_currency(Product.find(item.product_id).price * item.quantity) %>
         </div>
         <div class="edit-cart">
-          <%= link_to "UPDATE", cart_item_path(item.product_id), class:"cart-button" %>
-          <%= link_to "REMOVE", product_order_items_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}, class:"cart-button"%>
+          <%= link_to "UPDATE", cart_item_path(item.product_id), class:"nav-link" %>
+          <%= link_to "REMOVE", product_order_items_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}, class:"nav-link"%>
         </div>
       </div>
       <hr>
