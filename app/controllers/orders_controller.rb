@@ -16,10 +16,11 @@ class OrdersController < ApplicationController
     elsif @order.update(order_params)
       flash[:success] = 'Order has been submitted.'
       session[:order_id] = nil
+      @order.update_order_status
       # TODO update inventory here
       # consider first creating the shopping cart as pending, and set to paid here?
       #   if @order.status == 'pending'
-      #     Order.update(id: @order.id, "paid")
+      #
       #   end
 
       render :confirmation
@@ -28,7 +29,6 @@ class OrdersController < ApplicationController
       flash[:error] = "A problem occurred. The order was not submitted:"
       flash[:reasons] = @order.errors.messages
       redirect_back fallback_location: '/'
-      redirect_to root_path
       return
     end
   end
@@ -44,14 +44,15 @@ class OrdersController < ApplicationController
   end
 
   def show
-    # changing from session[:order_id] to params[:id] for order works
+    # side note, changing from session[:order_id] to params[:id] for order works
     @order = Order.find_by(id: params[:id])
-    @logged_user = User.find_by(id: session[:user_id])
+    @current_user = User.find_by(id: session[:user_id])
 
-    # anyone can view this page, how to prevent that.
-    # if session[:user_id] != @logged_user
-    #   flash[:error] = "Sorry, you cannot access this page."
-    #   redirect_to root_path
+    if @order.nil?
+      return head :not_found
+    end
+    # if session[:order_id] != @order.id
+    #   return head :not_found
     # end
   end
 
