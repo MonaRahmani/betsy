@@ -29,11 +29,34 @@
   }
 
   .cart-checkout {
+    color: black;
     display: flex;
     flex-direction: column;
     align-content: center;
     margin: 0 45%;
     row-gap: 2%;
+  }
+
+  .order-form-details {
+    display: grid;
+    grid-template-columns: auto;
+    align-content: center;
+    margin: 0 35%;
+  }
+
+  .order-form-grid h5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .return-to-cart {
     color: black;
+    text-align: center;
+  }
+
+  .return-to-cart:hover {
+    color: #9C7BC2;
+    text-decoration: none;
   }
 }
