@@ -39,6 +39,7 @@ describe ProductsController do
   end
 
   describe "create" do
+
     it "can create a new product" do
       product_hash = {
         product: {
@@ -68,7 +69,6 @@ describe ProductsController do
       expect(new_product.retired).must_equal false
 
       must_respond_with :redirect
-      must_redirect_to product_path(new_product.id)
     end
   end
 
@@ -100,6 +100,9 @@ describe ProductsController do
           retired: true
         },
       }
+
+      perform_login
+
       product_id = products(:product1).id
 
       patch product_path(product_id), params: product_hash

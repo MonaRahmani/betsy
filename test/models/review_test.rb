@@ -59,7 +59,6 @@ describe Review do
         expect(review4.valid?).must_equal false
         expect(review4.errors.messages).must_include :rating
       end
-
     end
   end
 end

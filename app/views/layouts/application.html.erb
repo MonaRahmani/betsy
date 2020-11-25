@@ -47,10 +47,10 @@
       </li>
       <li class="navbar-item"><%= link_to "Shop by Sellers", users_path, class: "nav-link" %> </li>
       <li class="navbar-item"><%= link_to "Cart", cart_path, class: "nav-link" %> </li>
-      <% if @current_merchant%>
-        <li class="navbar-item"><%= link_to "NEW PRODUCT", new_product_path, class: "nav-link" %> </li>
-        <li class="navbar-item"><%= link_to "LOGOUT", logout_path, method: :delete, class: "nav-link" %> </li>
-      <%end %>
+      <%# if @current_merchant%>
+<!--        <li class="navbar-item"><%#= link_to "NEW PRODUCT", new_product_path, class: "nav-link" %> </li>-->
+<!--        <li class="navbar-item"><%#= link_to "LOGOUT", logout_path, method: :delete, class: "nav-link" %> </li>-->
+      <%#end %>
     </ul>
     </nav>
     <% if flash[:error] %>
