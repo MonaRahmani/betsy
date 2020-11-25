@@ -1,7 +1,10 @@
-<h1>shop by category#index</h1>
+<body>
+<div class="category-grid">
 <% @category.products.each do |product| %>
   <p>
     <b>Product:</b>
     <%= product.name %>
   </p>
 <% end %>
+</div>
+</body>

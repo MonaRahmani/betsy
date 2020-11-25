@@ -1,3 +1,45 @@
 // Place all the styles related to the Homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+body {
+  background-color: #EFE6E6;
+}
+
+body .background-image {
+  background-image: url("background image/background.png");
+  background-size: auto;
+  backgroud-repeat: no-repeat;
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 250px;
+  //background-color: #EFE6E6;
+  overflow: visible;
+  white-space:nowrap;
+  position: absolute;
+  bottom: 50%;
+}
+
+.text-center {
+  color: #EFE6E6;
+}
+
+.button {
+  color: #EFE6E6;
+}
+
+.slide {
+  display: inline-block;
+  padding-left: 1%;
+}
+
+.img-responsive {
+  bottom: 100%;
+}
+
+.slideshow-container .img-responsive {
+  margin-left: 60%;
+}

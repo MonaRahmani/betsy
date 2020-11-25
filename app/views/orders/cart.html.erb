@@ -1,37 +1,27 @@
+<body>
 <section class="orders-show__container">
   <h3 class="orders-show__header">YOUR CART</h3>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Product</th>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-
-      <th>Item Total</th>
-      <th>Update</th>
-      <th>Remove</th>
-
-    </tr>
-    </thead>
-    <tbody>
+  <div class="cart-grid">
     <% @order.order_items.each do |item| %>
-      <tr>
-        <td><%= image_tag( Product.find(item.product_id).photo_url) %></td>
-        <td><%= Product.find(item.product_id).name %></td>
-        <td><%= item.quantity %></td>
-        <td><%= number_to_currency(Product.find(item.product_id).price) %></td>
-        <td><%= number_to_currency(Product.find(item.product_id).price * item.quantity) %></td>
-        <td><%= link_to "△", cart_item_path(item.product_id) %></td>
-        <td><%= link_to "X", product_order_item_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}%>
-
-      </tr>
+      <div class="cart-grid-details">
+        <div>
+        <%= image_tag( Product.find(item.product_id).photo_url, :size => '300x350') %>
+        PRODUCT: <%= Product.find(item.product_id).name %> <br>
+        QUANTITY: <%= item.quantity %> <br>
+        PRICE: <%= number_to_currency(Product.find(item.product_id).price) %> <br>
+        ITEM TOTAL: <%= number_to_currency(Product.find(item.product_id).price * item.quantity) %>
+        </div>
+        <div class="edit-cart">
+          <%= link_to "UPDATE", cart_item_path(item.product_id), class:"nav-link" %>
+          <%= link_to "REMOVE", product_order_items_path(item.product_id, item.id), method: :delete, data: {confirm: "Are you sure you want to remove #{item.product.name} item from cart?"}, class:"nav-link"%>
+        </div>
+      </div>
+      <hr>
     <% end %>
-    <tr>
-      <td>TOTAL: <%=number_to_currency(@order.total) %></td>
-    </tr>
-    </tbody>
-  </table>
-  <%#= button_to "CHECKOUT", edit_order_path(@order), class: "btn btn-primary" %>
-  <%= link_to "CHECKOUT", edit_order_path(@order)%>
-</section>
+  </div>
+  <div class="cart-checkout">
+    TOTAL: <%=number_to_currency(@order.total, class:"cart-checkout") %>
+    <%= link_to "CHECKOUT", edit_order_path(@order), class:"btn btn-primary"%>
+  </div>
+  </section>
+</body>

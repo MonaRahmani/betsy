@@ -1,19 +1,21 @@
+<body>
 <h3> ORDER # <%= @order.id %> </h3>
-
-<p>Name: <%= @order.credit_card_name %></p>
-<p>Mailing Address:
+<div class="order-sum-details">
+<p>NAME: <%= @order.credit_card_name %></p>
+<p>MAILING ADDRESS:
   <%= @order.street_address %>
   <%= @order.city %>,
   <%= @order.state %>
   <%= @order.zip_code %>
 </p>
-<p>Email: <%= @order.email %></p>
-<p>Purchased On: <%= @order.created_at.strftime("%m/%d/%Y %H:%M %p") %> </p>
-<p>Purchase Status: <%= @order.status %> </p>
-<p>Credit Card: <%= @order.credit_card_num[-4..-1] %> </p>
-<p>Expiration Date:
+<p>EMAIL: <%= @order.email %></p>
+<p>PURCHASED ON: <%= @order.created_at.strftime("%m/%d/%Y %H:%M %p") %> </p>
+<p>PURCHASE STATUS: <%= @order.status %> </p>
+<p>CREDIT CARD: <%= @order.credit_card_num[-4..-1] %> </p>
+<p>EXPIRATION DATE:
   <%= @order.cc_exp_month %>/<%= @order.cc_exp_year %>
 </p>
+</div>
 
 <!--<p><%#= link_to "Back to Sales Dashboard", user_dashboard_path %></p>-->
 
@@ -21,31 +23,31 @@
   <table class="table">
     <thead>
     <tr>
-      <th>Product</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
-      <th>Shipping Status</th>
-      <th>Cancel Product</th>
+      <th>PRODUCT</th>
+      <th>PRICE</th>
+      <th>QUANTITY</th>
+      <th>SUBTOTAL</th>
+      <th>SHIPPING STATUS</th>
+      <th>CANCEL PRODUCT</th>
     </tr>
     </thead>
     <tbody>
     <% @order.order_items.each do |item| %>
       <tr>
-        <td><%= link_to item.product.name, product_path(item.product.id)%></td>
+        <td><%= link_to item.product.name, product_path(item.product.id), class:"nav-link"%></td>
         <td><%= item.product.price %></td>
         <td><%= item.quantity %></td>
         <td><%= item.order_item_subtotal %></td>
         <td>
           <%= form_with model: @order do |f| %>
             <%= f.hidden_field(:status, value: 'complete')%>
-            <%= f.submit 'Complete' %>
+            <%= f.submit 'Complete', class:'btn btn-primary' %>
           <% end %>
         </td>
         <td>
           <%= form_with model: @order do |f| %>
             <%= f.hidden_field(:status, value: 'cancelled')%>
-            <%= f.submit 'Cancel' %>
+            <%= f.submit 'Cancel', class:'btn btn-primary' %>
           <% end %>
         </td>
       </tr>
@@ -53,3 +55,4 @@
     </tbody>
   </table>
 </section>
+</body>

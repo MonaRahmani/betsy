@@ -1,46 +1,62 @@
-<ul>
+<body>
   <%if @category %>
-    <h1>Products by category: <%= @category.category_name %></h1>
+    <h1>PRODUCTS BY CATEGORY: <%= @category.category_name %></h1>
 
     <% if @products.active_only.length > 0 %>
+    <div class="grid-product-category">
       <% @products.active_only.each do |product| %>
-        <li><%= link_to product.name, product_path(product.id) %></li>
-        <li><%= number_to_currency(product.price) %></li>
+        <div>
+          <%= link_to image_tag(product.photo_url, :size => '300x350'), product_path(product.id) %>
+          <div>
+            <%= link_to product.name, product_path(product.id), class:"nav-link" %>
+            <%= number_to_currency(product.price, class:"product-price") %>
+          </div>
+        </div>
       <% end %>
+    </div>
     <% else %>
       No products.
     <% end %>
 
   <%elsif @user %>
-    <h1>Products by merchant: <%= @user.username %></h1>
+    <h1>PRODUCTS BY MERCHANT: <%= @user.username %></h1>
 
     <% if @user.products.active_only.length > 0 %>
+    <div class="grid-product-user">
       <% @user.products.active_only.each do |product| %>
-        <li><%= link_to product.name, product_path(product.id) %></li>
-        <li><%= number_to_currency(product.price) %></li>
-      <% end %>
+      <div>
+        <%= link_to image_tag(product.photo_url, :size => '300x350'), product_path(product.id) %>
+        <div>
+          <%= link_to product.name, product_path(product.id), class:"nav-link" %>
+          <%= number_to_currency(product.price, class:"product-price") %>
+        </div>
+      </div>
+    <% end %>
+    </div>
     <% else %>
       No products.
     <% end %>
 
   <% else %>
-    <h1>Products</h1>
-
-
+    <h1>PRODUCTS</h1>
 
     <% if @products.active_only.length > 0 %>
+      <div class="grid">
       <% @products.active_only.each do |product| %>
-        <li><%= link_to product.name, product_path(product.id) %></li>
-        <li><%= number_to_currency(product.price) %></li>
+        <div>
+          <%= link_to image_tag(product.photo_url, :size => '300x350'), product_path(product.id) %>
+        <div>
+          <%= link_to product.name, product_path(product.id), class:"nav-link" %>
+          <%= number_to_currency(product.price, class:"nav-link") %>
+        </div>
+      </div>
       <% end %>
+      </div>
     <% else %>
       No products.
     <% end %>
-
-
   <% end %>
+  <hr>
+<%#= link_to "Create New Product", new_product_path, class:"btn btn-primary" %>
+</body>
 
-
-</ul>
-
-<%#= link_to "Create New Product", new_product_path %>
