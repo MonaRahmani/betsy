@@ -145,7 +145,6 @@ body h1 {
   display: flex;
   flex-direction: column;
   align-items: left;
-  //padding: 2%;
 }
 
 .reviews-container {
@@ -189,10 +188,6 @@ body h1 {
 .edit-product-form > div:nth-last-child(1) {
   align-items: flex-start;
   margin: 0 40%;
-}
-
-.btn {
-  border-color: black;
 }
 
 .delete-button {

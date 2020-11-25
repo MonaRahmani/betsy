@@ -19,6 +19,16 @@
 
 @media (min-width: 1200px) {
 
+  *.btn {
+    color: black;
+    border-color: black;
+    background-color: #EFE6E6;
+  }
+  *.btn:hover {
+    color: #9C7BC2;
+    background-color: #EFE6E6;
+  }
+
   .navbar {
     background-color: white;
     border-color: white;
@@ -61,7 +71,6 @@
   #navbarSupportedContent {
     padding: 15px;
   }
-
 
   .nav-link {
     color: black;
@@ -153,7 +162,6 @@
   #social-media-icons li a {
     color: black;
   }
-
 
   #social-media-icons .instagram:hover {
     color: #E1306C;
