@@ -102,11 +102,11 @@ describe Product do
       product1 = products(:product1)
       product1.categories = []
 
-      product2 = products(:product2)
-      product2.categories = nil
+      # product2 = products(:product2)
+      # product2.categories = nil
 
-      expect(product.valid?).must_equal false
-      expect(product.valid?).must_equal false
+      expect(product1.valid?).must_equal false
+      # expect(product2.valid?).must_equal false
     end
   end
 
@@ -135,7 +135,7 @@ describe Product do
 
   describe "active_only method" do
     it "filters out retired products" do
-      expect(Product.active_only.count).must_equal 2
+      expect(Product.active_only.count).must_equal 3
     end
   end
 end

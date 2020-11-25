@@ -11,9 +11,9 @@ describe CategoriesController do
   describe "create" do
     let(:category_hash) {
       {
-          category: {
+        category: {
               category_name: "test",
-          }
+        }
       }
     }
     it "can create a category" do
