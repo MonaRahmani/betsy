@@ -6,14 +6,15 @@
       <%= image_tag( @product.photo_url, :size => '300x350') %>
       <div>
         <div class="product-details">
+
           CATEGORY: <% @product.categories.each do |category| %>
-            <%= link_to category.category_name, category_products_path(category.id) %>
+            <%= link_to category.category_name, category_products_path(category.id), class:'nav-link' %>
           <% end %>
           DESCRIPTION: <%= @product.description %>
         <br>
           <%= number_to_currency(@product.price) %>
         <br>
-         SOLD BY: <%= link_to @product.user.username, user_products_path(@product.id) %>
+         SOLD BY: <%= link_to @product.user.username, user_products_path(@product.id), class:'nav-link' %>
           <% if @product.stock == 0 %>
             <br>
             Out of Stock!
