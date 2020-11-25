@@ -23,7 +23,7 @@
               <li class="nav-item active">
                 <%= link_to "MERCHANTS", users_path, class: "nav-link" %>
               </li>
-              <li class="dropdown">
+              <div class="dropdown">
                 <li class="navbar-item dropdown nav-item" type="button" id="navbarDropdown" role="button"><%= link_to "PRODUCTS", products_path, class: "nav-link"%>
                 </li>
                 <ul class="dropdown-menu" >
@@ -33,7 +33,7 @@
                     </li>
                   <% end %>
                 </ul>
-              </li>
+              </div>
             </ul>
             <ul class="nav navbar-nav justify-content-md-right align-items-right text-right ">
               <% if session[:user_id]%>
