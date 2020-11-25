@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/products/:id/cart_item', to: 'products#cart_item', as: 'cart_item'
   resources :products do
-    resources :order_items, only: [:create]
+    resources :order_items, only: [:create, :destroy]
     resources :categories, only: [:index]
   end
 

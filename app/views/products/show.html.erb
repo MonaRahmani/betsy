@@ -1,63 +1,105 @@
-<body>
-  <%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
-    <h1><%= @product.name %></h1>
-  <div class="product-details-page">
-      <%= image_tag( @product.photo_url, :size => '300x350') %>
-      <div>
-        <div class="product-details">
+<%#= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
+<!--    <h1><%#= @product.name %></h1>-->
+<!--  <div class="product-details-page">-->
+      <%#= image_tag( @product.photo_url, :size => '300x350') %>
+<!--      <div>-->
+<!--        <div class="product-details">-->
 
-          CATEGORY: <% @product.categories.each do |category| %>
-            <%= link_to category.category_name, category_products_path(category.id), class:'nav-link' %>
-          <% end %>
-          DESCRIPTION: <%= @product.description %>
-        <br>
-          <%= number_to_currency(@product.price) %>
-        <br>
-         SOLD BY: <%= link_to @product.user.username, user_products_path(@product.id), class:'nav-link' %>
-          <% if @product.stock == 0 %>
-            <br>
-            Out of Stock!
-          <% elsif @product.stock < 5 %>
-            <br>
-            Almost out of Stock!
-          <% end %>
-        </div>
-        <br>
-        <div class="product-detail-fields">
-          <%= f.label :quantity %>
-          <%= f.number_field :quantity, in: 1..100 %>
-           <br>
-          <%= f.submit "Add to Cart", class:"btn btn-primary" %>
-            <br>
-          <%= link_to "Back", products_path, class:'nav-link' %>
-        </div>
-      </div>
-    </div>
-  <hr>
+<!--          CATEGORY: <%# @product.categories.each do |category| %>-->
+            <%#= link_to category.category_name, category_products_path(category.id), class:'nav-link' %>
+          <%# end %>
+<!--          DESCRIPTION: <%#= @product.description %>-->
+<!--        <br>-->
+          <%#= number_to_currency(@product.price) %>
+<!--        <br>-->
+<!--         SOLD BY: <%#= link_to @product.user.username, user_products_path(@product.id), class:'nav-link' %>-->
+          <%# if @product.stock == 0 %>
+<!--            <br>-->
+<!--            Out of Stock!-->
+          <%# elsif @product.stock < 5 %>
+<!--            <br>-->
+<!--            Almost out of Stock!-->
+          <%# end %>
+<!--        </div>-->
+<!--        <br>-->
+<!--        <div class="product-detail-fields">-->
+          <%#= f.label :quantity %>
+          <%#= f.number_field :quantity, in: 1..100 %>
+<!--           <br>-->
+          <%#= f.submit "Add to Cart", class:"btn btn-primary" %>
+<!--            <br>-->
+          <%#= link_to "Back", products_path, class:'nav-link' %>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  <hr>-->
 
-    <div>
-      <section class='reviews-container'>
-        <h4>REVIEW AND RATINGS</h4>
-        <h5>AVERAGE RATING: <%= @product.average_rating %> out of <%= @reviews.length %> reviews </h5>
-        <div class="rating-fields">
-        <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
-          <br>
-        <% if @reviews.length != 0 %>
-          <ul class="review-list">
-            <% @reviews.each do |review| %>
-              <li>
-                <strong>
-                  <%= review.created_at %> - Rating: <%= review.rating %> - Review by: <%= review.name %>
-                </strong>
-              </li>
-              <ul class="review-item"><li><%= review.review_content %></li></ul>
-            <% end %>
-          </ul>
-        <% end %>
-        </div>
-      </section>
-    </div>
+<!--    <div>-->
+<!--      <section class='reviews-container'>-->
+<!--        <h4>REVIEW AND RATINGS</h4>-->
+<!--        <h5>AVERAGE RATING: <%#= @product.average_rating %> out of <%#= @reviews.length %> reviews </h5>-->
+<!--        <div class="rating-fields">-->
+        <%#= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
+<!--          <br>-->
+        <%# if @reviews.length != 0 %>
+<!--          <ul class="review-list">-->
+            <%# @reviews.each do |review| %>
+<!--              <li>-->
+<!--                <strong>-->
+<!--                  <%#= review.created_at %> - Rating: <%#= review.rating %> - Review by: <%#= review.name %>-->
+<!--                </strong>-->
+<!--              </li>-->
+<!--              <ul class="review-item"><li><%#= review.review_content %></li></ul>-->
+            <%# end %>
+<!--          </ul>-->
+        <%# end %>
+<!--        </div>-->
+<!--      </section>-->
+<!--    </div>-->
+<%# end %>
+
+<!--Product details-->
+<!--add form-->
+<!--to add item to car-->
+
+
+<%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
+  <h1><%= @product.name %></h1>
+  <%= image_tag( @product.photo_url) %>
+  <br>
+  Description: <%= @product.description %>
+  <br>
+  <%= number_to_currency(@product.price) %>
+  <br>
+  Sold by: <%= @product.user.username%>
+  <% if @product.stock == 0 %> <br>
+    Out of Stock!
+  <% elsif @product.stock < 5 %> <br>
+    Almost out of Stock!
+  <% end %> <br>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity, :required => true%>
+<%= @product.retired %>
+  <br>
+  <%= link_to "Back", products_path %>
+  <%= f.submit "Add to Cart" %>
 <% end %>
-<hr>
-<br>
-</body>
+<div>
+  <section class='reviews'>
+    <h2>Review and Rating</h2>
+    <h5>Average Rating: <%= @product.average_rating %> out of <%= @reviews.length %> Reviews </h5>
+    <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
+    <% if @reviews.length != 0 %>
+      <ul class="review-list">
+        <% @reviews.each do |review| %>
+          <li>
+            <strong>
+              <%= review.created_at %> - Rating: <%= review.rating %> - Review by: <%= review.name %>
+            </strong>
+          </li>
+          <ul class="review-item"><li><%= review.review_content %></li></ul>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+</div>

@@ -6,6 +6,11 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+  if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  SimpleCov.command_name 'RSpec'
+  SimpleCov.start 'rails'
+  end
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
