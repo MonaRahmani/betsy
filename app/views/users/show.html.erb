@@ -1,10 +1,10 @@
-<h2><%= @user.username%>'s Sales Account</h2>
+<h2><%= @user.username%>'s Product Inventory</h2>
 <p>Member since <%= @user.created_at.strftime("%m-%d-%Y") %></p>
-<h3><%= link_to "Sale History", user_dashboard_path, class: "btn btn-secondary" %></h3>
+<p><%= link_to "View Sales Dashboard", user_dashboard_path %></p>
 <h3><%= link_to "Add Product", new_product_path, class: "btn btn-secondary" %></h3>
 <h3><%= link_to "Add Category", new_category_path, class: "btn btn-secondary" %></h3>
 <section class="user-votes__container">
-  <h3 class="user-votes__header">Inventory</h3>
+<!--  <h3 class="user-votes__header">Inventory</h3>-->
   <table class="table">
     <thead>
     <tr>
@@ -19,12 +19,12 @@
 
 
 
-    <% @user.products.each do |product| %>
+    <% @user.sorted_products.each do |product| %>
       <tr>
 <!--        <td><%#= link_to Product.find_by(id: product.user_id).username, product_path(Product.find_by(id: product.user_id)) %></td>-->
         <td><%= link_to product.name, edit_product_path(product.id)%></td>
         <td><%= product.stock %></td>
-        <td><%= product.price %></td>
+        <td><%= number_to_currency(product.price) %></td>
           <% if product.retired %>
             <td>retired</td>
             <% else %>
@@ -36,4 +36,4 @@
   </table>
 
 </section>
-<h3><%= link_to "Back to Top", user_dashboard_path, class: "btn btn-secondary" %></h3>
+<h3><%= link_to "Back to Top", user_path(session[:user_id]), class: "btn btn-secondary" %></h3>
