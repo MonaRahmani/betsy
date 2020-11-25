@@ -31,12 +31,13 @@
 
   header {
     margin: 5px;
+    background-color: white;
   }
 
-  .navbar {
-    background-color: white;
-    border-color: white;
-  }
+  //.navbar {
+  //  background-color: white;
+  //  border-color: white;
+  //}
 
   .navbar-brand {
     font-family: "Amatic SC", sans-serif;
@@ -58,6 +59,7 @@
     list-style-type: none;
     font-family: "Raleway", Sans-Serif;
     font-size: 1.3em;
+    margin-left: 40%;
   }
 
   .dropdown:hover > .dropdown-menu {
@@ -92,19 +94,10 @@
     text-align: center;
   }
 
-  //.account-links {
-  //  color: black;
-  //  font-size: 1em;
-  //}
-
-  //.account-links:hover {
-  //  color: #72538F;
-  //  text-decoration: none;
-  //}
-
   .bi-bi-person {
     color: black;
     font-size: 1.3em;
+    padding-right: 1.5em;
   }
 
   .bi-bi-person:hover {
