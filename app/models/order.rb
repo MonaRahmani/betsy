@@ -13,12 +13,6 @@ class Order < ApplicationRecord
   validates :zip_code, length: { is: 5, message: "Enter valid 5-digit zip code" }, :on => :update# doesn't check for digits only
 
 
-  # after_initialize :init
-  #
-  # def init
-  #   self.status ||= "paid" # will set the default value only if it's nil
-  # end
-
   def add_product(product, quantity)
     current_item = OrderItem.find_by(product_id: product.id, order_id: self.id )
 
@@ -53,6 +47,8 @@ class Order < ApplicationRecord
     if self.status == 'pending'
       self.update_attribute(:status, 'paid')
     end
+
+
   end
 end
 

@@ -9,24 +9,17 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find_by(id: session[:order_id])
+    @order = Order.find_by(id: params[:id])
     if @order.nil?
       flash[:error] = 'Sorry, that order no longer exists.'
       redirect_to root_path
     elsif @order.update(order_params)
-      flash[:success] = 'Order has been submitted.'
+      flash[:success] = 'Order has been updated.'
       session[:order_id] = nil
       @order.update_order_status
-      # TODO update inventory here
-      # consider first creating the shopping cart as pending, and set to paid here?
-      #   if @order.status == 'pending'
-      #
-      #   end
-
       render :confirmation
-
     else
-      flash[:error] = "A problem occurred. The order was not submitted:"
+      flash[:error] = "A problem occurred. The order was not updated."
       flash[:reasons] = @order.errors.messages
       redirect_back fallback_location: '/'
       return
@@ -51,9 +44,6 @@ class OrdersController < ApplicationController
     if @order.nil?
       return head :not_found
     end
-    # if session[:order_id] != @order.id
-    #   return head :not_found
-    # end
   end
 
   def confirmation
@@ -69,6 +59,6 @@ class OrdersController < ApplicationController
   def order_params
     return params.require(:order)
                .permit(:email, :street_address, :city, :state, :zip_code, :credit_card_name,
-                       :credit_card_num, :cvv_num, :cc_exp_month, :cc_exp_year)
+                       :credit_card_num, :cvv_num, :cc_exp_month, :cc_exp_year, :status)
   end
 end

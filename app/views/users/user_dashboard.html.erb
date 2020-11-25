@@ -38,12 +38,6 @@
   </tr>
 </table>
 
-<!--<h5>By Status:</h5>-->
-<!--<p><%#= link_to "All Orders", order_path %></p>-->
-<!--<p>Paid </p>-->
-<!--<p>Completed </p>-->
-<!--<%#= link_to "Add Category", new_category_path %></p>-->
-
 <section class="orders-show__container">
   <h3 class="orders-show__header">Products</h3>
   <table class="table">
@@ -55,10 +49,9 @@
     </tr>
     </thead>
     <tbody>
-    <!--        <td><%#= link_to @order.id, order_path(@order.id), class: 'table-link' %></td>-->
     <% @user.order_items.each do |item| %>
       <tr>
-        <td><%= link_to item.id, order_path(item) %> </td>
+        <td><%= link_to item.order.id, order_path(item.order) %> </td>
         <td><%= item.created_at.strftime("%m-%d-%Y") %></td>
         <td><%= item.order.status %></td>
       </tr>
