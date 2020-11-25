@@ -10,11 +10,6 @@ class Product < ApplicationRecord
   validates :stock, numericality: { only_integer: true, greater_than: 0, message: "Enter a positive number for stock."}
   validates :categories, presence: { message: "Please enter at least one category." }
 
-  def update_inventory
-
-  end
-
-
   def self.active_only
     self.where(retired: false)
   end
