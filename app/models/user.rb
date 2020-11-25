@@ -25,18 +25,6 @@ class User < ApplicationRecord
     end
     return sum
   end
-  # Total number of orders filtered by status
-  # def total_orders_filtered(status)
-  #   if status.nil?
-  #     return self.order_items.count
-  #   elsif
-  #
-  #       if order_item.order.status == status
-  #         count += 1
-  #       end
-  #   end
-  #   end
-  # end
 
   def total_orders_by_status(status)
     status_sort_hash = Hash.new(0)
