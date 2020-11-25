@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       flash[:success] = 'Order has been submitted.'
       session[:order_id] = nil
       @order.update_order_status
-      # TODO update inventory here
+      @order.update_stock
       # consider first creating the shopping cart as pending, and set to paid here?
       #   if @order.status == 'pending'
       #
