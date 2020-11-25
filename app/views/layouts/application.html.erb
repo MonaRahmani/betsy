@@ -13,9 +13,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-sm ">
+      <nav class="navbar navbar-expand-lg ">
         <%= link_to "DREAMSy", root_path, class:"navbar-brand" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,7 +23,7 @@
               <li class="nav-item active">
                 <%= link_to "MERCHANTS", users_path, class: "nav-link" %>
               </li>
-              <div class="dropdown">
+              <li class="dropdown">
                 <li class="navbar-item dropdown nav-item" type="button" id="navbarDropdown" role="button"><%= link_to "PRODUCTS", products_path, class: "nav-link"%>
                 </li>
                 <ul class="dropdown-menu" >
@@ -33,7 +33,7 @@
                     </li>
                   <% end %>
                 </ul>
-              </div>
+              </li>
             </ul>
             <ul class="nav navbar-nav justify-content-md-right align-items-right text-right ">
               <% if session[:user_id]%>

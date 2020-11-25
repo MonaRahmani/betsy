@@ -18,12 +18,12 @@
 @import "**/*";
 
 @media (min-width: 1200px) {
-
   *.btn {
     color: black;
     border-color: black;
     background-color: #EFE6E6;
   }
+
   *.btn:hover {
     color: #9C7BC2;
     background-color: #EFE6E6;
@@ -33,11 +33,6 @@
     margin: 5px;
     background-color: white;
   }
-
-  //.navbar {
-  //  background-color: white;
-  //  border-color: white;
-  //}
 
   .navbar-brand {
     font-family: "Amatic SC", sans-serif;
@@ -71,7 +66,6 @@
     font-family: "Raleway", Sans-Serif;
     font-size: 1.3em;
     color: black;
-
   }
 
   #navbarSupportedContent {
