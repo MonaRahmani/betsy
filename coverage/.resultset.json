@@ -351,12 +351,18 @@
           null
         ]
       },
-      "/Users/ada/Documents/Ada/exercises/betsy/app/models/review.rb": {
+      "/Users/ada/Documents/Ada/exercises/betsy/app/models/category.rb": {
         "lines": [
           1,
           1,
           1,
+          null,
           1,
+          0,
+          null,
+          0,
+          null,
+          null,
           null
         ]
       },
@@ -391,21 +397,6 @@
           null,
           0,
           null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/ada/Documents/Ada/exercises/betsy/app/models/category.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          0,
           null,
           null,
           null
@@ -555,6 +546,15 @@
           null
         ]
       },
+      "/Users/ada/Documents/Ada/exercises/betsy/app/models/review.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/Users/ada/Documents/Ada/exercises/betsy/app/models/order_item.rb": {
         "lines": [
           1,
@@ -576,6 +576,6 @@
         ]
       }
     },
-    "timestamp": 1606275768
+    "timestamp": 1606279851
   }
 }
