@@ -155,7 +155,6 @@ body h1 {
 
 }
 
-
 .add-to-cart {
   margin-top: 2%;
 }
@@ -169,19 +168,16 @@ body h1 {
   text-decoration: none;
 }
 
-.edit-product-form {
-  display: grid;
-  grid-template-columns: 20%;
-  justify-content: center;
-}
-
-.button  {
-  color: black;
-  border-color: black;
+.edit-product-form > div {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  margin: 0 40% ;
+  padding: 2.5px;
+}
+
+.edit-product-form > div:nth-last-child(1) {
+  align-items: flex-start;
+  margin: 0 40%;
 }
 
 .btn {
