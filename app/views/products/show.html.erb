@@ -40,10 +40,9 @@
       <section class='reviews-container'>
         <h4>REVIEW AND RATINGS</h4>
         <h5>AVERAGE RATING: <%= @product.average_rating %> out of <%= @reviews.length %> reviews </h5>
-        <div>
-        <div>
+        <div class="rating-fields">
         <%= render partial: "reviews/rating", locals: { action_name: "Submit Review", product: @product } %>
-        </div>
+          <br>
         <% if @reviews.length != 0 %>
           <ul class="review-list">
             <% @reviews.each do |review| %>

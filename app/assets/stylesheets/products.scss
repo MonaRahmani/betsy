@@ -149,9 +149,20 @@ body h1 {
 }
 
 .reviews-container {
-  display: grid;
-  justify-content: center;
-  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 40%;
+  padding: 5px;
+  align-items: center;
+}
+
+.rating-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  margin: 5% 100%;
+  text-align: center;
 
 }
 
