@@ -1,9 +1,39 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@media (min-width: 1200px) {
+  .cart-grid-details {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 30px;
+    align-content: center;
+    margin: 0 20%;
+    padding: 2%;
+    font-size: 1.3em;
+  }
 
+  .cart-grid-details > div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10%;
+  }
 
-// tr:last-child {
-//   text-align: right;
-// }
+  .cart-button {
+    color: black;
+    text-decoration: none;
+  }
 
+  .cart-button:hover {
+    color: #9C7BC2;
+    text-decoration: none;
+  }
+
+  .cart-checkout {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 0 45%;
+    row-gap: 2%;
+    color: black;
+  }
+}
