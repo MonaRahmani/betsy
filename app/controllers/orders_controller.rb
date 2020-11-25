@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
       flash[:error] = "A problem occurred. The order was not submitted:"
       flash[:reasons] = @order.errors.messages
       redirect_back fallback_location: '/'
-      redirect_to root_path
+      # redirect_to root_path
       return
     end
   end
