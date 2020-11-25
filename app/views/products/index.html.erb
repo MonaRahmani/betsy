@@ -6,7 +6,7 @@
     <div class="grid-product-category">
       <% @products.active_only.each do |product| %>
         <div>
-          <%= image_tag(product.photo_url, :size => '300x350') %>
+          <%= link_to image_tag(product.photo_url, :size => '300x350'), product_path(product.id) %>
           <div>
             <%= link_to product.name, product_path(product.id), class:"nav-link" %>
             <%= number_to_currency(product.price, class:"product-price") %>
@@ -25,7 +25,7 @@
     <div class="grid-product-user">
       <% @user.products.active_only.each do |product| %>
       <div>
-        <%= image_tag(product.photo_url, :size => '300x350') %>
+        <%= link_to image_tag(product.photo_url, :size => '300x350'), product_path(product.id) %>
         <div>
           <%= link_to product.name, product_path(product.id), class:"nav-link" %>
           <%= number_to_currency(product.price, class:"product-price") %>
@@ -44,7 +44,7 @@
       <div class="grid">
       <% @products.active_only.each do |product| %>
         <div>
-          <%= image_tag(product.photo_url, :size => '300x350') %>
+          <%= link_to image_tag(product.photo_url, :size => '300x350'), product_path(product.id) %>
         <div>
           <%= link_to product.name, product_path(product.id), class:"nav-link" %>
           <%= number_to_currency(product.price, class:"nav-link") %>
@@ -56,6 +56,7 @@
       No products.
     <% end %>
   <% end %>
-<%= link_to "Create New Product", new_product_path, class:"btn btn-primary" %>
+  <hr>
+<%#= link_to "Create New Product", new_product_path, class:"btn btn-primary" %>
 </body>
 

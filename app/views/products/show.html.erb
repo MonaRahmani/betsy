@@ -1,8 +1,7 @@
-
 <body>
   <%= form_with model: @order_item, url: product_order_items_path(@product.id) do |f| %>
     <h1><%= @product.name %></h1>
-    <div class="product-details-page">
+  <div class="product-details-page">
       <%= image_tag( @product.photo_url, :size => '300x350') %>
       <div>
         <div class="product-details">
@@ -59,4 +58,6 @@
       </section>
     </div>
 <% end %>
+<hr>
+<br>
 </body>
