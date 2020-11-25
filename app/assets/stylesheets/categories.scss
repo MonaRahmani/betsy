@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-//.category-grid {
-//  display: grid;
-//  grid-template-columns: auto auto auto;
-//
-//}
+.category-form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 0 45%;
+  color: black;
+}
+
